@@ -1,0 +1,5061 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1a1714">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Hic Sunt">
+<meta name="application-name" content="Hic Sunt">
+<meta name="description" content="Des itinéraires de voyage sur mesure, aussi uniques que vos envies — beyond the known.">
+
+<!-- PWA Manifest inline -->
+<link rel="manifest" href="data:application/manifest+json,{
+  &quot;name&quot;: &quot;Hic Sunt - Beyond the Known&quot;,
+  &quot;short_name&quot;: &quot;Hic Sunt&quot;,
+  &quot;description&quot;: &quot;Des itinéraires de voyage sur mesure, aussi uniques que vos envies.&quot;,
+  &quot;start_url&quot;: &quot;.&quot;,
+  &quot;display&quot;: &quot;standalone&quot;,
+  &quot;background_color&quot;: &quot;#faf8f4&quot;,
+  &quot;theme_color&quot;: &quot;#1a1714&quot;,
+  &quot;orientation&quot;: &quot;portrait-primary&quot;,
+  &quot;lang&quot;: &quot;fr&quot;,
+  &quot;icons&quot;: [
+    { &quot;src&quot;: &quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' fill='%231a1714'/%3E%3Ccircle cx='256' cy='256' r='220' stroke='%239e7c3f' stroke-width='4' fill='none' opacity='0.5'/%3E%3Cellipse cx='256' cy='256' rx='220' ry='85' stroke='%239e7c3f' stroke-width='3' fill='none' opacity='0.3'/%3E%3Cline x1='256' y1='36' x2='256' y2='476' stroke='%239e7c3f' stroke-width='3' opacity='0.3'/%3E%3Cline x1='36' y1='256' x2='476' y2='256' stroke='%239e7c3f' stroke-width='3' opacity='0.3'/%3E%3Crect x='120' y='136' width='36' height='240' fill='%23faf8f4'/%3E%3Crect x='356' y='136' width='36' height='240' fill='%23faf8f4'/%3E%3Crect x='120' y='228' width='272' height='28' fill='%23faf8f4'/%3E%3C/svg%3E&quot;, &quot;sizes&quot;: &quot;512x512&quot;, &quot;type&quot;: &quot;image/svg+xml&quot;, &quot;purpose&quot;: &quot;any maskable&quot; }
+  ],
+  &quot;categories&quot;: [&quot;travel&quot;, &quot;lifestyle&quot;]
+}">
+
+<!-- Apple touch icon (SVG inline as data URI) -->
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='100' fill='%231a1714'/%3E%3Ccircle cx='256' cy='256' r='200' stroke='%239e7c3f' stroke-width='4' fill='none' opacity='0.5'/%3E%3Cellipse cx='256' cy='256' rx='200' ry='75' stroke='%239e7c3f' stroke-width='3' fill='none' opacity='0.3'/%3E%3Cline x1='256' y1='56' x2='256' y2='456' stroke='%239e7c3f' stroke-width='2' opacity='0.3'/%3E%3Cline x1='56' y1='256' x2='456' y2='256' stroke='%239e7c3f' stroke-width='2' opacity='0.3'/%3E%3Crect x='116' y='130' width='40' height='252' fill='%23faf8f4'/%3E%3Crect x='356' y='130' width='40' height='252' fill='%23faf8f4'/%3E%3Crect x='116' y='225' width='280' height='30' fill='%23faf8f4'/%3E%3C/svg%3E">
+
+<title>Hic Sunt — Beyond the Known</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;0,6..96,900;1,6..96,400;1,6..96,700&family=Jost:wght@200;300;400;500&family=Fraunces:ital,wght@0,300;0,500;1,300;1,500&family=Epilogue:wght@200;300;400;500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ivory: #faf8f4;
+  --parchment: #f2ede4;
+  --card: #ffffff;
+  --ink: #1a1714;
+  --ink-soft: #3d3830;
+  --gold: #9e7c3f;
+  --gold-lt: #c4a265;
+  --gold-bg: rgba(158,124,63,0.07);
+  --gold-line: rgba(158,124,63,0.25);
+  --sage: #4e6b5e;
+  --blush: #9c5a45;
+  --muted: #8c8278;
+  --border: #e0d8cc;
+  --border-soft: #ede8e0;
+}
+
+html { scroll-behavior: auto; }
+
+body {
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── NAV ─────────────────────────────────── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(250,248,244,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-soft);
+  padding: 0 40px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+.nav-logo-name {
+  font-family: 'Bodoni Moda', serif;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 3px;
+  color: var(--ink);
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  list-style: none;
+  flex: 1;
+  justify-content: center;
+}
+.nav-links a {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-cta {
+  padding: 10px 24px;
+  background: var(--ink);
+  color: var(--ivory) !important;
+  font-size: 9px !important;
+  letter-spacing: 3px;
+  transition: background 0.2s !important;
+}
+.nav-cta:hover { background: var(--gold) !important; color: var(--ivory) !important; }
+.nav-hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; z-index: 1001; position: relative; }
+.nav-hamburger span { display: block; width: 22px; height: 1px; background: var(--ink); transition: all 0.3s; }
+.nav-hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: #faf8f4;
+  padding: 80px 40px 40px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+  z-index: 999;
+  box-shadow: inset 0 0 0 2px rgba(158,124,63,0.15);
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: 'Bodoni Moda', serif;
+  font-size: clamp(28px, 8vw, 44px);
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border-soft);
+  transition: color 0.2s;
+  display: block;
+}
+.mobile-menu a:last-child { border-bottom: none; }
+.mobile-menu a:hover { color: var(--gold); }
+.mobile-menu-sub {
+  margin-top: 40px;
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-family: 'Jost', sans-serif;
+}
+
+/* ── HERO ────────────────────────────────── */
+#accueil {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 24px 80px;
+  position: relative;
+  background: var(--ivory);
+}
+#accueil::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 100%, rgba(158,124,63,0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 30% at 80% 20%, rgba(78,107,94,0.03) 0%, transparent 60%);
+}
+.hero-eyebrow {
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: center;
+}
+.hero-eyebrow::before, .hero-eyebrow::after {
+  content: '';
+  width: 32px;
+  height: 1px;
+  background: var(--gold-line);
+}
+.hero-title {
+  font-family: 'Bodoni Moda', serif;
+  font-size: clamp(52px, 12vw, 120px);
+  font-weight: 900;
+  line-height: 0.88;
+  letter-spacing: -3px;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.hero-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--gold);
+  display: block;
+}
+.hero-sub {
+  font-family: 'Bodoni Moda', serif;
+  font-size: clamp(14px, 2vw, 18px);
+  font-style: italic;
+  color: var(--muted);
+  margin-top: 28px;
+  margin-bottom: 48px;
+  max-width: 480px;
+}
+.hero-btns {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 10;
+}
+.btn-primary {
+  padding: 16px 40px;
+  background: var(--ink);
+  color: var(--ivory);
+  border: none;
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.25s;
+  display: inline-block;
+}
+.btn-primary:hover { background: var(--gold); }
+.btn-secondary {
+  padding: 16px 40px;
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--border);
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s;
+  display: inline-block;
+}
+.btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+.hero-scroll {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  animation: bobble 2s ease-in-out infinite;
+}
+@keyframes bobble { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(6px); } }
+.hero-scroll span {
+  font-size: 8px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.hero-scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--gold-line), transparent);
+}
+
+/* ── NUMBERS STRIP ───────────────────────── */
+.numbers-strip {
+  background: var(--ink);
+  padding: 48px 40px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background-color: rgba(255,255,255,0.06);
+}
+.numbers-strip-inner {
+  background: var(--ink);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+.number-item {
+  text-align: center;
+  padding: 32px 24px;
+  background: var(--ink);
+}
+.number-val {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 44px;
+  font-weight: 700;
+  color: var(--gold-lt);
+  line-height: 1;
+  display: block;
+  margin-bottom: 8px;
+}
+.number-label {
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+}
+
+/* ── FEATURES ────────────────────────────── */
+.section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 96px 24px;
+}
+.section-eyebrow {
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.section-title {
+  font-family: 'Bodoni Moda', serif;
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+.section-title em { font-style: italic; font-weight: 400; color: var(--gold); }
+.section-sub {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 16px;
+  font-style: italic;
+  color: var(--muted);
+  max-width: 520px;
+  line-height: 1.7;
+  margin-bottom: 56px;
+}
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+.feature-card {
+  background: var(--card);
+  border: 1px solid var(--border-soft);
+  padding: 36px 32px;
+  transition: all 0.25s;
+}
+.feature-card:hover { border-color: var(--gold-line); box-shadow: 0 8px 32px rgba(0,0,0,0.05); }
+.feature-card::before {
+  content: "";
+  display: block;
+  width: 24px;
+  height: 1.5px;
+  background: var(--gold-lt);
+  margin-bottom: 20px;
+}
+.feature-title {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+.feature-desc {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* ── DESTINATIONS STRIP ──────────────────── */
+.dest-strip-wrap {
+  background: var(--parchment);
+  padding: 80px 0;
+  overflow: hidden;
+}
+.dest-strip-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.dest-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-top: 40px;
+}
+.dest-card {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: 1px solid var(--border-soft);
+}
+.dest-card:hover { transform: translateY(-3px); box-shadow: 0 16px 48px rgba(0,0,0,0.1); }
+.dest-bg {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 48px;
+  transition: transform 0.4s;
+}
+.dest-card:hover .dest-bg { transform: scale(1.05); }
+.dest-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(26,23,20,0.75) 0%, transparent 55%);
+}
+.dest-info {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 14px 16px;
+}
+.dest-name {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  display: block;
+}
+.dest-region {
+  font-size: 8px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  margin-top: 2px;
+  display: block;
+}
+
+/* ── GENERATOR SECTION ───────────────────── */
+#generateur {
+  background: var(--parchment);
+  padding: 96px 24px;
+}
+.gen-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.gen-header { margin-bottom: 48px; }
+
+/* FORM */
+.form-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 48px 52px;
+  box-shadow: 0 2px 40px rgba(0,0,0,0.04);
+}
+.form-section-label {
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.form-section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-bottom: 28px;
+}
+.form-group { display: flex; flex-direction: column; gap: 10px; }
+.form-group.full { grid-column: 1/-1; }
+label {
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+input, select, textarea {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  padding: 10px 0;
+  font-family: 'Jost', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+input[type="date"] { color-scheme: light; }
+input::placeholder, textarea::placeholder { color: var(--border); font-style: italic; }
+input:focus, select:focus, textarea:focus { border-color: var(--gold); }
+select {
+  cursor: pointer; appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5'%3E%3Cpath d='M0 0l4 5 4-5z' fill='%239e7c3f'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 4px center; padding-right: 18px;
+}
+textarea { resize: none; height: 56px; }
+.tags-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.tag {
+  padding: 5px 14px;
+  border: 1px solid var(--border);
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.2s;
+  background: transparent;
+  font-family: 'Jost', sans-serif;
+}
+.tag:hover { border-color: var(--gold-lt); color: var(--gold); }
+.tag.selected { background: var(--ink); color: var(--ivory); border-color: var(--ink); }
+.btn-generate {
+  width: 100%;
+  padding: 18px;
+  background: var(--ink);
+  color: var(--ivory);
+  border: none;
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.25s;
+  margin-top: 36px;
+}
+.btn-generate:hover { background: var(--gold); }
+.btn-generate:disabled { background: var(--border); color: var(--muted); cursor: not-allowed; }
+
+/* LOADING */
+.loading { text-align: center; padding: 64px 0; }
+.loading-ring {
+  width: 36px; height: 36px;
+  border: 1px solid var(--border);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  animation: spin 1.4s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.loading p {
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ITINERARY */
+.itinerary { animation: fadeUp 0.6s ease forwards; }
+@keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+
+.it-header {
+  text-align: center;
+  padding-bottom: 48px;
+  margin-bottom: 48px;
+  position: relative;
+}
+.it-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 1px; height: 36px;
+  background: linear-gradient(to bottom, var(--gold-line), transparent);
+}
+.it-badge {
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.it-title {
+  font-family: 'Bodoni Moda', serif;
+  font-size: clamp(32px, 6vw, 60px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -1px;
+  margin-bottom: 10px;
+}
+.it-subtitle {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 17px;
+  font-style: italic;
+  color: var(--muted);
+}
+.it-meta {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.it-meta-item {
+  flex: 1; min-width: 80px;
+  text-align: center;
+  padding: 16px 12px;
+  border-right: 1px solid var(--border);
+}
+.it-meta-item:last-child { border-right: none; }
+.it-meta-label {
+  font-size: 8px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 5px;
+}
+.it-meta-value {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 14px;
+  color: var(--ink);
+}
+.weather-alert {
+  margin-top: 20px;
+  padding: 14px 20px;
+  border: 1px solid rgba(156,90,69,0.3);
+  background: rgba(156,90,69,0.04);
+  display: inline-block;
+  text-align: left;
+}
+.weather-alert-label {
+  font-size: 8px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--blush);
+  margin-bottom: 5px;
+}
+.weather-alert p { font-size: 13px; font-style: italic; color: var(--muted); line-height: 1.6; }
+
+/* DAYS */
+.day-block {
+  display: grid;
+  grid-template-columns: 68px 1fr;
+  gap: 32px;
+  margin-bottom: 52px;
+  position: relative;
+}
+.day-block::before {
+  content: '';
+  position: absolute;
+  left: 34px; top: 48px; bottom: -52px;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--border), transparent);
+}
+.day-block:last-child::before { display: none; }
+.day-num { text-align: center; padding-top: 2px; }
+.day-num-label {
+  font-size: 8px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 3px;
+}
+.day-num-val {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1;
+}
+.day-dot {
+  width: 5px; height: 5px;
+  background: var(--gold-lt);
+  border-radius: 50%;
+  margin: 8px auto 0;
+}
+.day-title {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+.day-location {
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.day-desc {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.8;
+  color: var(--ink-soft);
+  margin-bottom: 18px;
+}
+.activities { display: flex; flex-direction: column; gap: 8px; }
+.activity { display: flex; gap: 12px; align-items: flex-start; }
+.activity-icon {
+  width: 26px; height: 26px;
+  background: var(--parchment);
+  border: 1px solid var(--border-soft);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; flex-shrink: 0; margin-top: 1px;
+}
+.activity-text { font-size: 14px; line-height: 1.5; color: var(--ink-soft); font-weight: 300; }
+.activity-text strong { font-weight: 500; color: var(--ink); }
+.tip-box {
+  margin-top: 16px;
+  padding: 14px 18px;
+  border-left: 2px solid var(--gold-lt);
+  background: var(--gold-bg);
+}
+.tip-box p {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 13px; font-style: italic;
+  color: var(--muted); line-height: 1.6;
+}
+.tip-box p::before { content: '— '; color: var(--gold-lt); }
+
+/* EXTRAS */
+.extras { margin-top: 20px; display: flex; flex-direction: column; gap: 6px; }
+.extras-section { border: 1px solid var(--border-soft); overflow: hidden; background: var(--card); }
+.extras-header {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 16px;
+  cursor: pointer; user-select: none;
+  transition: background 0.15s;
+}
+.extras-header:hover { background: var(--gold-bg); }
+.extras-label {
+  font-size: 8px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+  flex: 1;
+}
+.extras-chevron { font-size: 8px; color: var(--border); transition: transform 0.2s; }
+.extras-chevron.open { transform: rotate(180deg); }
+.extras-body { padding: 0 16px 12px; }
+.extra-item { padding: 10px 0; border-top: 1px solid var(--border-soft); }
+.extra-item:first-child { border-top: none; padding-top: 4px; }
+.extra-name { font-family: 'Bodoni Moda', serif; font-size: 14px; font-style: italic; color: var(--ink); margin-bottom: 3px; }
+.extra-detail { font-size: 12px; font-weight: 300; color: var(--muted); line-height: 1.5; }
+.extra-price {
+  font-size: 8px; font-weight: 400;
+  letter-spacing: 2px; text-transform: uppercase;
+  margin-top: 5px; display: inline-block;
+  padding: 2px 8px; border: 1px solid var(--border); color: var(--muted);
+}
+.extra-price.resto { border-color: rgba(156,90,69,0.3); color: var(--blush); }
+.extra-price.spa   { border-color: rgba(78,107,94,0.3); color: var(--sage); }
+.extra-price.gem   { border-color: var(--gold-line); color: var(--gold); }
+
+/* BOOKING PANEL */
+.booking-panel {
+  background: var(--ink);
+  padding: 36px 44px;
+  margin-bottom: 48px;
+}
+.booking-panel-title {
+  font-size: 9px;
+  font-weight: 200;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--gold-lt);
+  margin-bottom: 20px;
+}
+.booking-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.booking-btn {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 18px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.03);
+  color: #f0ece4;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.booking-btn:hover { background: rgba(158,124,63,0.15); border-color: rgba(158,124,63,0.4); }
+.booking-btn-icon { font-size: 15px; flex-shrink: 0; }
+.booking-btn-text { flex: 1; }
+.booking-btn-label {
+  font-size: 8px; font-weight: 300;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(255,255,255,0.3); display: block; margin-bottom: 2px;
+}
+.booking-btn-name { font-family: 'Bodoni Moda', serif; font-size: 14px; font-style: italic; }
+.booking-btn-arrow { font-size: 10px; color: var(--gold-lt); opacity: 0; transition: opacity 0.2s; }
+.booking-btn:hover .booking-btn-arrow { opacity: 1; }
+.booking-note {
+  margin-top: 12px;
+  font-size: 8px; font-weight: 300;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(255,255,255,0.15); text-align: right;
+}
+
+.book-link {
+  display: inline-flex; align-items: center; gap: 4px;
+  margin-top: 5px; padding: 3px 9px;
+  font-size: 8px; font-weight: 400;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--sage); border: 1px solid rgba(78,107,94,0.35);
+  text-decoration: none; transition: all 0.2s;
+}
+.book-link:hover { background: var(--sage); color: white; }
+.book-link.hotel { color: var(--blush); border-color: rgba(156,90,69,0.35); }
+.book-link.hotel:hover { background: var(--blush); color: white; }
+.book-link.activity { color: var(--gold); border-color: var(--gold-line); }
+.book-link.activity:hover { background: var(--gold); color: white; }
+
+/* ESSENTIALS */
+.essentials {
+  margin-top: 56px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 36px;
+}
+.essential-block h4 {
+  font-size: 9px; font-weight: 400;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.essential-block ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.essential-block li {
+  font-size: 13px; font-weight: 300; color: var(--ink-soft);
+  padding-left: 14px; position: relative; line-height: 1.5;
+}
+.essential-block li::before { content: '–'; position: absolute; left: 0; color: var(--gold-lt); }
+
+.it-footer { text-align: center; margin-top: 56px; }
+.btn-reset {
+  display: inline-block; padding: 12px 28px;
+  background: transparent; border: 1px solid var(--border);
+  font-family: 'Jost', sans-serif;
+  font-size: 9px; font-weight: 400;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--muted); cursor: pointer; transition: all 0.2s;
+}
+.btn-reset:hover { border-color: var(--gold-line); color: var(--gold); }
+.error-box {
+  text-align: center; padding: 40px;
+  border: 1px solid rgba(156,90,69,0.25);
+  background: rgba(156,90,69,0.03);
+}
+.error-box p { font-size: 14px; font-style: italic; color: var(--blush); margin-bottom: 16px; }
+
+/* ── PRICING ─────────────────────────────── */
+#tarifs { background: var(--ivory); }
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin-top: 16px;
+}
+.pricing-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 48px 40px;
+  position: relative;
+  transition: all 0.25s;
+}
+.pricing-card.featured {
+  background: var(--card);
+  border-color: var(--gold);
+  box-shadow: 0 8px 40px rgba(158,124,63,0.12);
+}
+.pricing-badge {
+  position: absolute;
+  top: -1px; right: 32px;
+  background: var(--gold);
+  color: var(--ivory);
+  font-size: 8px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+}
+.pricing-plan {
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+.pricing-card.featured .pricing-plan { color: var(--gold); }
+.pricing-price {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.pricing-card.featured .pricing-price { color: var(--ink); }
+.pricing-period {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--muted);
+  margin-bottom: 32px;
+  font-style: italic;
+}
+.pricing-card.featured .pricing-period { color: var(--muted); }
+.pricing-divider {
+  height: 1px;
+  background: var(--border);
+  margin-bottom: 32px;
+}
+.pricing-card.featured .pricing-divider { background: var(--border); }
+.pricing-features { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-bottom: 40px; }
+.pricing-features li {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--ink-soft);
+  padding-left: 18px;
+  position: relative;
+  line-height: 1.4;
+}
+.pricing-card.featured .pricing-features li { color: var(--ink-soft); }
+.pricing-features li::before {
+  content: '✓';
+  position: absolute; left: 0;
+  color: var(--gold-lt);
+  font-size: 11px;
+}
+.pricing-features li.muted { color: var(--muted); }
+.pricing-features li.muted::before { content: '–'; color: var(--border); }
+.pricing-card.featured .pricing-features li.muted { color: var(--muted); }
+.pricing-cta {
+  width: 100%;
+  padding: 16px;
+  background: transparent;
+  border: 1px solid var(--border);
+  font-family: 'Jost', sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--ink);
+  cursor: pointer;
+  transition: all 0.25s;
+}
+.pricing-cta:hover { border-color: var(--gold); color: var(--gold); }
+.pricing-card.featured .pricing-cta {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--ivory);
+}
+.pricing-card.featured .pricing-cta:hover { background: var(--gold); border-color: var(--gold); }
+.pricing-note {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 12px;
+  font-style: italic;
+  color: var(--muted);
+}
+
+/* ── ABOUT ───────────────────────────────── */
+#apropos { background: var(--parchment); }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.about-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.about-map-svg { width: 100%; max-width: 340px; }
+.about-content {}
+.about-quote {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 15px;
+  font-style: italic;
+  line-height: 1.8;
+  color: var(--ink-soft);
+  margin-bottom: 32px;
+  padding-left: 20px;
+  border-left: 2px solid var(--gold-lt);
+}
+.about-text {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+.about-sig {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 18px;
+  font-style: italic;
+  color: var(--gold);
+  margin-top: 32px;
+}
+
+/* ── CONTACT ─────────────────────────────── */
+#contact { background: var(--ivory); }
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.contact-info { }
+.contact-info-item {
+  margin-bottom: 28px;
+}
+.contact-info-label {
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+.contact-info-value {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 16px;
+  color: var(--ink);
+}
+.contact-info-value a { color: var(--ink); text-decoration: none; }
+.contact-info-value a:hover { color: var(--gold); }
+.contact-socials { display: flex; gap: 12px; margin-top: 32px; }
+.social-btn {
+  padding: 8px 18px;
+  border: 1px solid var(--border);
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.social-btn:hover { border-color: var(--gold-line); color: var(--gold); }
+.contact-form { display: flex; flex-direction: column; gap: 24px; }
+.contact-form-group { display: flex; flex-direction: column; gap: 8px; }
+.contact-form input, .contact-form textarea, .contact-form select {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 16px;
+  font-family: 'Jost', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+.contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus {
+  border-color: var(--gold);
+}
+.contact-form textarea { resize: none; height: 120px; }
+.contact-success {
+  text-align: center;
+  padding: 32px;
+  background: var(--gold-bg);
+  border: 1px solid var(--gold-line);
+}
+.contact-success p {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 16px;
+  font-style: italic;
+  color: var(--gold);
+}
+
+/* ── FOOTER ─────────────────────────────── */
+footer {
+  background: var(--ink);
+  padding: 64px 40px 40px;
+}
+.footer-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 60px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.footer-brand-name {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--ivory);
+  margin-bottom: 12px;
+  display: block;
+}
+.footer-brand-tag {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 13px;
+  font-style: italic;
+  color: rgba(255,255,255,0.3);
+  display: block;
+  margin-bottom: 20px;
+}
+.footer-brand-desc {
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.35);
+  line-height: 1.7;
+}
+.footer-col-title {
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold-lt);
+  margin-bottom: 20px;
+}
+.footer-col-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col-links a {
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.4);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-col-links a:hover { color: var(--gold-lt); }
+.footer-bottom {
+  max-width: 900px;
+  margin: 32px auto 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.footer-copy {
+  font-size: 10px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 2px;
+}
+.footer-legal {
+  display: flex;
+  gap: 20px;
+}
+.footer-legal a {
+  font-size: 10px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.2);
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: color 0.2s;
+}
+.footer-legal a:hover { color: rgba(255,255,255,0.5); }
+
+/* ── RESPONSIVE ──────────────────────────── */
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  .mobile-menu { padding: 24px 20px; }
+  .hero-title { letter-spacing: -2px; }
+  .numbers-strip-inner { grid-template-columns: repeat(2, 1fr); }
+  .features-grid { grid-template-columns: 1fr; }
+  .dest-grid { grid-template-columns: repeat(2, 1fr); }
+  .pricing-grid { grid-template-columns: 1fr !important; }
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .about-visual { display: none; }
+  .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+  .footer-inner { grid-template-columns: 1fr; gap: 36px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .form-grid { grid-template-columns: 1fr; }
+  .form-card { padding: 32px 24px; }
+  .essentials { grid-template-columns: 1fr; }
+  .booking-grid { grid-template-columns: 1fr; }
+  .day-block { grid-template-columns: 52px 1fr; gap: 16px; }
+  .day-block::before { left: 26px; }
+  .section { padding: 64px 24px; }
+}
+
+/* ── GENERATOR TABS ──────────────────────── */
+.gen-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 2px;
+  border-bottom: none;
+}
+.gen-tab {
+  flex: 1;
+  padding: 16px 24px;
+  background: var(--parchment);
+  border: 1px solid var(--border);
+  border-bottom: none;
+  font-family: 'Jost', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.gen-tab:first-child { border-right: none; }
+.gen-tab.active {
+  background: var(--card);
+  color: var(--ink);
+  border-color: var(--border);
+}
+.gen-tab:hover:not(.active) { color: var(--gold); }
+
+/* ── PAGE SYSTEM ─────────────────────────── */
+.page { display: none; }
+.page.active { display: block; }
+#accueil.active { display: flex; flex-direction: column; }
+
+/* ── MOBILE FIRST IMPROVEMENTS ───────────── */
+.container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+
+/* Nav mobile */
+@media (max-width: 768px) {
+  nav { padding: 0 20px; height: 56px; }
+  .nav-logo-name { font-size: 16px; letter-spacing: 2px; }
+  .nav-links { display: none !important; }
+  .nav-hamburger { display: flex; }
+}
+
+/* Hero mobile */
+@media (max-width: 768px) {
+  #accueil { padding: 100px 20px 60px; min-height: 100svh; }
+  .hero-title { font-size: clamp(44px, 14vw, 80px); letter-spacing: -2px; }
+  .hero-sub { font-size: 15px; margin-top: 20px; margin-bottom: 36px; }
+  .hero-btns { flex-direction: column; align-items: stretch; gap: 10px; }
+  .btn-primary, .btn-secondary { text-align: center; padding: 16px 24px; }
+  .hero-scroll { bottom: 24px; }
+}
+
+/* Numbers mobile */
+@media (max-width: 600px) {
+  .numbers-strip-inner { grid-template-columns: repeat(2,1fr) !important; }
+  .number-val { font-size: 32px; }
+  .number-item { padding: 24px 16px; }
+}
+
+/* Features mobile */
+@media (max-width: 768px) {
+  .features-grid { grid-template-columns: 1fr !important; gap: 2px; }
+  .feature-card { padding: 28px 24px; }
+  .section { padding: 56px 20px; }
+  .section-title { font-size: clamp(24px, 7vw, 40px); }
+}
+
+/* Destinations mobile */
+@media (max-width: 600px) {
+  .dest-grid { grid-template-columns: repeat(2,1fr) !important; gap: 6px; }
+  .dest-card { height: 140px; }
+}
+
+/* Generator mobile */
+@media (max-width: 768px) {
+  .form-card { padding: 28px 20px; }
+  .form-grid { grid-template-columns: 1fr !important; gap: 20px; }
+  .gen-tab { font-size: 9px; letter-spacing: 2px; padding: 14px 12px; }
+  .booking-grid { grid-template-columns: 1fr !important; }
+  .day-block { grid-template-columns: 48px 1fr !important; gap: 14px; }
+  .day-block::before { left: 24px !important; }
+  .day-num-val { font-size: 26px; }
+  .essentials { grid-template-columns: 1fr !important; gap: 24px; }
+  .it-meta-item { min-width: 45%; }
+  .booking-panel { padding: 24px 20px; }
+}
+
+/* Pricing mobile */
+@media (max-width: 768px) {
+  .pricing-grid { grid-template-columns: 1fr !important; }
+  .pricing-card { padding: 36px 28px; }
+  .pricing-price { font-size: 44px; }
+}
+
+/* About mobile */
+@media (max-width: 768px) {
+  .about-grid { grid-template-columns: 1fr !important; gap: 32px; }
+  .about-visual { display: none !important; }
+}
+
+/* Contact mobile */
+@media (max-width: 768px) {
+  .contact-grid { grid-template-columns: 1fr !important; gap: 40px; }
+  .contact-socials { flex-wrap: wrap; }
+}
+
+/* Footer mobile */
+@media (max-width: 768px) {
+  footer { padding: 48px 20px 32px; }
+  .footer-inner { grid-template-columns: 1fr !important; gap: 32px; }
+  .footer-bottom { flex-direction: column; text-align: center; gap: 12px; }
+}
+
+
+/* ── NAV ACTIVE STATE ────────────────────── */
+.nav-links a.nav-active { color: var(--gold); }
+
+
+
+
+/* ── ITINERARY EDITORIAL STYLE ───────────── */
+
+/* Circuit timeline */
+.it-circuit {
+  margin-bottom: 48px;
+  padding: 28px 32px;
+  background: var(--parchment);
+  border: 1px solid var(--border);
+}
+.it-circuit-label {
+  font-size: 9px; font-weight: 400; letter-spacing: 5px;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 20px;
+}
+.it-circuit-stops {
+  display: flex; gap: 0; overflow-x: auto;
+  padding-bottom: 4px;
+}
+.it-circuit-stop {
+  flex: 1; min-width: 90px; position: relative;
+  padding-top: 20px; padding-right: 8px;
+}
+.it-circuit-stop::before {
+  content: ''; position: absolute;
+  top: 7px; left: 7px; right: 0; height: 1px;
+  background: var(--gold-line);
+}
+.it-circuit-stop.last::before { right: 50%; }
+.it-circuit-dot {
+  width: 12px; height: 12px; border-radius: 50%;
+  border: 2px solid var(--gold); background: var(--card);
+  position: absolute; top: 0; left: 0;
+}
+.it-circuit-name {
+  font-family: 'Bodoni Moda', serif; font-size: 14px;
+  font-weight: 700; color: var(--ink); white-space: nowrap;
+}
+.it-circuit-dates {
+  font-size: 9px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--gold);
+  margin-top: 2px; white-space: nowrap;
+}
+.it-circuit-nights {
+  font-size: 10px; color: var(--muted); white-space: nowrap;
+}
+
+/* Days */
+.it-days { margin-bottom: 56px; }
+.it-day {
+  display: grid;
+  grid-template-columns: 68px 1fr;
+  gap: 28px;
+  margin-bottom: 56px;
+  position: relative;
+}
+.it-day::before {
+  content: '';
+  position: absolute;
+  left: 34px; top: 48px; bottom: -56px;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--border), transparent);
+}
+.it-day:last-child::before { display: none; }
+
+.it-day-num { text-align: center; padding-top: 2px; }
+.it-day-n {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 34px; font-weight: 700;
+  color: var(--ink); line-height: 1; display: block;
+}
+.it-day-label {
+  font-size: 8px; font-weight: 400;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--muted); display: block; margin-top: 3px;
+}
+.it-day-dot {
+  width: 5px; height: 5px;
+  background: var(--gold-lt); border-radius: 50%;
+  margin: 10px auto 0;
+}
+
+.it-day-title {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 20px; font-weight: 700;
+  color: var(--ink); margin-bottom: 3px;
+}
+.it-day-location {
+  font-size: 9px; font-weight: 400;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 12px;
+}
+.it-day-desc {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 14px; font-style: italic;
+  line-height: 1.8; color: var(--ink-soft);
+  margin-bottom: 20px;
+}
+
+/* Activities */
+.it-activities { display: flex; flex-direction: column; gap: 14px; margin-bottom: 20px; }
+.it-activity { display: flex; gap: 14px; align-items: flex-start; }
+.it-activity-time {
+  font-size: 8px; font-weight: 400;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--muted); width: 52px; flex-shrink: 0;
+  padding-top: 3px;
+}
+.it-activity-body { flex: 1; }
+.it-activity-name {
+  font-size: 14px; font-weight: 500;
+  color: var(--ink); margin-bottom: 3px;
+}
+.it-activity-detail {
+  font-size: 13px; font-weight: 300;
+  color: var(--ink-soft); line-height: 1.6;
+}
+.it-activity-tip {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 12px; font-style: italic;
+  color: var(--muted); margin-top: 5px;
+  padding-left: 12px; border-left: 2px solid var(--gold-line);
+}
+
+/* Day cards */
+.it-day-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+}
+.it-card {
+  padding: 16px 18px;
+  border: 1px solid var(--border-soft);
+  border-radius: 2px;
+}
+.it-card-food { background: rgba(158,124,63,0.05); border-color: var(--gold-line); }
+.it-card-spa  { background: rgba(78,107,94,0.05); border-color: rgba(78,107,94,0.2); }
+.it-card-gem  { background: var(--parchment); border-color: var(--border); }
+.it-card-label {
+  font-size: 8px; font-weight: 400;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 8px;
+}
+.it-card-food .it-card-label { color: var(--gold); }
+.it-card-spa  .it-card-label { color: var(--sage); }
+.it-card-gem  .it-card-label { color: var(--gold-lt); }
+.it-card-name {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 15px; font-style: italic; font-weight: 700;
+  color: var(--ink); margin-bottom: 5px;
+}
+.it-card-desc { font-size: 12px; font-weight: 300; color: var(--muted); line-height: 1.6; }
+.it-card-note {
+  font-size: 11px; color: var(--muted);
+  margin-top: 6px; font-style: italic; opacity: 0.8;
+}
+.it-card-price {
+  display: inline-block; margin-top: 6px;
+  font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+  padding: 2px 8px; border: 1px solid;
+}
+.it-card-price.food { color: var(--gold); border-color: var(--gold-line); }
+.it-card-price.spa  { color: var(--sage); border-color: rgba(78,107,94,0.3); }
+
+/* Highlights */
+.it-highlights {
+  margin-top: 56px;
+  padding-top: 48px;
+  border-top: 1px solid var(--border);
+  display: flex; flex-direction: column; gap: 40px;
+  margin-bottom: 48px;
+}
+.it-hl-title {
+  font-size: 9px; font-weight: 400;
+  letter-spacing: 5px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 16px;
+  padding-bottom: 10px; border-bottom: 1px solid var(--border);
+}
+.it-hl-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+}
+.it-hl-card {
+  padding: 16px 18px;
+  border: 1px solid var(--border-soft);
+}
+.it-hl-card.spa       { background: rgba(78,107,94,0.05); border-color: rgba(78,107,94,0.2); }
+.it-hl-card.waterfall { background: rgba(91,196,196,0.05); border-color: rgba(91,196,196,0.2); }
+.it-hl-card.beach     { background: rgba(91,159,190,0.05); border-color: rgba(91,159,190,0.2); }
+.it-hl-loc {
+  font-size: 8px; font-weight: 400;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 4px;
+}
+.it-hl-name {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 14px; font-style: italic; font-weight: 700;
+  color: var(--ink); margin-bottom: 6px;
+}
+.it-hl-desc { font-size: 12px; font-weight: 300; color: var(--muted); line-height: 1.5; }
+.it-hl-price {
+  display: inline-block; margin-top: 6px;
+  font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--sage); border-bottom: 1px solid rgba(78,107,94,0.3);
+}
+
+/* Budget table */
+.it-budget {
+  margin-top: 48px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+  margin-bottom: 48px;
+}
+.it-budget-title {
+  font-size: 9px; font-weight: 400;
+  letter-spacing: 5px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 20px;
+}
+.it-budget-table { border: 1px solid var(--border); }
+.it-budget-row {
+  display: grid;
+  grid-template-columns: 120px 60px 1fr auto;
+  gap: 16px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border-soft);
+  align-items: center;
+}
+.it-budget-row:last-child { border-bottom: none; }
+.it-budget-city { font-weight: 400; font-size: 14px; color: var(--ink); }
+.it-budget-nights { font-size: 12px; color: var(--muted); }
+.it-budget-name {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 14px; font-style: italic; color: var(--ink);
+}
+.it-budget-type {
+  font-size: 8px; font-weight: 400;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--muted); margin-left: 8px;
+}
+.it-budget-price { font-size: 14px; font-weight: 400; color: var(--gold); white-space: nowrap; }
+.it-budget-total {
+  display: flex; justify-content: space-between;
+  padding: 16px 20px;
+  background: var(--parchment);
+  border-top: 1px solid var(--border);
+  font-size: 14px; font-weight: 400;
+  color: var(--ink);
+}
+.it-budget-total span:last-child { color: var(--gold); font-weight: 500; }
+.it-budget-note {
+  font-size: 12px; font-style: italic;
+  color: var(--muted); margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .it-day { grid-template-columns: 48px 1fr; gap: 14px; }
+  .it-day::before { left: 24px; }
+  .it-day-n { font-size: 26px; }
+  .it-activity { flex-direction: column; gap: 4px; }
+  .it-activity-time { width: auto; }
+  .it-day-cards { grid-template-columns: 1fr; }
+  .it-hl-grid { grid-template-columns: 1fr 1fr; }
+  .it-budget-row { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .it-circuit-stops { gap: 4px; }
+}
+
+
+/* ── UPSELL BANNER ───────────────────────── */
+.upsell-banner {
+  margin: 48px 0;
+  padding: 40px 44px;
+  background: var(--ink);
+  position: relative;
+  overflow: hidden;
+}
+.upsell-banner::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold-lt), transparent);
+}
+.upsell-banner::after {
+  content: 'BEYOND THE KNOWN';
+  position: absolute;
+  bottom: -8px; right: 20px;
+  font-family: 'Bodoni Moda', serif;
+  font-size: 48px;
+  font-style: italic;
+  font-weight: 900;
+  color: rgba(255,255,255,0.03);
+  pointer-events: none;
+  white-space: nowrap;
+}
+.upsell-tag {
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gold-lt);
+  margin-bottom: 12px;
+}
+.upsell-title {
+  font-family: 'Bodoni Moda', serif;
+  font-size: clamp(22px, 4vw, 32px);
+  font-weight: 700;
+  color: #faf8f4;
+  margin-bottom: 8px;
+  line-height: 1.1;
+}
+.upsell-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--gold-lt);
+}
+.upsell-sub {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 15px;
+  font-style: italic;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+.upsell-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+.upsell-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.4;
+}
+.upsell-feature::before {
+  content: '✓';
+  color: var(--gold-lt);
+  font-size: 11px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.upsell-btns {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.upsell-btn-primary {
+  padding: 16px 32px;
+  background: var(--gold);
+  color: white;
+  border: none;
+  font-family: 'Jost', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.upsell-btn-primary:hover { background: var(--gold-lt); }
+.upsell-btn-price {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 700;
+}
+.upsell-btn-secondary {
+  padding: 16px 24px;
+  background: transparent;
+  color: rgba(255,255,255,0.4);
+  border: 1px solid rgba(255,255,255,0.1);
+  font-family: 'Jost', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.upsell-btn-secondary:hover {
+  border-color: rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.7);
+}
+.upsell-note {
+  margin-top: 14px;
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.2);
+}
+
+/* ── AUTH MODAL ──────────────────────────── */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(26,23,20,0.7);
+  backdrop-filter: blur(4px);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--card);
+  border: 1px solid var(--border);
+  width: 100%;
+  max-width: 440px;
+  padding: 0;
+  position: relative;
+  animation: modalIn 0.3s ease;
+}
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(16px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.modal-close {
+  position: absolute;
+  top: 16px; right: 20px;
+  background: none; border: none;
+  font-size: 18px; color: var(--muted);
+  cursor: pointer; line-height: 1;
+  transition: color 0.2s;
+}
+.modal-close:hover { color: var(--ink); }
+.modal-header {
+  padding: 36px 36px 28px;
+  border-bottom: 1px solid var(--border-soft);
+  text-align: center;
+}
+.modal-logo {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.modal-title {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.modal-sub {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--muted);
+}
+.modal-body { padding: 28px 36px 36px; }
+
+/* Auth tabs */
+.auth-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+}
+.auth-tab {
+  flex: 1;
+  padding: 10px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-family: 'Jost', sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: -1px;
+}
+.auth-tab.active { color: var(--ink); border-bottom-color: var(--gold); }
+
+/* Auth form */
+.auth-form { display: flex; flex-direction: column; gap: 16px; }
+.auth-field { display: flex; flex-direction: column; gap: 8px; }
+.auth-label {
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.auth-input {
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  background: var(--ivory);
+  font-family: 'Jost', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+.auth-input:focus { border-color: var(--gold); }
+.auth-input::placeholder { color: var(--border); }
+
+.auth-btn {
+  width: 100%;
+  padding: 15px;
+  background: var(--ink);
+  color: var(--ivory);
+  border: none;
+  font-family: 'Jost', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 4px;
+}
+.auth-btn:hover { background: var(--gold); }
+.auth-btn:disabled { background: var(--border); cursor: not-allowed; }
+
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 4px 0;
+}
+.auth-divider::before, .auth-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+.auth-divider span {
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.auth-google {
+  width: 100%;
+  padding: 13px;
+  background: white;
+  color: var(--ink);
+  border: 1px solid var(--border);
+  font-family: 'Jost', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.auth-google:hover { border-color: var(--gold-line); background: var(--ivory); }
+
+.auth-error {
+  padding: 10px 14px;
+  background: rgba(156,90,69,0.06);
+  border: 1px solid rgba(156,90,69,0.2);
+  font-size: 12px;
+  color: var(--blush);
+  font-style: italic;
+  display: none;
+}
+.auth-error.show { display: block; }
+
+.modal-plan {
+  margin: 0 36px 28px;
+  padding: 16px 20px;
+  background: var(--gold-bg);
+  border: 1px solid var(--gold-line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.modal-plan-name {
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.modal-plan-price {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+@media (max-width: 600px) {
+  .upsell-banner { padding: 28px 20px; }
+  .upsell-features { grid-template-columns: 1fr; }
+  .upsell-btns { flex-direction: column; }
+  .upsell-btn-primary, .upsell-btn-secondary { width: 100%; justify-content: center; }
+  .modal { max-width: 100%; }
+  .modal-header, .modal-body { padding-left: 24px; padding-right: 24px; }
+  .modal-plan { margin-left: 24px; margin-right: 24px; }
+}
+
+
+/* ── MODAL STEPS ─────────────────────────── */
+.modal-steps {
+  display: flex;
+  align-items: center;
+  padding: 20px 36px;
+  border-bottom: 1px solid var(--border-soft);
+  background: var(--parchment);
+}
+.modal-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.step-num {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--card);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 400;
+  color: var(--muted);
+  transition: all 0.3s;
+}
+.step-label {
+  font-size: 9px; font-weight: 400;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--muted);
+  transition: color 0.3s;
+}
+.modal-step.active .step-num {
+  background: var(--ink); border-color: var(--ink);
+  color: var(--ivory);
+}
+.modal-step.active .step-label { color: var(--ink); }
+.modal-step.done .step-num {
+  background: var(--sage); border-color: var(--sage);
+  color: white;
+}
+.modal-step.done .step-num::after { content: '✓'; font-size: 11px; }
+.modal-step.done .step-num span { display: none; }
+.modal-step-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+  margin: 0 8px;
+}
+
+/* ── MODAL PLAN DESC ─────────────────────── */
+.modal-plan { flex-direction: column; gap: 4px; align-items: flex-start; }
+.modal-plan > div { flex: 1; }
+.modal-plan-desc {
+  font-size: 10px; font-weight: 300;
+  color: var(--muted); letter-spacing: 1px;
+  display: block; margin-top: 3px;
+}
+.modal-plan { display: flex; flex-direction: row !important; justify-content: space-between; align-items: center; }
+
+/* ── STRIPE ELEMENT ──────────────────────── */
+.stripe-element {
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  background: var(--ivory);
+  transition: border-color 0.2s;
+  min-height: 44px;
+}
+.stripe-element.StripeElement--focus { border-color: var(--gold); }
+.stripe-element.StripeElement--invalid { border-color: var(--blush); }
+
+/* ── PAYMENT SECURE NOTE ─────────────────── */
+.payment-secure {
+  font-size: 10px; font-weight: 300;
+  color: var(--muted); text-align: center;
+  margin-top: 12px; letter-spacing: 0.5px;
+  line-height: 1.5;
+}
+
+
+/* ── OCCASIONS GRID ──────────────────────── */
+.occasions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 4px;
+}
+.occasion-card {
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.2s;
+  background: transparent;
+  text-align: left;
+  position: relative;
+}
+.occasion-card:hover { border-color: var(--gold-lt); background: var(--gold-bg); }
+.occasion-card.selected {
+  border-color: var(--gold);
+  background: var(--gold-bg);
+}
+.occasion-card.selected::after {
+  content: '✓';
+  position: absolute;
+  top: 8px; right: 10px;
+  font-size: 10px;
+  color: var(--gold);
+}
+.occasion-emoji { font-size: 18px; display: block; margin-bottom: 6px; }
+.occasion-label {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  display: block;
+  margin-bottom: 3px;
+}
+.occasion-desc {
+  font-size: 10px;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+@media (max-width: 600px) {
+  .occasions-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+
+/* ── CURRENCY SELECTOR ───────────────────── */
+.currency-selector {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+}
+.currency-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: transparent;
+  border: 1px solid var(--border);
+  font-family: "Jost", sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.currency-btn:hover { border-color: var(--gold-line); color: var(--gold); }
+.currency-flag { font-size: 14px; line-height: 1; }
+.currency-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+  z-index: 200;
+  min-width: 160px;
+}
+.currency-dropdown.open { display: block; }
+.currency-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background 0.15s;
+  border: none;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+}
+.currency-option:hover { background: var(--gold-bg); }
+.currency-option.active { background: var(--gold-bg); }
+.currency-option-flag { font-size: 16px; }
+.currency-option-info { display: flex; flex-direction: column; gap: 1px; }
+.currency-option-code {
+  font-family: "Jost", sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  color: var(--ink);
+}
+.currency-option-name {
+  font-size: 10px;
+  font-weight: 300;
+  color: var(--muted);
+}
+
+
+/* ── ITINERARY HEADER REDESIGN ───────────── */
+.it-header-top {
+  margin-bottom: 28px;
+}
+.it-badge {
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.it-header-body {
+  margin-bottom: 36px;
+}
+.it-title {
+  font-family: 'Bodoni Moda', serif;
+  font-size: clamp(36px, 5vw, 72px);
+  font-weight: 900;
+  color: var(--ink);
+  line-height: 1;
+  letter-spacing: -2px;
+  margin-bottom: 14px;
+}
+.it-subtitle {
+  font-family: 'Bodoni Moda', serif;
+  font-size: clamp(15px, 2vw, 20px);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--muted);
+  line-height: 1.5;
+  max-width: 600px;
+}
+.it-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding: 24px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 28px;
+}
+.it-meta-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.it-meta-label {
+  font-size: 8px;
+  font-weight: 400;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.it-meta-value {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.it-meta-sep {
+  font-size: 18px;
+  color: var(--gold-lt);
+  font-weight: 300;
+  margin-top: 14px;
+}
+.it-meta-divider {
+  width: 1px;
+  height: 36px;
+  background: var(--border);
+  margin: 0 8px;
+}
+.it-weather-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 20px;
+  background: rgba(158,124,63,0.05);
+  border-left: 3px solid var(--gold-lt);
+  margin-bottom: 0;
+}
+.it-weather-icon { font-size: 14px; margin-top: 2px; flex-shrink: 0; }
+.it-weather-label {
+  font-size: 8px;
+  font-weight: 400;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+.it-weather-text {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 13px;
+  font-style: italic;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+.it-why {
+  margin-top: 24px;
+  padding: 20px 24px;
+  background: var(--gold-bg);
+  border: 1px solid var(--gold-line);
+}
+.it-why-label {
+  font-size: 8px;
+  font-weight: 400;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.it-why-text {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 15px;
+  font-style: italic;
+  color: var(--ink-soft);
+  line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+  .it-title { letter-spacing: -1px; }
+  .it-meta-row { gap: 16px; }
+  .it-meta-divider { display: none; }
+  .it-meta-sep { display: none; }
+}
+
+
+/* ══════════════════════════════════════════
+   SRI LANKA STYLE — PAID ITINERARY
+   ══════════════════════════════════════════ */
+.it-paid {
+  background: #0C160E;
+  color: #EEE8D8;
+  font-family: 'Epilogue', sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  margin: 0 -40px;
+  padding: 0;
+}
+@media (max-width: 768px) {
+  .it-paid { margin: 0 -20px; }
+}
+
+/* Variables Sri Lanka */
+.it-paid {
+  --sl-ink: #0C160E;
+  --sl-bark: #1A2419;
+  --sl-cream: #EEE8D8;
+  --sl-sand: #D4C9A8;
+  --sl-mist: #8A9E88;
+  --sl-hike: #7BAE6E;
+  --sl-hike-bg: rgba(123,174,110,0.07);
+  --sl-hike-b: rgba(123,174,110,0.22);
+  --sl-beach: #5B9FBE;
+  --sl-beach-bg: rgba(91,159,190,0.07);
+  --sl-beach-b: rgba(91,159,190,0.22);
+  --sl-food: #C98A52;
+  --sl-food-bg: rgba(201,138,82,0.07);
+  --sl-food-b: rgba(201,138,82,0.22);
+  --sl-cafe: #B07EB0;
+  --sl-cafe-bg: rgba(176,126,176,0.07);
+  --sl-cafe-b: rgba(176,126,176,0.22);
+  --sl-spa: #E8A0A0;
+  --sl-spa-bg: rgba(232,160,160,0.07);
+  --sl-spa-b: rgba(232,160,160,0.22);
+  --sl-waterfall: #5BC4C4;
+  --sl-waterfall-bg: rgba(91,196,196,0.07);
+  --sl-waterfall-b: rgba(91,196,196,0.22);
+  --sl-lux: #C9965A;
+  --sl-lux-bg: rgba(201,150,90,0.07);
+  --sl-lux-b: rgba(201,150,90,0.22);
+  --sl-budget: #5A9B7C;
+  --sl-budget-bg: rgba(90,155,124,0.07);
+  --sl-budget-b: rgba(90,155,124,0.22);
+  --sl-safari: #C9A853;
+  --sl-safari-bg: rgba(201,168,83,0.07);
+  --sl-safari-b: rgba(201,168,83,0.22);
+}
+
+/* Hero paid */
+.sl-hero {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 5rem 4rem;
+  position: relative;
+  overflow: hidden;
+  background: #0C160E;
+}
+.sl-hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 55% at 20% 15%, rgba(92,122,96,0.14) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 75% at 80% 65%, rgba(91,196,196,0.08) 0%, transparent 55%),
+    radial-gradient(ellipse 45% 45% at 55% 90%, rgba(201,138,82,0.07) 0%, transparent 50%);
+}
+.sl-eyebrow {
+  font-size: 0.6rem; letter-spacing: 0.55em; text-transform: uppercase;
+  color: var(--sl-hike); font-weight: 400; margin-bottom: 1.5rem;
+  position: relative; z-index: 2;
+  animation: sl-up 0.9s ease 0.2s both;
+}
+.sl-hero h1 {
+  font-family: 'Fraunces', serif; font-weight: 300;
+  font-size: clamp(4rem, 10vw, 9rem); line-height: 0.9;
+  color: var(--sl-cream); position: relative; z-index: 2;
+  margin-bottom: 2.5rem;
+  animation: sl-up 0.9s ease 0.4s both;
+}
+.sl-hero h1 i { color: var(--sl-hike); font-style: italic; }
+.sl-hero-row {
+  display: flex; align-items: flex-end;
+  justify-content: space-between; flex-wrap: wrap;
+  gap: 2rem; position: relative; z-index: 2;
+  animation: sl-up 0.9s ease 0.7s both;
+}
+.sl-pills { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.sl-pill {
+  font-size: 0.68rem; letter-spacing: 0.1em;
+  padding: 0.35rem 1rem; border-radius: 20px; border: 1px solid; font-weight: 400;
+}
+.sl-pill.hike  { color: var(--sl-hike);      border-color: var(--sl-hike-b); }
+.sl-pill.beach { color: var(--sl-beach);     border-color: var(--sl-beach-b); }
+.sl-pill.food  { color: var(--sl-food);      border-color: var(--sl-food-b); }
+.sl-pill.spa   { color: var(--sl-spa);       border-color: var(--sl-spa-b); }
+.sl-pill.wfall { color: var(--sl-waterfall); border-color: var(--sl-waterfall-b); }
+.sl-hero-dates .big {
+  font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 300;
+  color: var(--sl-cream); display: block;
+}
+.sl-hero-dates .small {
+  font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--sl-mist);
+}
+
+/* Timeline paid */
+.sl-timeline-wrap {
+  background: var(--sl-bark);
+  border-top: 1px solid rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  padding: 3rem 4rem; overflow-x: auto;
+}
+.sl-tl-label {
+  font-size: 0.58rem; letter-spacing: 0.45em; text-transform: uppercase;
+  color: var(--sl-hike); margin-bottom: 2rem;
+}
+.sl-timeline { display: flex; gap: 0; min-width: 600px; }
+.sl-stop { flex: 1; position: relative; padding-top: 22px; }
+.sl-stop::before {
+  content: ''; position: absolute; top: 7px; left: 0; right: 0;
+  height: 1px; background: rgba(123,174,110,0.2);
+}
+.sl-stop:first-child::before { left: 7px; }
+.sl-stop:last-child::before  { right: 7px; }
+.sl-dot {
+  width: 14px; height: 14px; border-radius: 50%;
+  border: 2px solid var(--sl-hike); background: var(--sl-ink);
+  position: absolute; top: 0; left: 0; z-index: 1;
+}
+.sl-stop.lux .sl-dot { border-color: var(--sl-lux); background: rgba(201,150,90,0.15); }
+.sl-stop.end .sl-dot { border-color: var(--sl-cafe); }
+.sl-city {
+  font-family: 'Fraunces', serif; font-size: 0.85rem;
+  color: var(--sl-cream); white-space: nowrap; margin-bottom: 0.1rem;
+}
+.sl-stop.lux .sl-city { color: var(--sl-lux); }
+.sl-stop.end .sl-city { color: var(--sl-cafe); }
+.sl-dates { font-size: 0.57rem; color: var(--sl-hike); letter-spacing: 0.08em; white-space: nowrap; }
+.sl-stop.lux .sl-dates { color: var(--sl-lux); }
+.sl-nights { font-size: 0.54rem; color: var(--sl-mist); white-space: nowrap; }
+
+/* Legend */
+.sl-legend {
+  background: var(--sl-bark);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  padding: 1.5rem 4rem;
+  display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: center;
+}
+.sl-legend-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; }
+.sl-legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+/* Section */
+.sl-section { padding: 5rem 4rem 0; background: #0C160E; }
+.sl-section-head {
+  max-width: 1040px; margin: 0 auto;
+  display: flex; align-items: flex-end; gap: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  margin-bottom: 2.5rem;
+}
+.sl-sec-num {
+  font-family: 'Fraunces', serif; font-size: 5rem; font-weight: 300;
+  color: rgba(92,122,96,0.12); line-height: 1; flex-shrink: 0;
+}
+.sl-sec-tag {
+  font-size: 0.57rem; letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--sl-hike); margin-bottom: 0.3rem;
+}
+.sl-sec-tag.lux { color: var(--sl-lux); }
+.sl-sec-name {
+  font-family: 'Fraunces', serif; font-size: clamp(1.8rem,3.5vw,2.8rem);
+  font-weight: 300; color: var(--sl-cream); line-height: 1.1; margin-bottom: 0.3rem;
+}
+.sl-sec-hook {
+  font-family: 'Fraunces', serif; font-style: italic;
+  font-size: 0.87rem; color: var(--sl-mist);
+}
+
+/* Cards */
+.sl-cards {
+  max-width: 1040px; margin: 0 auto; padding: 0 4rem;
+  display: grid; gap: 1rem; margin-bottom: 2.5rem; background: #0C160E;
+}
+.sl-grid-2 { grid-template-columns: 1fr 1fr; }
+.sl-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+.sl-card {
+  border-radius: 8px; padding: 1.3rem 1.4rem; border: 1px solid;
+  transition: transform 0.2s, box-shadow 0.2s; cursor: default;
+}
+.sl-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.35); }
+.sl-card.hotel { background: var(--sl-lux-bg); border-color: var(--sl-lux-b); }
+.sl-card.food   { background: var(--sl-food-bg); border-color: var(--sl-food-b); }
+.sl-card.hike   { background: var(--sl-hike-bg); border-color: var(--sl-hike-b); }
+.sl-card.spa    { background: var(--sl-spa-bg); border-color: var(--sl-spa-b); }
+.sl-card.beach  { background: var(--sl-beach-bg); border-color: var(--sl-beach-b); }
+.sl-card.wfall  { background: var(--sl-waterfall-bg); border-color: var(--sl-waterfall-b); }
+.sl-card.safari { background: var(--sl-safari-bg); border-color: var(--sl-safari-b); }
+.sl-card.cafe   { background: var(--sl-cafe-bg); border-color: var(--sl-cafe-b); }
+.sl-card-label {
+  font-size: 0.56rem; letter-spacing: 0.38em; text-transform: uppercase;
+  font-weight: 500; margin-bottom: 0.6rem;
+}
+.sl-card.hotel .sl-card-label { color: var(--sl-lux); }
+.sl-card.food  .sl-card-label { color: var(--sl-food); }
+.sl-card.hike  .sl-card-label { color: var(--sl-hike); }
+.sl-card.spa   .sl-card-label { color: var(--sl-spa); }
+.sl-card.beach .sl-card-label { color: var(--sl-beach); }
+.sl-card.wfall .sl-card-label { color: var(--sl-waterfall); }
+.sl-card.safari .sl-card-label { color: var(--sl-safari); }
+.sl-card.cafe  .sl-card-label { color: var(--sl-cafe); }
+.sl-card-name {
+  font-family: 'Fraunces', serif; font-size: 1.05rem; font-weight: 300;
+  color: var(--sl-cream); margin-bottom: 0.4rem; line-height: 1.3;
+}
+.sl-card-desc { font-size: 0.78rem; color: var(--sl-mist); line-height: 1.65; }
+.sl-card-note { margin-top: 0.6rem; font-size: 0.72rem; color: var(--sl-sand); opacity: 0.7; font-style: italic; }
+.sl-card-price { margin-top: 0.5rem; font-size: 0.7rem; font-weight: 500; color: var(--sl-lux); }
+
+/* Days */
+.sl-days {
+  max-width: 1040px; margin: 0 auto;
+  padding: 0 4rem 5rem; display: grid; gap: 0.8rem; background: #0C160E;
+}
+.sl-day {
+  display: grid; grid-template-columns: 54px 1fr;
+  background: rgba(255,255,255,0.015);
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 6px; overflow: hidden; transition: border-color 0.2s;
+}
+.sl-day:hover { border-color: rgba(92,122,96,0.22); }
+.sl-day-n {
+  background: rgba(92,122,96,0.05);
+  border-right: 1px solid rgba(255,255,255,0.04);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: flex-start; padding: 1.1rem 0;
+}
+.sl-day-n b {
+  font-family: 'Fraunces', serif; font-size: 1.25rem; font-weight: 300;
+  color: var(--sl-hike); line-height: 1;
+}
+.sl-day-n span {
+  font-size: 0.5rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--sl-mist); margin-top: 0.2rem;
+}
+.sl-day-body { padding: 1.1rem 1.5rem; }
+.sl-day-top {
+  display: flex; justify-content: space-between;
+  align-items: baseline; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.4rem;
+}
+.sl-day-title { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 300; color: var(--sl-cream); }
+.sl-day-date { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--sl-food); opacity: 0.75; flex-shrink: 0; }
+.sl-day-text { font-size: 0.82rem; color: var(--sl-mist); line-height: 1.75; margin-bottom: 0.6rem; }
+
+/* Tags */
+.sl-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.6rem; }
+.sl-tag {
+  font-size: 0.57rem; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 0.18rem 0.55rem; border-radius: 10px; border: 1px solid; font-weight: 400;
+}
+.sl-tag.hike  { color: var(--sl-hike);      border-color: var(--sl-hike-b);      background: var(--sl-hike-bg); }
+.sl-tag.beach { color: var(--sl-beach);     border-color: var(--sl-beach-b);     background: var(--sl-beach-bg); }
+.sl-tag.food  { color: var(--sl-food);      border-color: var(--sl-food-b);      background: var(--sl-food-bg); }
+.sl-tag.spa   { color: var(--sl-spa);       border-color: var(--sl-spa-b);       background: var(--sl-spa-bg); }
+.sl-tag.wfall { color: var(--sl-waterfall); border-color: var(--sl-waterfall-b); background: var(--sl-waterfall-bg); }
+.sl-tag.safari { color: var(--sl-safari);  border-color: var(--sl-safari-b);    background: var(--sl-safari-bg); }
+.sl-tag.cafe  { color: var(--sl-cafe);      border-color: var(--sl-cafe-b);      background: var(--sl-cafe-bg); }
+
+/* Highlight box */
+.sl-hl { max-width: 1040px; margin: 0 auto 2rem; padding: 0 4rem; background: #0C160E; }
+.sl-hl-box {
+  border-radius: 0 6px 6px 0; padding: 1rem 1.3rem;
+  font-size: 0.8rem; color: var(--sl-sand); line-height: 1.7; border-left: 3px solid;
+}
+.sl-hl-box.green { background: var(--sl-hike-bg); border-color: var(--sl-hike); }
+.sl-hl-box.green strong { color: var(--sl-hike); font-weight: 500; }
+.sl-hl-box.blue  { background: var(--sl-beach-bg); border-color: var(--sl-beach); }
+.sl-hl-box.blue strong  { color: var(--sl-beach); font-weight: 500; }
+.sl-hl-box.teal  { background: var(--sl-waterfall-bg); border-color: var(--sl-waterfall); }
+.sl-hl-box.teal strong  { color: var(--sl-waterfall); font-weight: 500; }
+.sl-hl-box.pink  { background: var(--sl-spa-bg); border-color: var(--sl-spa); }
+.sl-hl-box.pink strong  { color: var(--sl-spa); font-weight: 500; }
+.sl-hl-box.amber { background: var(--sl-food-bg); border-color: var(--sl-food); }
+.sl-hl-box.amber strong { color: var(--sl-food); font-weight: 500; }
+
+/* Separator */
+.sl-sep {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(92,122,96,0.2), transparent);
+  margin: 0 4rem;
+  background-color: #0C160E;
+}
+
+/* Budget table */
+.sl-budget { max-width: 1040px; margin: 0 auto; padding: 0 4rem 5rem; background: #0C160E; }
+.sl-budget table { width: 100%; border-collapse: collapse; }
+.sl-budget th {
+  text-align: left; font-size: 0.58rem; letter-spacing: 0.3em;
+  text-transform: uppercase; color: var(--sl-hike); font-weight: 400;
+  padding: 0.6rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.sl-budget td {
+  padding: 0.85rem 1rem; font-size: 0.8rem; color: var(--sl-mist);
+  border-bottom: 1px solid rgba(255,255,255,0.03); vertical-align: middle;
+}
+.sl-budget tr:hover td { background: rgba(255,255,255,0.015); }
+.sl-budget td.city { color: var(--sl-cream); font-weight: 400; }
+.sl-budget td.price { color: var(--sl-cream); font-weight: 500; }
+.sl-budget .total td {
+  border-top: 1px solid rgba(201,150,90,0.3);
+  color: var(--sl-cream); font-weight: 500; padding-top: 1.2rem;
+}
+.sl-budget .b-lux    { background: var(--sl-lux-bg); color: var(--sl-lux); border: 1px solid var(--sl-lux-b); padding: 0.2rem 0.6rem; font-size: 0.57rem; border-radius: 10px; letter-spacing: 0.1em; text-transform: uppercase; }
+.sl-budget .b-budget { background: var(--sl-budget-bg); color: var(--sl-budget); border: 1px solid var(--sl-budget-b); padding: 0.2rem 0.6rem; font-size: 0.57rem; border-radius: 10px; letter-spacing: 0.1em; text-transform: uppercase; }
+.sl-budget .b-airbnb { background: rgba(217,95,95,0.07); color: #D95F5F; border: 1px solid rgba(217,95,95,0.2); padding: 0.2rem 0.6rem; font-size: 0.57rem; border-radius: 10px; letter-spacing: 0.1em; text-transform: uppercase; }
+
+/* Footer paid */
+.sl-footer {
+  background: var(--sl-bark);
+  border-top: 1px solid rgba(255,255,255,0.04);
+  padding: 4rem; text-align: center;
+}
+.sl-footer h3 {
+  font-family: 'Fraunces', serif; font-style: italic; font-weight: 300;
+  font-size: 2.2rem; color: var(--sl-hike); margin-bottom: 0.5rem;
+}
+.sl-footer p { font-size: 0.68rem; color: var(--sl-mist); letter-spacing: 0.25em; text-transform: uppercase; }
+.sl-footer-line { width: 40px; height: 1px; background: var(--sl-hike); opacity: 0.3; margin: 1rem auto; }
+
+@keyframes sl-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 720px) {
+  .sl-hero, .sl-section, .sl-timeline-wrap, .sl-legend { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .sl-cards, .sl-days, .sl-hl, .sl-budget { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .sl-sep { margin: 0 1.5rem; }
+  .sl-grid-2, .sl-grid-3 { grid-template-columns: 1fr; }
+  .sl-day { grid-template-columns: 46px 1fr; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" onclick="showPage('accueil')" class="nav-logo">
+    <svg width="28" height="28" viewBox="0 0 72 72" fill="none">
+      <circle cx="36" cy="36" r="34" stroke="#9e7c3f" stroke-width="0.75" opacity="0.35"/>
+      <ellipse cx="36" cy="36" rx="34" ry="13" stroke="#9e7c3f" stroke-width="0.5" opacity="0.2"/>
+      <line x1="36" y1="2" x2="36" y2="70" stroke="#9e7c3f" stroke-width="0.5" opacity="0.2"/>
+      <line x1="2" y1="36" x2="70" y2="36" stroke="#9e7c3f" stroke-width="0.5" opacity="0.2"/>
+      <g fill="#1a1714">
+        <rect x="16.5" y="19" width="5" height="34"/>
+        <rect x="50.5" y="19" width="5" height="34"/>
+        <rect x="16.5" y="32.5" width="39" height="3.5"/>
+        <rect x="12.5" y="19" width="13" height="1.6" rx="0.8"/>
+        <rect x="12.5" y="51.4" width="13" height="1.6" rx="0.8"/>
+        <rect x="47.5" y="19" width="13" height="1.6" rx="0.8"/>
+        <rect x="47.5" y="51.4" width="13" height="1.6" rx="0.8"/>
+      </g>
+      <line x1="36" y1="2" x2="36" y2="7" stroke="#9e7c3f" stroke-width="1.5"/>
+      <line x1="36" y1="65" x2="36" y2="70" stroke="#9e7c3f" stroke-width="1.5"/>
+      <line x1="2" y1="36" x2="7" y2="36" stroke="#9e7c3f" stroke-width="1.5"/>
+      <line x1="65" y1="36" x2="70" y2="36" stroke="#9e7c3f" stroke-width="1.5"/>
+    </svg>
+    <span class="nav-logo-name">Hic Sunt</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#" onclick="showPage('generateur');event.preventDefault()">Générateur</a></li>
+    <li><a href="#" onclick="showPage('tarifs');return false">Tarifs</a></li>
+    <li><a href="#" onclick="showPage('apropos');return false">À propos</a></li>
+    <li><a href="#" onclick="showPage('contact');return false">Contact</a></li>
+
+  </ul>
+  <div style="display:flex;align-items:center;gap:12px">
+    <div class="currency-selector" id="currencySelector">
+      <button class="currency-btn" onclick="toggleCurrencyDropdown()">
+        <span class="currency-flag" id="currencyFlag">🇪🇺</span>
+        <span id="currencyCode">EUR</span>
+        <span style="font-size:8px;opacity:0.5">▼</span>
+      </button>
+      <div class="currency-dropdown" id="currencyDropdown">
+        <button class="currency-option active" onclick="setCurrency('EUR','€','🇪🇺','Euro',this)">
+          <span class="currency-option-flag">🇪🇺</span>
+          <div class="currency-option-info"><span class="currency-option-code">EUR</span><span class="currency-option-name">Euro</span></div>
+        </button>
+        <button class="currency-option" onclick="setCurrency('USD','$','🇺🇸','US Dollar',this)">
+          <span class="currency-option-flag">🇺🇸</span>
+          <div class="currency-option-info"><span class="currency-option-code">USD</span><span class="currency-option-name">US Dollar</span></div>
+        </button>
+        <button class="currency-option" onclick="setCurrency('GBP','£','🇬🇧','British Pound',this)">
+          <span class="currency-option-flag">🇬🇧</span>
+          <div class="currency-option-info"><span class="currency-option-code">GBP</span><span class="currency-option-name">British Pound</span></div>
+        </button>
+        <button class="currency-option" onclick="setCurrency('CHF','CHF','🇨🇭','Swiss Franc',this)">
+          <span class="currency-option-flag">🇨🇭</span>
+          <div class="currency-option-info"><span class="currency-option-code">CHF</span><span class="currency-option-name">Swiss Franc</span></div>
+        </button>
+        <button class="currency-option" onclick="setCurrency('CAD','CA$','🇨🇦','Canadian Dollar',this)">
+          <span class="currency-option-flag">🇨🇦</span>
+          <div class="currency-option-info"><span class="currency-option-code">CAD</span><span class="currency-option-name">Canadian Dollar</span></div>
+        </button>
+        <button class="currency-option" onclick="setCurrency('AUD','A$','🇦🇺','Australian Dollar',this)">
+          <span class="currency-option-flag">🇦🇺</span>
+          <div class="currency-option-info"><span class="currency-option-code">AUD</span><span class="currency-option-name">Australian Dollar</span></div>
+        </button>
+      </div>
+    </div>
+    <div class="nav-hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#" onclick="showPage('generateur');return false" onclick="toggleMenu()">Générateur</a>
+  <a href="#" onclick="showPage('tarifs');return false" onclick="toggleMenu()">Tarifs</a>
+  <a href="#" onclick="showPage('apropos');return false" onclick="toggleMenu()">À propos</a>
+  <a href="#" onclick="showPage('contact');return false" onclick="toggleMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="accueil" class="page active">
+  <p class="hero-eyebrow">Voyages sur mesure</p>
+  <h1 class="hero-title">Beyond<em>the Known</em></h1>
+  <p class="hero-sub">Des itinéraires sur mesure, aussi uniques que vos envies — là où la carte s'arrête, votre voyage commence.</p>
+  <div class="hero-btns">
+    <a href="javascript:void(0)" class="btn-primary" id="heroGenBtn" style="display:inline-block;cursor:pointer;" onclick="event.preventDefault();document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active')});document.getElementById('generateur').classList.add('active');window.scrollTo(0,0);">Créer mon itinéraire</a>
+    
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>Découvrir</span>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<div class="landing-companion" style="background:var(--ink); padding: 1px 0; position: relative; z-index: 2;">
+  <div class="numbers-strip-inner" style="max-width:900px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:1px;">
+    <div class="number-item"><span class="number-val">∞</span><span class="number-label">Destinations possibles</span></div>
+    <div class="number-item"><span class="number-val">∞</span><span class="number-label">Jours d'itinéraire</span></div>
+    <div class="number-item"><span class="number-val">4</span><span class="number-label">Plateformes de réservation</span></div>
+    <div class="number-item"><span class="number-val">0</span><span class="number-label">Itinéraire identique</span></div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<div class="landing-companion" style="background:var(--ivory);">
+  <div class="section">
+    <p class="section-eyebrow">Pourquoi Hic Sunt</p>
+    <h2 class="section-title">L'expertise<br />au service de <em>l'exploration</em></h2>
+    <p class="section-sub">Plus qu'un simple itinéraire — un compagnon de voyage qui comprend vos envies, la saison locale, votre budget, et compose un voyage qui vous ressemble.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-title">Adapté à vos dates</div>
+        <p class="feature-desc">Saisissez vos dates exactes et l'itinéraire s'adapte à la saison locale — mousson, festivals, températures idéales.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-title">Extras locaux</div>
+        <p class="feature-desc">Restaurants secrets, spas traditionnels, pépites hors des sentiers battus — des conseils d'initiés pour chaque destination.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-title">Réservation intégrée</div>
+        <p class="feature-desc">Vols, hôtels, Airbnb, activités — tous vos liens de réservation pré-remplis avec votre destination et vos dates.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-title">Sur mesure</div>
+        <p class="feature-desc">Aventure, gastronomie, détente, culture — chaque itinéraire est unique et construit selon vos centres d'intérêt.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-title">Conseils d'initiés</div>
+        <p class="feature-desc">Chaque journée inclut un conseil local : l'heure idéale pour visiter, l'astuce que les guides ne donnent pas.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-title">En quelques secondes</div>
+        <p class="feature-desc">Un itinéraire complet, jour par jour, avec activités et recommandations — composé en quelques secondes.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DESTINATIONS -->
+<div class="landing-companion dest-strip-wrap">
+  <div class="dest-strip-inner">
+    <p class="section-eyebrow">Destinations phares</p>
+    <h2 class="section-title">Où allez-vous<br /><em>cette fois ?</em></h2>
+    <div class="dest-grid" id="destGrid"></div>
+  </div>
+</div>
+
+<!-- GENERATOR -->
+<section id="generateur" class="page">
+  <div class="gen-inner">
+    <div class="gen-header">
+      <p class="section-eyebrow">Générateur d'itinéraires</p>
+      <h2 class="section-title">Composez votre<br /><em>expédition</em></h2>
+    </div>
+
+    <!-- TABS -->
+    <div class="gen-tabs">
+      <button class="gen-tab active" id="tabKnown" onclick="switchTab('known')">Je sais où je vais</button>
+      <button class="gen-tab" id="tabSurprise" onclick="switchTab('surprise')">Surprenez-moi</button>
+    </div>
+
+    <div id="genForm">
+      <div class="form-card">
+        <div class="form-section-label">Votre voyage</div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Ville de départ</label>
+            <input type="text" id="origin" placeholder="Paris, Lyon, Bruxelles…"/>
+          </div>
+          <div class="form-group">
+            <label>Destination</label>
+            <input type="text" id="destination" placeholder="Sri Lanka, Japon, Patagonie…"/>
+          </div>
+          <div class="form-group">
+            <label id="dateFromLabel">Date de départ</label>
+            <input type="date" id="dateFrom"/>
+          </div>
+          <div class="form-group">
+            <label id="dateToLabel">Date de retour</label>
+            <input type="date" id="dateTo"/>
+          </div>
+          <div class="form-group">
+            <label>Budget</label>
+            <select id="budget">
+              <option value="petit">Petit budget</option>
+              <option value="moyen" selected>Budget moyen</option>
+              <option value="confortable">Confortable</option>
+              <option value="luxe">Luxe</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label>Style de voyage</label>
+            <div class="tags-row" id="stylesTags"></div>
+          </div>
+          <div class="form-group full">
+            <label>Centres d'intérêt</label>
+            <div class="tags-row" id="interestsTags"></div>
+          </div>
+          <div class="form-group full">
+            <label>Occasion spéciale <span style="color:var(--gold);font-style:italic;letter-spacing:1px;text-transform:none;font-size:11px">· optionnel</span></label>
+            <div class="occasions-grid" id="occasionsGrid"></div>
+          </div>
+          <div class="form-group full">
+            <label>Informations de vol <span style="color:var(--gold);font-style:italic;letter-spacing:0;text-transform:none;font-size:11px">· optionnel, pour affiner la logistique</span></label>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:0">
+              <input type="text" id="flightArrival" placeholder="Vol aller : ex. CDG → RAK 14h30" style="padding:12px 14px;border:1px solid var(--border);background:var(--ivory);font-family:'Jost',sans-serif;font-size:13px;font-weight:300;color:var(--ink);outline:none;width:100%;box-sizing:border-box">
+              <input type="text" id="flightDeparture" placeholder="Vol retour : ex. RAK → CDG 09h00" style="padding:12px 14px;border:1px solid var(--border);background:var(--ivory);font-family:'Jost',sans-serif;font-size:13px;font-weight:300;color:var(--ink);outline:none;width:100%;box-sizing:border-box">
+            </div>
+          </div>
+          <div class="form-group full">
+            <label>Notes & demandes spéciales</label>
+            <textarea id="notes" placeholder="Voyage en couple, enfants, allergies…"></textarea>
+          </div>
+        </div>
+        <button class="btn-generate" id="generateBtn" onclick="generate()">Composer mon itinéraire</button>
+      </div>
+    </div>
+
+    <!-- SURPRISE FORM -->
+    <div id="genFormSurprise" style="display:none">
+      <div class="form-card">
+        <div class="form-section-label">Laissez-vous surprendre</div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Date de départ</label>
+            <input type="date" id="sDateFrom"/>
+          </div>
+          <div class="form-group">
+            <label id="sDateToLabel">Date de retour</label>
+            <input type="date" id="sDateTo"/>
+          </div>
+          <div class="form-group">
+            <label>Budget par personne</label>
+            <select id="sBudget">
+              <option value="moins de 500€">Moins de 500€</option>
+              <option value="500€ à 1000€" selected>500€ à 1 000€</option>
+              <option value="1000€ à 2000€">1 000€ à 2 000€</option>
+              <option value="2000€ à 5000€">2 000€ à 5 000€</option>
+              <option value="plus de 5000€">Plus de 5 000€</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Ville de départ</label>
+            <input type="text" id="sOrigin" placeholder="Paris, Lyon, Bruxelles…"/>
+          </div>
+          <div class="form-group full">
+            <label>Ambiance recherchée</label>
+            <div class="tags-row" id="sStylesTags"></div>
+          </div>
+          <div class="form-group full">
+            <label>Centres d'intérêt</label>
+            <div class="tags-row" id="sInterestsTags"></div>
+          </div>
+          <div class="form-group full">
+            <label>Occasion spéciale <span style="color:var(--gold);font-style:italic;letter-spacing:1px;text-transform:none;font-size:11px">· optionnel</span></label>
+            <div class="occasions-grid" id="sOccasionsGrid"></div>
+          </div>
+          <div class="form-group full">
+            <label>Ce que vous ne voulez pas</label>
+            <textarea id="sExclude" placeholder="Pas de plages, éviter la chaleur extrême, pas de grandes villes…"></textarea>
+          </div>
+        </div>
+        <button class="btn-generate" id="generateSurpriseBtn" onclick="generateSurprise()">Révéler ma destination</button>
+      </div>
+    </div>
+
+    <div id="genLoading" style="display:none">
+      <div class="loading">
+        <div class="loading-ring"></div>
+        <p>Cartographie en cours</p>
+      </div>
+    </div>
+    <div id="genError" style="display:none">
+      <div class="error-box">
+        <p id="errorMsg">Une erreur est survenue</p>
+        <button class="btn-reset" onclick="showForm()">← Réessayer</button>
+      </div>
+    </div>
+    <div id="genResult" style="display:none"></div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<div id="tarifs" class="page" style="background:var(--ivory);">
+  <div class="section">
+    <p class="section-eyebrow">Tarifs</p>
+    <h2 class="section-title">Simple,<br /><em>transparent</em></h2>
+    <p class="section-sub">Commencez gratuitement. Passez premium quand vous êtes prêt.</p>
+    <div class="pricing-grid" style="grid-template-columns:1fr 1fr 1fr">
+
+      <!-- FREE -->
+      <div class="pricing-card">
+        <p class="pricing-plan">L'Explorateur</p>
+        <div class="pricing-price">0€</div>
+        <p class="pricing-period">pour toujours</p>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li>5 jours d'itinéraire</li>
+          <li>Activités principales uniquement</li>
+          <li class="muted">Jours supplémentaires</li>
+          <li class="muted">Extras locaux (restaurants, spas…)</li>
+          <li class="muted">Pépites & expériences cachées</li>
+          <li class="muted">Conseils saisonniers détaillés</li>
+          <li class="muted">Liens de réservation</li>
+          <li class="muted">Export PDF</li>
+        </ul>
+        <button class="pricing-cta" onclick="showPage('generateur')">Commencer gratuitement</button>
+      </div>
+
+      <!-- 9.90 -->
+      <div class="pricing-card featured">
+        <div class="pricing-badge">Populaire</div>
+        <p class="pricing-plan">L'Expédition</p>
+        <div class="pricing-price" data-price="expedition">9,90€</div>
+        <p class="pricing-period">paiement unique · par itinéraire</p>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li>Jusqu'à 14 jours d'itinéraire</li>
+          <li>Extras locaux complets<br><span style="font-size:11px;opacity:0.6">restaurants, spas, pépites cachées</span></li>
+          <li>Conseils saisonniers détaillés</li>
+          <li>Liens de réservation pré-remplis</li>
+          <li>Export PDF premium</li>
+          <li class="muted">Circuit multi-destinations</li>
+          <li class="muted">Conciergerie email</li>
+          <li class="muted">Itinéraire modifiable</li>
+        </ul>
+        <button class="pricing-cta" onclick="showPage('generateur')">Générer mon expédition</button>
+      </div>
+
+      <!-- 24.90 -->
+      <div class="pricing-card">
+        <p class="pricing-plan">Le Grand Voyage</p>
+        <div class="pricing-price" data-price="grand_voyage">24,90€</div>
+        <p class="pricing-period">paiement unique · par itinéraire</p>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li>Tout l'Expédition</li>
+          <li>Circuit multi-destinations</li>
+          <li>2 itinéraires alternatifs générés<br><span style="font-size:11px;opacity:0.5">choisissez votre version préférée</span></li>
+          <li>Export PDF premium</li>
+          <li>Conciergerie email<br><span style="font-size:11px;opacity:0.5">réponse sous 24h</span></li>
+          <li>Durée illimitée<br><span style="font-size:11px;opacity:0.5">tours du monde, sabbatiques…</span></li>
+        </ul>
+        <button class="pricing-cta" onclick="showPage('generateur')">Préparer mon grand voyage</button>
+      </div>
+
+    </div>
+    <p class="pricing-note">Paiement sécurisé · Sans abonnement · Sans engagement</p>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div id="apropos" class="page" style="background:var(--parchment);">
+  <div class="section">
+    <div class="about-grid">
+      <div class="about-visual">
+        <svg class="about-map-svg" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Globe wireframe -->
+          <circle cx="160" cy="160" r="150" stroke="#9e7c3f" stroke-width="1" opacity="0.2"/>
+          <circle cx="160" cy="160" r="150" stroke="#9e7c3f" stroke-width="0.5" stroke-dasharray="4 6" opacity="0.15"/>
+          <ellipse cx="160" cy="160" rx="150" ry="55" stroke="#9e7c3f" stroke-width="0.5" opacity="0.15"/>
+          <ellipse cx="160" cy="160" rx="150" ry="100" stroke="#9e7c3f" stroke-width="0.5" opacity="0.12"/>
+          <ellipse cx="160" cy="160" rx="60" ry="150" stroke="#9e7c3f" stroke-width="0.5" opacity="0.15"/>
+          <ellipse cx="160" cy="160" rx="110" ry="150" stroke="#9e7c3f" stroke-width="0.5" opacity="0.12"/>
+          <line x1="10" y1="160" x2="310" y2="160" stroke="#9e7c3f" stroke-width="0.5" opacity="0.2"/>
+          <line x1="160" y1="10" x2="160" y2="310" stroke="#9e7c3f" stroke-width="0.5" opacity="0.2"/>
+          <!-- Cardinal ticks -->
+          <line x1="160" y1="10" x2="160" y2="22" stroke="#9e7c3f" stroke-width="2"/>
+          <line x1="160" y1="298" x2="160" y2="310" stroke="#9e7c3f" stroke-width="2"/>
+          <line x1="10" y1="160" x2="22" y2="160" stroke="#9e7c3f" stroke-width="2"/>
+          <line x1="298" y1="160" x2="310" y2="160" stroke="#9e7c3f" stroke-width="2"/>
+          <!-- Hic Sunt label in center -->
+          <text x="160" y="154" text-anchor="middle" font-family="'Bodoni Moda', serif" font-size="22" font-weight="700" fill="#1a1714" letter-spacing="3">HIC</text>
+          <text x="160" y="178" text-anchor="middle" font-family="'Bodoni Moda', serif" font-size="22" font-style="italic" font-weight="400" fill="#9e7c3f" letter-spacing="2">SUNT</text>
+          <!-- Scatter dots — destination points -->
+          <circle cx="220" cy="100" r="3" fill="#9e7c3f" opacity="0.6"/>
+          <circle cx="90" cy="130" r="2.5" fill="#9e7c3f" opacity="0.5"/>
+          <circle cx="190" cy="200" r="3.5" fill="#9e7c3f" opacity="0.7"/>
+          <circle cx="120" cy="210" r="2" fill="#9e7c3f" opacity="0.4"/>
+          <circle cx="250" cy="180" r="2.5" fill="#9e7c3f" opacity="0.5"/>
+          <circle cx="70" cy="80" r="2" fill="#9e7c3f" opacity="0.4"/>
+          <circle cx="240" cy="240" r="2" fill="#9e7c3f" opacity="0.35"/>
+          <!-- Dotted route lines -->
+          <path d="M90 130 Q160 80 220 100" stroke="#9e7c3f" stroke-width="0.75" stroke-dasharray="3 5" opacity="0.4" fill="none"/>
+          <path d="M220 100 Q240 150 250 180" stroke="#9e7c3f" stroke-width="0.75" stroke-dasharray="3 5" opacity="0.4" fill="none"/>
+          <path d="M90 130 Q100 170 120 210" stroke="#9e7c3f" stroke-width="0.75" stroke-dasharray="3 5" opacity="0.35" fill="none"/>
+        </svg>
+      </div>
+      <div class="about-content">
+        <p class="section-eyebrow">Notre histoire</p>
+        <h2 class="section-title">Là où la<br />carte <em>s'arrête</em></h2>
+        <blockquote class="about-quote">
+          "Hic Sunt Leones" — ainsi écrivaient les cartographes médiévaux dans les zones inexplorées. Ici il y a des lions. L'inconnu.
+        </blockquote>
+        <p class="about-text">
+          Hic Sunt est né d'une conviction simple : les meilleurs voyages sont ceux qu'on n'aurait jamais imaginés seul. Ceux qui nous emmènent au-delà de ce qu'on connaît déjà — au-delà de la carte.
+        </p>
+        <p class="about-text">
+          Avec une vraie sensibilité éditoriale, nous composons des itinéraires qui tiennent compte de la saison, de votre rythme, de vos envies profondes. Pas un catalogue. Une partition.
+        </p>
+        <p class="about-sig">— L'équipe Hic Sunt</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div id="contact" class="page" style="background:var(--ivory);">
+  <div class="section">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p class="section-eyebrow">Nous écrire</p>
+        <h2 class="section-title">Une question ?<br /><em>On est là.</em></h2>
+        <div class="contact-info-item" style="margin-top:32px">
+          <p class="contact-info-label">Email</p>
+          <p class="contact-info-value"><a href="mailto:bonjour@hicsunt.co">bonjour@hicsunt.co</a></p>
+        </div>
+        <div class="contact-info-item">
+          <p class="contact-info-label">Réponse</p>
+          <p class="contact-info-value" style="font-family:'Jost',sans-serif; font-size:14px; font-weight:300; color:var(--muted);">Sous 24h en semaine</p>
+        </div>
+        <div class="contact-info-item">
+          <p class="contact-info-label">Suivre Hic Sunt</p>
+          <div class="contact-socials">
+            <a href="#" class="social-btn">Instagram</a>
+            <a href="#" class="social-btn">TikTok</a>
+            <a href="#" class="social-btn">Pinterest</a>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="contact-form" id="contactForm">
+          <div class="contact-form-group">
+            <label>Prénom & Nom</label>
+            <input type="text" id="contactName" placeholder="Charlotte Dupont"/>
+          </div>
+          <div class="contact-form-group">
+            <label>Email</label>
+            <input type="email" id="contactEmail" placeholder="charlotte@email.com"/>
+          </div>
+          <div class="contact-form-group">
+            <label>Sujet</label>
+            <select id="contactSubject">
+              <option value="">Choisir un sujet</option>
+              <option>Question sur l'offre Premium</option>
+              <option>Bug ou problème technique</option>
+              <option>Partenariat</option>
+              <option>Autre</option>
+            </select>
+          </div>
+          <div class="contact-form-group">
+            <label>Message</label>
+            <textarea id="contactMessage" placeholder="Votre message…"></textarea>
+          </div>
+          <button class="btn-primary" style="width:100%; text-align:center; border:none;" onclick="sendContact()">Envoyer le message</button>
+        </div>
+        <div class="contact-success" id="contactSuccess" style="display:none">
+          <p>Message reçu. Nous vous répondons sous 24h.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <span class="footer-brand-name">Hic Sunt</span>
+      <span class="footer-brand-tag">Beyond the Known</span>
+      <p class="footer-brand-desc">Des itinéraires sur mesure, aussi uniques que vos envies — là où la carte s'arrête, votre voyage commence.</p>
+    </div>
+    <div>
+      <p class="footer-col-title">Navigation</p>
+      <ul class="footer-col-links">
+        <li><a href="#" onclick="showPage('accueil');return false">Accueil</a></li>
+        <li><a href="#" onclick="showPage('generateur');event.preventDefault()">Générateur</a></li>
+        <li><a href="#" onclick="showPage('tarifs');return false">Tarifs</a></li>
+        <li><a href="#" onclick="showPage('apropos');return false">À propos</a></li>
+        <li><a href="#" onclick="showPage('contact');return false">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Réserver</p>
+      <ul class="footer-col-links">
+        <li><a href="#">Skyscanner</a></li>
+        <li><a href="#">Booking.com</a></li>
+        <li><a href="#">Airbnb</a></li>
+        <li><a href="#">GetYourGuide</a></li>
+        <li><a href="#">Viator</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 Hic Sunt · Tous droits réservés</p>
+    <div class="footer-legal">
+      <a href="#">Mentions légales</a>
+      <a href="#">CGU</a>
+      <a href="#">Confidentialité</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── CONFIG ────────────────────────────────
+const PROXY_URL = "https://lucbxwxcismnvcdnctau.supabase.co/functions/v1/super-endpoint";
+const AFF = { skyscanner: "SKYSCANNER_ID", booking: "BOOKING_ID", gyg: "GYG_ID" };
+
+const TRAVEL_STYLES = ["Aventure","Culture","Détente","Gastronomie","Nature","Luxe","Backpacker","Famille"];
+const INTERESTS = ["Randonnée","Cascades","Plages cachées","Safari","Temples & Spiritualité","Marchés locaux","Gastronomie locale","Cuisine de rue","Photographie","Architecture","Surf & Sports nautiques","Plongée & Snorkeling","Nightlife","Musées & Art","Spa & Bien-être","Vignobles & Œnotourisme","Trekking & Alpinisme","Faune sauvage"];
+const OCCASIONS = [
+  { id: "lune-de-miel", label: "Lune de miel", emoji: "💍", description: "Romance, intimité, hôtels d'exception et dîners aux chandelles" },
+  { id: "anniversaire", label: "Anniversaire", emoji: "✨", description: "Célébration mémorable, expériences uniques, surprises locales" },
+  { id: "evjf", label: "EVJF", emoji: "🌸", description: "Fête entre filles, spas, restaurants tendance, activités fun" },
+  { id: "evg", label: "EVG", emoji: "🏆", description: "Aventure entre amis, adrénaline, soirées, expériences fortes" },
+  { id: "famille", label: "Voyage en famille", emoji: "👨‍👩‍👧‍👦", description: "Adapté aux enfants, rythme doux, activités pour tous les âges" },
+  { id: "solo", label: "Voyage solo", emoji: "🧭", description: "Liberté totale, rencontres, hébergements communautaires" },
+];
+const DESTINATIONS = [
+  { name:"Japon", sub:"Asie de l'Est", emoji:"⛩️", bg:"#e8ddd5" },
+  { name:"Maroc", sub:"Afrique du Nord", emoji:"🏜️", bg:"#ede0d0" },
+  { name:"Sri Lanka", sub:"Océan Indien", emoji:"🌿", bg:"#dde8e0" },
+  { name:"Islande", sub:"Europe du Nord", emoji:"🌋", bg:"#d5dce8" },
+  { name:"Pérou", sub:"Amérique du Sud", emoji:"🏔️", bg:"#e8e0d5" },
+  { name:"Thaïlande", sub:"Asie du Sud-Est", emoji:"🛕", bg:"#e8ddd5" },
+  { name:"Portugal", sub:"Europe du Sud", emoji:"🌊", bg:"#d5e0e8" },
+  { name:"Kenya", sub:"Afrique de l'Est", emoji:"🦁", bg:"#e8e5d5" },
+];
+
+// State
+let selectedStyles = [], selectedInterests = [], selectedOccasion = null;
+let sSelectedStyles = [], sSelectedInterests = [], sSelectedOccasion = null;
+
+// ── INIT ──────────────────────────────────
+window.addEventListener('DOMContentLoaded', () => {
+  buildTags('stylesTags', TRAVEL_STYLES, selectedStyles);
+  buildTags('interestsTags', INTERESTS, selectedInterests);
+  buildTags('sStylesTags', TRAVEL_STYLES, sSelectedStyles);
+  buildTags('sInterestsTags', INTERESTS, sSelectedInterests);
+  buildOccasionsGrid('occasionsGrid', 'main');
+  buildOccasionsGrid('sOccasionsGrid', 'surprise');
+  buildDestGrid();
+  updateDateLabels();
+  var dfEl = document.getElementById('dateFrom'); if (dfEl) dfEl.addEventListener('change', updateDateLabels);
+  var dtEl = document.getElementById('dateTo'); if (dtEl) dtEl.addEventListener('change', updateDateLabels);
+});
+
+function buildOccasionsGrid(gridId, type) {
+  const grid = document.getElementById(gridId);
+  if (!grid) return;
+  OCCASIONS.forEach(o => {
+    const card = document.createElement('button');
+    card.className = 'occasion-card';
+    card.innerHTML = `<span class="occasion-emoji">${o.emoji}</span><span class="occasion-label">${o.label}</span><span class="occasion-desc">${o.description}</span>`;
+    card.onclick = () => {
+      if (type === 'surprise') {
+        if (sSelectedOccasion === o.id) {
+          sSelectedOccasion = null;
+          card.classList.remove('selected');
+        } else {
+          sSelectedOccasion = o.id;
+          document.querySelectorAll('#' + gridId + ' .occasion-card').forEach(c => c.classList.remove('selected'));
+          card.classList.add('selected');
+        }
+      } else {
+        if (selectedOccasion === o.id) {
+          selectedOccasion = null;
+          card.classList.remove('selected');
+        } else {
+          selectedOccasion = o.id;
+          document.querySelectorAll('#' + gridId + ' .occasion-card').forEach(c => c.classList.remove('selected'));
+          card.classList.add('selected');
+        }
+      }
+    };
+    grid.appendChild(card);
+  });
+}
+
+function buildTags(containerId, items, arr) {
+  const el = document.getElementById(containerId);
+  items.forEach(item => {
+    const btn = document.createElement('button');
+    btn.className = 'tag';
+    btn.textContent = item;
+    btn.onclick = () => {
+      if (arr.includes(item)) { arr.splice(arr.indexOf(item),1); btn.classList.remove('selected'); }
+      else { arr.push(item); btn.classList.add('selected'); }
+    };
+    el.appendChild(btn);
+  });
+}
+
+function buildDestGrid() {
+  const grid = document.getElementById('destGrid');
+  DESTINATIONS.forEach(d => {
+    grid.innerHTML += `
+      <div class="dest-card" style="background:${d.bg}" onclick="selectDest('${d.name}')">
+        <div class="dest-bg">${d.emoji}</div>
+        <div class="dest-overlay"></div>
+        <div class="dest-info">
+          <span class="dest-name">${d.name}</span>
+          <span class="dest-region">${d.sub}</span>
+        </div>
+      </div>`;
+  });
+}
+
+function selectDest(name) {
+  document.getElementById('destination').value = name;
+  showPage('generateur');
+}
+
+function updateDateLabels() {
+  const from = document.getElementById('dateFrom').value;
+  const to = document.getElementById('dateTo').value;
+  let label = 'Date de retour';
+  if (from && to) {
+    const days = Math.round((new Date(to) - new Date(from)) / 86400000);
+    if (days > 0) label = `Date de retour · ${days} jours`;
+  }
+  document.getElementById('dateToLabel').textContent = label;
+}
+
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+  document.querySelector('.nav-hamburger').classList.toggle('open');
+}
+
+function showForm() {
+  // Reset occasion
+  selectedOccasion = null;
+  document.querySelectorAll('.occasion-card').forEach(c => c.classList.remove('selected'));
+
+  // Show tabs and form again
+  const tabs = document.querySelector('.gen-tabs');
+  if (tabs) tabs.style.display = '';
+  document.getElementById('genForm').style.display = 'block';
+  document.getElementById('genResult').style.display = 'none';
+  document.getElementById('genError').style.display = 'none';
+
+  const isSurprise = document.getElementById('tabSurprise').classList.contains('active');
+  document.getElementById('genForm').style.display = isSurprise ? 'none' : 'block';
+  document.getElementById('genFormSurprise').style.display = isSurprise ? 'block' : 'none';
+  document.getElementById('genLoading').style.display = 'none';
+  document.getElementById('genError').style.display = 'none';
+  document.getElementById('genResult').style.display = 'none';
+}
+
+function getSeason(dateStr, dest) {
+  if (!dateStr) return '';
+  const m = new Date(dateStr).getMonth() + 1;
+  const south = ["australie","nouvelle-zélande","afrique du sud","argentine","chili","brésil","pérou","madagascar"].some(k => dest.toLowerCase().includes(k));
+  const ns = { printemps:[3,4,5], été:[6,7,8], automne:[9,10,11], hiver:[12,1,2] };
+  var sEntry = Object.entries(ns).find(function(entry) { return entry[1].includes(m); });
+  let s = (sEntry ? sEntry[0] : null) || 'printemps';
+  if (south) { const f = { printemps:'automne', été:'hiver', automne:'printemps', hiver:'été' }; s = f[s]; }
+  return s;
+}
+
+function calcDuration() {
+  const from = document.getElementById('dateFrom').value;
+  const to = document.getElementById('dateTo').value;
+  if (!from || !to) return null;
+  const d = Math.round((new Date(to) - new Date(from)) / 86400000);
+  return d > 0 ? d : null;
+}
+
+function formatDateFR(str) {
+  if (!str) return '';
+  return new Date(str).toLocaleDateString('fr-FR', { day:'numeric', month:'long', year:'numeric' });
+}
+
+function parseJSON(text) {
+  try {
+    if (typeof text === 'object' && text !== null) return text;
+    let clean = text.replace(/```json\s*/gi,'').replace(/```\s*/g,'').trim();
+    const firstBrace = clean.indexOf('{');
+    const firstBracket = clean.indexOf('[');
+    let first = -1;
+    if (firstBrace === -1) first = firstBracket;
+    else if (firstBracket === -1) first = firstBrace;
+    else first = Math.min(firstBrace, firstBracket);
+    const last = Math.max(clean.lastIndexOf('}'), clean.lastIndexOf(']'));
+    if (first !== -1 && last !== -1) clean = clean.substring(first, last + 1);
+    clean = clean.replace(/,\s*([}\]])/g,'$1');
+    return JSON.parse(clean);
+  } catch(e) {
+    console.error('parseJSON failed:', e.message, '| start:', text?.slice(0,150));
+    return null;
+  }
+}
+
+// ── AFFILIATE LINKS ───────────────────────
+function flightUrl(origin, dest, from, to) {
+  return `https://www.skyscanner.fr/transport/vols/${encodeURIComponent(origin||'Paris')}/${encodeURIComponent(dest.split(',')[0])}/${(from||'').replace(/-/g,'')}/${(to||'').replace(/-/g,'')}/?affilid=${AFF.skyscanner}`;
+}
+function hotelUrl(dest, from, to) {
+  return `https://www.booking.com/searchresults.fr.html?ss=${encodeURIComponent(dest)}&checkin=${from||''}&checkout=${to||''}&aid=${AFF.booking}`;
+}
+function airbnbUrl(dest, from, to) {
+  return `https://www.airbnb.fr/s/${encodeURIComponent(dest)}/homes?checkin=${from||''}&checkout=${to||''}`;
+}
+function gygUrl(q) {
+  return `https://www.getyourguide.fr/s/?q=${encodeURIComponent(q)}&partner_id=${AFF.gyg}`;
+}
+
+// ── GENERATE ──────────────────────────────
+async function generate() {
+  const dest = document.getElementById('destination').value.trim();
+  const origin = document.getElementById('origin').value.trim();
+  const dateFrom = document.getElementById('dateFrom').value;
+  const dateTo = document.getElementById('dateTo').value;
+  const budget = document.getElementById('budget').value;
+  const notes = document.getElementById('notes').value;
+  const occasion = selectedOccasion ? OCCASIONS.find(o => o.id === selectedOccasion) : null;
+  const flightArrival = document.getElementById('flightArrival') ? document.getElementById('flightArrival').value : '';
+  const flightDeparture = document.getElementById('flightDeparture') ? document.getElementById('flightDeparture').value : '';
+  const duration = calcDuration();
+
+  if (!dest || !duration) return;
+
+  const season = getSeason(dateFrom, dest);
+  const dateFromFR = formatDateFR(dateFrom);
+  const dateToFR = formatDateFR(dateTo);
+
+  document.getElementById('genForm').style.display = 'none';
+  document.getElementById('genLoading').style.display = 'block';
+  document.getElementById('genError').style.display = 'none';
+  document.getElementById('genResult').style.display = 'none';
+
+  const prompt = `Tu es un expert en voyages de luxe. Génère un itinéraire sur mesure.
+
+VOYAGE : ${dest} · ${dateFromFR} au ${dateToFR} · ${duration} jours · ${season} · ${budget}
+STYLES : ${selectedStyles.join(', ')||'polyvalent'}
+INTÉRÊTS : ${selectedInterests.join(', ')||'général'}
+${occasion ? 'OCCASION : ' + occasion.label + ' — adapte tout l\'itinéraire à cette occasion' : ''}
+${notes ? 'NOTES : ' + notes : ''}
+DÉPART : ${origin||'non précisé'}
+
+Réponds UNIQUEMENT en JSON valide et compact. Structure EXACTE :
+{
+  "destination": "nom complet",
+  "tagline": "phrase poétique courte",
+  "dateFrom": "${dateFromFR}",
+  "dateTo": "${dateToFR}",
+  "duration": "${duration} jours",
+  "season": "${season}",
+  "weatherAlert": "",
+  "currency": "monnaie locale",
+  "circuit": [{"name": "ville", "dates": "dates", "nights": 2, "hook": "accroche courte"}],
+  "days": [
+    {
+      "number": 1,
+      "date": "date courte",
+      "location": "ville",
+      "title": "titre évocateur",
+      "description": "2 phrases max",
+      "activities": [
+        {"time": "Matin", "type": "hike", "name": "lieu", "detail": "description courte", "tip": "conseil"}
+      ],
+      "restaurants": [{"meal": "Déjeuner", "name": "nom", "detail": "description courte", "note": "info", "price": "€€"}],
+      "wellness": {"name": "spa", "type": "massage", "detail": "description", "note": "prix"},
+      "hiddenGem": {"name": "pépite", "detail": "description", "tip": "conseil"}
+    }
+  ],
+  "highlights": {
+    "massages": [{"location": "ville", "name": "spa", "detail": "description", "price": "prix"}],
+    "cascades": [{"name": "cascade", "detail": "description", "location": "ville"}],
+    "beaches": [{"name": "plage", "detail": "description", "location": "ville"}]
+  },
+  "budget": {
+    "accommodation": [{"location": "ville", "nights": 2, "type": "Luxe", "name": "hôtel", "detail": "description", "pricePerNight": "100€", "total": "200€"}],
+    "dailyCosts": "estimation par jour",
+    "totalEstimate": "total voyage"
+  },
+  "essentials": {
+    "transport": ["conseil 1", "conseil 2"],
+    "visa": "info visa",
+    "toKnow": ["info 1", "info 2"],
+    "bestTime": "meilleure période"
+  }
+}
+
+RÈGLES :
+- Génère exactement ${duration} jours
+- LOGISTIQUE VOLS : Si le voyage implique un vol aller vers une ville A et un vol retour depuis une ville A (ou une ville proche), planifie le circuit en tenant compte des contraintes aéroport : première et dernière nuit dans la ville d'arrivée/départ pour les vols
+- Max 3 activités par jour, 1 restaurant par jour
+- WELLNESS (massage/spa/hammam) dans les jours ET dans highlights.massages : UNIQUEMENT si "Spa & Bien-être" est dans les centres d'intérêt ou les styles. Sinon, champs wellness vides et highlights.massages = []
+- CASCADES dans les activités ET highlights.cascades : UNIQUEMENT si "Randonnée" ou "Nature" est dans les centres d'intérêt. Sinon highlights.cascades = []
+- PLAGES dans les activités ET highlights.beaches : UNIQUEMENT si "Plages cachées" est dans les centres d'intérêt. Sinon highlights.beaches = []
+- hiddenGem : toujours inclus mais adapté aux centres d'intérêt sélectionnés
+- Descriptions courtes (1-2 phrases max)
+- Vrais noms de lieux, restaurants, spas locaux
+- JSON compact sans espaces inutiles`;
+
+  try {
+    const res = await fetch(PROXY_URL, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ prompt, duration, params: { dest, origin, dateFrom, dateTo, duration, season, budget, styles: selectedStyles.join(', '), interests: selectedInterests.join(', '), notes, occasion: (occasion && occasion.label ? occasion.label : '') } })
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    if (data.error) throw new Error(data.error);
+    console.log('RAW RESULT:', data.result?.slice(0, 200));
+    const itin = parseJSON(data.result || '');
+    console.log('PARSED:', itin ? 'OK — dest:' + itin.destination : 'FAILED');
+    if (!itin) throw new Error('Format invalide');
+    renderItinerary(itin, dest, origin, dateFrom, dateTo);
+  } catch(e) {
+    document.getElementById('genLoading').style.display = 'none';
+    document.getElementById('genError').style.display = 'block';
+    document.getElementById('errorMsg').textContent = '⚠ ' + (e.message || 'Erreur inattendue');
+  }
+}
+
+// ── RENDER ────────────────────────────────
+
+// ── SUPABASE CALL HELPER ──────────────────
+async function callSupabase(prompt) {
+  const res = await fetch(PROXY_URL, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ prompt })
+  });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const data = await res.json();
+  if (data.error) throw new Error(data.error);
+  return data.result || '';
+}
+
+// ── PAID PROMPT BUILDER ───────────────────
+function buildPaidPrompt(params, dayStart, dayEnd, mode, destName, existingDays) {
+  const dest = params.dest || '';
+  const origin = params.origin || '';
+  const dateFromFR = params.dateFromFR || '';
+  const dateToFR = params.dateToFR || '';
+  const duration = params.duration || 7;
+  const season = params.season || '';
+  const budget = params.budget || '';
+  const styles = params.styles || '';
+  const interests = params.interests || '';
+  const notes = params.notes || '';
+  const occasion = params.occasion || '';
+  const destination = destName || dest;
+  const occ = occasion ? `OCCASION : ${occasion} — adapte tout l'itinéraire à cette occasion spéciale` : '';
+
+  if (mode === 'structure') {
+    return `Tu es un expert en voyages de luxe avec une écriture éditoriale fine.
+
+VOYAGE : ${destination} · ${dateFromFR} au ${dateToFR} · ${duration} jours · ${season} · ${budget}
+STYLES : ${styles||'polyvalent'} · INTÉRÊTS : ${interests||'général'}
+${occ}
+${notes ? 'NOTES : ' + notes : ''}
+DÉPART : ${origin||'non précisé'}
+
+Génère la STRUCTURE du voyage + les jours ${dayStart} à ${dayEnd} uniquement.
+JSON exact (compact, pas d'espaces inutiles) :
+{"destination":"nom complet","tagline":"phrase poétique","dateFrom":"${dateFromFR}","dateTo":"${dateToFR}","duration":"${duration} jours","season":"${season}","weatherAlert":"","currency":"monnaie locale","circuit":[{"name":"ville","dates":"dates","nights":2,"hook":"accroche"}],"days":[{"number":1,"date":"date","location":"ville","title":"titre","description":"2 phrases narratives et évocatrices","activities":[{"time":"Matin","type":"hike","name":"lieu précis","detail":"description locale","tip":"conseil d'initié"}],"restaurants":[{"meal":"Dîner","name":"vrai nom local","detail":"description","note":"info pratique","price":"€€"}],"wellness":{"name":"","type":"","detail":"","note":""},"hiddenGem":{"name":"pépite locale","detail":"description","tip":"conseil"}}]}
+Règles : RÈGLES — Niveau agence de voyage de luxe (Condé Nast Traveller) :
+- Descriptions narratives poétiques, jamais génériques, style magazine haut de gamme
+- Vrais noms locaux avec adresse, spécialité signature, ambiance unique
+- Avis style : "★ 4.9 · 890 avis · Réservation indispensable"
+- Pépites cachées : accès secret, meilleur moment, pourquoi peu le connaissent
+- Wellness UNIQUEMENT si "Spa & Bien-être" dans intérêts : "${interests}"
+- Cascades UNIQUEMENT si "Cascades" ou "Randonnée" ou "Trekking" dans intérêts
+- Adapter chaque jour aux horaires de vols si précisés
+- Logistique : 1ère et dernière nuit dans ville aéroport`;
+  }
+
+  if (mode === 'days_only') {
+    return `Expert voyages de luxe. Voyage : ${destination}, ${season}, ${budget}, intérêts : ${interests}.
+
+Génère UNIQUEMENT les jours ${dayStart} à ${dayEnd}. JSON compact :
+{"days":[{"number":${dayStart},"date":"date","location":"ville","title":"titre évocateur","description":"2 phrases narratives","activities":[{"time":"Matin","type":"hike","name":"lieu","detail":"description","tip":"conseil"}],"restaurants":[{"meal":"Dîner","name":"nom","detail":"description","note":"info","price":"€€"}],"wellness":{"name":"","type":"","detail":"","note":""},"hiddenGem":{"name":"pépite","detail":"description","tip":"conseil"}}]}
+Vrais noms locaux. Wellness UNIQUEMENT si "Spa & Bien-être" dans : "${interests}".`;
+  }
+
+  if (mode === 'finale') {
+    const dayNames = (existingDays||[]).map(d => d.location).filter((v,i,a)=>a.indexOf(v)===i).join(', ');
+    const wantsMassages = interests.includes('Spa');
+    const wantsCascades = interests.includes('Randonnée') || interests.includes('Nature');
+    const wantsBeaches = interests.includes('Plages');
+    return `Voyage : ${destination}, ${duration} jours, ${season}, ${budget}, intérêts : ${interests}.
+Étapes : ${dayNames}.
+
+Génère UNIQUEMENT les sections finales. JSON compact :
+{"highlights":{"massages":${wantsMassages?'[{"location":"ville","name":"vrai spa local","detail":"description","price":"prix"}]':'[]'},"cascades":${wantsCascades?'[{"name":"cascade","detail":"description accès et baignade","location":"ville"}]':'[]'},"beaches":${wantsBeaches?'[{"name":"plage","detail":"description et comment y accéder","location":"ville"}]':'[]'}},"budget":{"accommodation":[{"location":"ville","nights":2,"type":"Luxe","name":"vrai hôtel","detail":"pourquoi cet hôtel","pricePerNight":"150€","total":"300€"}],"dailyCosts":"repas 40€ + transport 20€ + activités 30€/jour","totalEstimate":"fourchette totale hors vols pour 2 personnes"},"essentials":{"transport":["vol direct X heures depuis Paris","conseil transport local"],"visa":"info visa ressortissants français","toKnow":["conseil culturel","conseil pratique","conseil sécurité"],"bestTime":"meilleure période et pourquoi"}}`;
+  }
+  return '';
+}
+
+// ── CHUNKED PAID GENERATOR ────────────────
+async function generatePaidItinerary(paymentIntentId) {
+  const params = pendingItineraryParams || {};
+  const duration = parseInt(params.duration) || 7;
+  const chunkSize = 5;
+  const chunks = Math.ceil(duration / chunkSize);
+
+  // Show progress in the generating step
+  const genStep = document.getElementById('generatingStep');
+  if (genStep) {
+    genStep.innerHTML = `
+      <div style="text-align:center;padding:48px 36px">
+        <div class="loading-ring" style="margin:0 auto 24px"></div>
+        <p style="font-family:'Bodoni Moda',serif;font-size:18px;font-weight:700;color:var(--ink);margin-bottom:8px" id="genProgressTitle">Composition de votre itinéraire</p>
+        <p style="font-family:'Bodoni Moda',serif;font-size:14px;font-style:italic;color:var(--muted);margin-bottom:24px" id="genProgressSub">Initialisation...</p>
+        <div style="width:100%;height:2px;background:var(--border);border-radius:1px;overflow:hidden">
+          <div id="genProgressBar" style="height:100%;width:0%;background:var(--gold);transition:width 0.5s ease"></div>
+        </div>
+        <p id="genProgressPct" style="font-size:10px;letter-spacing:3px;color:var(--muted);margin-top:8px">0%</p>
+      </div>`;
+  }
+
+  function setProgress(pct, title, sub) {
+    const bar = document.getElementById('genProgressBar');
+    const t = document.getElementById('genProgressTitle');
+    const s = document.getElementById('genProgressSub');
+    const p = document.getElementById('genProgressPct');
+    if (bar) bar.style.width = pct + '%';
+    if (t && title) t.textContent = title;
+    if (s && sub) s.textContent = sub;
+    if (p) p.textContent = Math.round(pct) + '%';
+  }
+
+  try {
+    // Chunk 1 — Structure + days 1 to chunkSize
+    setProgress(10, 'Analyse de votre voyage', `${params.dest} · ${params.season} · Logistique...`);
+    const structureRes = await callSupabase(buildPaidPrompt(params, 1, Math.min(chunkSize, duration), 'structure'));
+    const structure = parseJSON(structureRes);
+    if (!structure) throw new Error('Erreur structure — réessayez');
+
+    setProgress(30, `Jours 1–${Math.min(chunkSize, duration)} composés`, 'Continuation...');
+    let allDays = structure.days || [];
+
+    // Additional chunks
+    for (let chunk = 1; chunk < chunks; chunk++) {
+      const dayStart = chunk * chunkSize + 1;
+      const dayEnd = Math.min((chunk + 1) * chunkSize, duration);
+      const pct = 30 + (chunk / chunks) * 50;
+      setProgress(pct, `Jours ${dayStart}–${dayEnd} en cours`, `Plus que ${duration - dayEnd} jours...`);
+
+      const chunkRes = await callSupabase(buildPaidPrompt(params, dayStart, dayEnd, 'days_only', structure.destination));
+      const chunkData = parseJSON(chunkRes);
+      if (chunkData?.days) allDays = allDays.concat(chunkData.days);
+    }
+
+    // Final chunk — highlights + budget + essentials
+    setProgress(85, 'Sélection des pépites locales', 'Adresses · Budget · Conseils pratiques...');
+    const finaleRes = await callSupabase(buildPaidPrompt(params, 1, duration, 'finale', structure.destination, allDays));
+    const finaleData = parseJSON(finaleRes);
+
+    setProgress(100, 'Votre itinéraire est prêt ✦', 'Mise en page finale...');
+    await new Promise(r => setTimeout(r, 700));
+
+    const fullItin = {
+      ...structure,
+      days: allDays,
+      highlights: finaleData?.highlights || structure.highlights || {},
+      budget: finaleData?.budget || structure.budget || {},
+      essentials: finaleData?.essentials || structure.essentials || {},
+    };
+
+    closeAuth();
+    renderPaidItinerary(fullItin,
+      fullItin.destination || params.dest || '',
+      params.origin || '',
+      params.dateFrom || '',
+      params.dateTo || ''
+    );
+
+  } catch(e) {
+    if (genStep) genStep.innerHTML = `
+      <div style="text-align:center;padding:40px 36px">
+        <p style="color:var(--blush);font-family:'Bodoni Moda',serif;font-style:italic;font-size:16px;margin-bottom:12px">⚠ ${e.message}</p>
+        <p style="color:var(--muted);font-size:12px">Votre paiement a été enregistré.<br>Contactez-nous à bonjour@hicsunt.co</p>
+      </div>`;
+  }
+}
+
+
+
+// ── DESTINATION THEME SYSTEM ──────────────
+const DESTINATION_THEMES = {
+
+  // ASIE DU SUD-EST
+  'bali|indonesie|lombok|java|bornéo': {
+    name: 'Jungle tropicale',
+    bg: '#0D1F0F',        // vert forêt profond
+    bark: '#162B18',
+    cream: '#E8F0D8',
+    mist: '#7A9E72',
+    accent: '#8FBE6A',    // vert lime tropical
+    accent2: '#C9A850',   // or chaud
+    accent3: '#6BA89E',   // turquoise jungle
+    font: 'Fraunces',
+    pills: { hike: '#8FBE6A', beach: '#6BA89E', food: '#C9A850', spa: '#D4A0A0', wfall: '#6BA89E' }
+  },
+  'japon|tokyo|kyoto|osaka|hokkaido|nara': {
+    name: 'Encre & Cerisiers',
+    bg: '#0F0F14',        // noir encre
+    bark: '#18181F',
+    cream: '#F0EDE8',
+    mist: '#8A8898',
+    accent: '#C9637A',    // rouge cerisier
+    accent2: '#9B8CC4',   // violet indigo
+    accent3: '#7AB8C9',   // bleu azur
+    font: 'Fraunces',
+    pills: { hike: '#9B8CC4', beach: '#7AB8C9', food: '#C9637A', spa: '#C9A0B4', wfall: '#7AB8C9' }
+  },
+  'vietnam|hanoi|hoi an|ho chi minh|halong': {
+    name: 'Laque & Rizières',
+    bg: '#0F1A0D',
+    bark: '#172514',
+    cream: '#EEE8D4',
+    mist: '#7A9268',
+    accent: '#C94A2A',    // rouge laque
+    accent2: '#D4A840',   // or vietnamien
+    accent3: '#5A9E8A',   // jade
+    font: 'Fraunces',
+    pills: { hike: '#5A9E8A', beach: '#5B9FBE', food: '#C94A2A', spa: '#D4A0A0', wfall: '#5A9E8A' }
+  },
+  'sri lanka|colombo|ella|yala|galle|mirissa': {
+    name: 'Thé & Jungle',
+    bg: '#0C160E',
+    bark: '#1A2419',
+    cream: '#EEE8D8',
+    mist: '#8A9E88',
+    accent: '#7BAE6E',    // vert thé
+    accent2: '#C98A52',   // orange épices
+    accent3: '#5BC4C4',   // turquoise cascades
+    font: 'Fraunces',
+    pills: { hike: '#7BAE6E', beach: '#5B9FBE', food: '#C98A52', spa: '#E8A0A0', wfall: '#5BC4C4' }
+  },
+  'thaïlande|thailand|bangkok|chiang mai|phuket|koh': {
+    name: 'Or & Temples',
+    bg: '#150F05',
+    bark: '#1F1608',
+    cream: '#F0E8D0',
+    mist: '#9E8E68',
+    accent: '#D4A030',    // or temple
+    accent2: '#C44A2A',   // rouge saffran
+    accent3: '#5A9E8A',   // jade
+    font: 'Fraunces',
+    pills: { hike: '#5A9E8A', beach: '#5B9FBE', food: '#C44A2A', spa: '#D4A0A0', wfall: '#5A9E8A' }
+  },
+
+  // AFRIQUE & MOYEN-ORIENT
+  'maroc|morocco|marrakech|fès|essaouira|sahara': {
+    name: 'Ocre & Médinas',
+    bg: '#140C05',        // terre ocre profond
+    bark: '#1E1208',
+    cream: '#F0E4CC',
+    mist: '#A08060',
+    accent: '#D4782A',    // ocre marrakech
+    accent2: '#A04020',   // rouge médina
+    accent3: '#5A9E8A',   // zellige bleu
+    font: 'Fraunces',
+    pills: { hike: '#D4782A', beach: '#5A9E8A', food: '#A04020', spa: '#D4A0A0', wfall: '#5A9E8A' }
+  },
+  'kenya|tanzanie|safari|masai|serengeti|kilimanjaro': {
+    name: 'Savane & Aurore',
+    bg: '#110D05',
+    bark: '#1A1508',
+    cream: '#EEE4CC',
+    mist: '#9E8E60',
+    accent: '#C9A030',    // or savane
+    accent2: '#C44A2A',   // terre rouge
+    accent3: '#8ABE6E',   // vert savane
+    font: 'Fraunces',
+    pills: { hike: '#8ABE6E', beach: '#C9A030', food: '#C44A2A', spa: '#D4A0A0', wfall: '#8ABE6E' }
+  },
+  'egypte|egypt|caire|louxor|assouan|nil': {
+    name: 'Sable & Pharaons',
+    bg: '#120E06',
+    bark: '#1C1609',
+    cream: '#F0E8CC',
+    mist: '#A09060',
+    accent: '#D4B040',    // or des pharaons
+    accent2: '#C48030',   // sable du désert
+    accent3: '#4A8E9E',   // bleu nil
+    font: 'Fraunces',
+    pills: { hike: '#D4B040', beach: '#4A8E9E', food: '#C48030', spa: '#D4A0A0', wfall: '#4A8E9E' }
+  },
+
+  // EUROPE
+  'italie|italy|rome|florence|venise|sicile|amalfi': {
+    name: 'Marbre & Dolce Vita',
+    bg: '#0F0D0A',
+    bark: '#181410',
+    cream: '#F2EEE4',
+    mist: '#9A9080',
+    accent: '#C94A2A',    // rouge pompéi
+    accent2: '#D4A030',   // or mosaïque
+    accent3: '#5A8E9E',   // bleu méditerranée
+    font: 'Fraunces',
+    pills: { hike: '#D4A030', beach: '#5A8E9E', food: '#C94A2A', spa: '#D4A0B0', wfall: '#5A8E9E' }
+  },
+  'grèce|greece|athènes|santorin|mykonos|crète': {
+    name: 'Azur & Marbre Blanc',
+    bg: '#080C14',        // bleu nuit égéen
+    bark: '#0C1220',
+    cream: '#EEF0F8',
+    mist: '#7A90B0',
+    accent: '#4A78C4',    // bleu égéen
+    accent2: '#D4C050',   // or soleil
+    accent3: '#7AB8C4',   // turquoise mer
+    font: 'Fraunces',
+    pills: { hike: '#D4C050', beach: '#7AB8C4', food: '#D4782A', spa: '#C4A0B4', wfall: '#7AB8C4' }
+  },
+  'portugal|lisbonne|porto|algarve|madère': {
+    name: 'Azulejos & Fado',
+    bg: '#0A0C14',
+    bark: '#10141E',
+    cream: '#EEF0F4',
+    mist: '#7A8898',
+    accent: '#4A68B4',    // bleu azulejo
+    accent2: '#D4A040',   // or baroque
+    accent3: '#7ABE8A',   // vert atlantique
+    font: 'Fraunces',
+    pills: { hike: '#7ABE8A', beach: '#4A68B4', food: '#D4A040', spa: '#C4A0B4', wfall: '#7ABE8A' }
+  },
+
+  // AMÉRIQUES
+  'mexique|mexico|oaxaca|cancún|yucatan': {
+    name: 'Jade & Cacao',
+    bg: '#0D0F0A',
+    bark: '#161A10',
+    cream: '#EEE8D4',
+    mist: '#8E9870',
+    accent: '#5A9E50',    // jade maya
+    accent2: '#C4781A',   // cacao
+    accent3: '#D4C040',   // maïs doré
+    font: 'Fraunces',
+    pills: { hike: '#5A9E50', beach: '#5B9FBE', food: '#C4781A', spa: '#D4A0A0', wfall: '#5A9E50' }
+  },
+  'colombie|colombia|cartagena|medellin|bogota': {
+    name: 'Orchidées & Café',
+    bg: '#0D0F0A',
+    bark: '#151A10',
+    cream: '#EEE8D8',
+    mist: '#8A9870',
+    accent: '#C44A7A',    // orchidée
+    accent2: '#8A5A2A',   // café
+    accent3: '#5AAE8A',   // émeraude
+    font: 'Fraunces',
+    pills: { hike: '#5AAE8A', beach: '#5B9FBE', food: '#C44A7A', spa: '#D4A0A0', wfall: '#5AAE8A' }
+  },
+  'pérou|peru|machu picchu|lima|cusco|amazonie': {
+    name: 'Or Inca & Amazonie',
+    bg: '#0A0D08',
+    bark: '#121810',
+    cream: '#ECE8D0',
+    mist: '#8A9268',
+    accent: '#C4A030',    // or inca
+    accent2: '#6ABE5A',   // amazonie
+    accent3: '#C44A2A',   // terre rouge
+    font: 'Fraunces',
+    pills: { hike: '#6ABE5A', beach: '#5B9FBE', food: '#C4A030', spa: '#D4A0A0', wfall: '#6ABE5A' }
+  },
+
+  // DEFAULT
+  'default': {
+    name: 'Beyond the Known',
+    bg: '#0C160E',
+    bark: '#1A2419',
+    cream: '#EEE8D8',
+    mist: '#8A9E88',
+    accent: '#7BAE6E',
+    accent2: '#C98A52',
+    accent3: '#5BC4C4',
+    font: 'Fraunces',
+    pills: { hike: '#7BAE6E', beach: '#5B9FBE', food: '#C98A52', spa: '#E8A0A0', wfall: '#5BC4C4' }
+  }
+};
+
+function getDestinationTheme(destination) {
+  const dest = (destination || '').toLowerCase();
+  for (const [keys, theme] of Object.entries(DESTINATION_THEMES)) {
+    if (keys === 'default') continue;
+    const keyList = keys.split('|');
+    if (keyList.some(k => dest.includes(k))) return theme;
+  }
+  return DESTINATION_THEMES['default'];
+}
+
+function applyThemeToPaidItin(theme) {
+  // Remove old theme style
+  let styleEl = document.getElementById('paid-itin-theme');
+  if (styleEl) styleEl.remove();
+  styleEl = document.createElement('style');
+  styleEl.id = 'paid-itin-theme';
+  document.head.appendChild(styleEl);
+  styleEl.textContent = `
+    .it-paid {
+      --sl-ink: ${theme.bg};
+      --sl-bark: ${theme.bark};
+      --sl-cream: ${theme.cream};
+      --sl-mist: ${theme.mist};
+      --sl-hike: ${theme.accent};
+      --sl-hike-bg: ${theme.accent}15;
+      --sl-hike-b: ${theme.accent}40;
+      --sl-beach: ${theme.accent3};
+      --sl-beach-bg: ${theme.accent3}15;
+      --sl-beach-b: ${theme.accent3}40;
+      --sl-food: ${theme.accent2};
+      --sl-food-bg: ${theme.accent2}15;
+      --sl-food-b: ${theme.accent2}40;
+      --sl-cafe: ${theme.pills?.spa || '#E8A0A0'};
+      --sl-cafe-bg: ${theme.pills?.spa || '#E8A0A0'}15;
+      --sl-cafe-b: ${theme.pills?.spa || '#E8A0A0'}40;
+      --sl-spa: ${theme.pills?.spa || '#E8A0A0'};
+      --sl-spa-bg: ${theme.pills?.spa || '#E8A0A0'}15;
+      --sl-spa-b: ${theme.pills?.spa || '#E8A0A0'}40;
+      --sl-waterfall: ${theme.accent3};
+      --sl-waterfall-bg: ${theme.accent3}15;
+      --sl-waterfall-b: ${theme.accent3}40;
+      --sl-safari: ${theme.accent2};
+      --sl-safari-bg: ${theme.accent2}15;
+      --sl-safari-b: ${theme.accent2}40;
+      --sl-lux: ${theme.accent2};
+      --sl-lux-bg: ${theme.accent2}15;
+      --sl-lux-b: ${theme.accent2}40;
+      --sl-budget: ${theme.accent};
+      --sl-budget-bg: ${theme.accent}15;
+      --sl-budget-b: ${theme.accent}40;
+      --sl-sand: ${theme.cream}CC;
+    }
+    .it-paid { background: ${theme.bg}; }
+    .sl-hero { background: ${theme.bg}; }
+    .sl-timeline-wrap, .sl-legend { background: ${theme.bark}; }
+    .sl-section, .sl-days, .sl-hl, .sl-budget, .sl-sep { background: ${theme.bg}; }
+    .sl-footer { background: ${theme.bark}; }
+    .sl-hero-bg {
+      background:
+        radial-gradient(ellipse 80% 55% at 20% 15%, ${theme.accent}25 0%, transparent 60%),
+        radial-gradient(ellipse 55% 75% at 80% 65%, ${theme.accent3}15 0%, transparent 55%),
+        radial-gradient(ellipse 45% 45% at 55% 90%, ${theme.accent2}12 0%, transparent 50%);
+    }
+  `;
+}
+
+// ── PAID ITINERARY RENDERER — Sri Lanka Style ──────────
+function renderPaidItinerary(it, dest, origin, dateFrom, dateTo) {
+  document.getElementById('genLoading').style.display = 'none';
+
+  // Apply destination-specific theme
+  const theme = getDestinationTheme(it.destination || dest);
+  applyThemeToPaidItin(theme);
+
+  // Determine pills based on interests
+  const pillMap = {
+    'Randonnée': ['hike', '🥾 Randonnées'],
+    'Plages cachées': ['beach', '🌊 Plages secrètes'],
+    'Spa & Bien-être': ['spa', '🌿 Massages'],
+    'Safari': ['safari', '🦁 Safari'],
+    'Gastronomie': ['food', '🍜 Gastronomie'],
+    'Cuisine de rue': ['food', '🍜 Street food'],
+    'Nature': ['hike', '🌿 Nature'],
+    'Culture': ['cafe', '🏛 Culture'],
+    'Photographie': ['cafe', '📷 Photo'],
+  };
+  const pills = selectedInterests.filter(i => pillMap[i]).map(i =>
+    `<span class="sl-pill ${pillMap[i][0]}">${pillMap[i][1]}</span>`
+  ).join('');
+
+  // Timeline
+  const tlHtml = (it.circuit||[]).map((s, i) => {
+    const cls = i === (it.circuit.length-1) ? 'end' : (s.type === 'lux' ? 'lux' : '');
+    return `<div class="sl-stop ${cls}">
+      <div class="sl-dot"></div>
+      <div class="sl-city">${s.name}</div>
+      <div class="sl-dates">${s.dates}</div>
+      <div class="sl-nights">${s.nights} nuit${s.nights>1?'s':''}</div>
+    </div>`;
+  }).join('');
+
+  // Legend — only show relevant categories
+  const interestLegend = [];
+  if (selectedInterests.includes('Randonnée') || selectedInterests.includes('Nature')) interestLegend.push(['var(--sl-hike)', 'Rando']);
+  if (selectedInterests.includes('Plages cachées')) interestLegend.push(['var(--sl-beach)', 'Plage']);
+  if (selectedInterests.includes('Spa & Bien-être')) interestLegend.push(['var(--sl-spa)', 'Massage']);
+  if (selectedInterests.includes('Safari')) interestLegend.push(['var(--sl-safari)', 'Safari']);
+  interestLegend.push(['var(--sl-food)', 'Resto local']);
+  interestLegend.push(['var(--sl-cafe)', 'Culture']);
+  const legendHtml = interestLegend.map(([col, label]) =>
+    `<div class="sl-legend-item"><div class="sl-legend-dot" style="background:${col}"></div><span style="color:${col}">${label}</span></div>`
+  ).join('');
+
+  // Days
+  const actTypeMap = {
+    hike:'hike', beach:'beach', food:'food', cafe:'cafe',
+    spa:'spa', waterfall:'wfall', safari:'safari', culture:'cafe', transfer:'cafe'
+  };
+  const daysHtml = (it.days||[]).map(day => {
+    const tags = (day.activities||[]).map(a => {
+      const cls = actTypeMap[a.type] || 'food';
+      return `<span class="sl-tag ${cls}">${a.name}</span>`;
+    }).join('');
+
+    const cards = [];
+    if (day.restaurants?.[0]) {
+      const r = day.restaurants[0];
+      cards.push(`<div class="sl-card food">
+        <div class="sl-card-label">🍽 ${r.meal||'Repas'}</div>
+        <div class="sl-card-name">${r.name}</div>
+        <div class="sl-card-desc">${r.detail||''}</div>
+        ${r.note ? `<div class="sl-card-note">${r.note}</div>` : ''}
+        ${r.price ? `<div class="sl-card-price">${r.price}</div>` : ''}
+      </div>`);
+    }
+    if (day.wellness?.name) {
+      cards.push(`<div class="sl-card spa">
+        <div class="sl-card-label">🌿 ${day.wellness.type||'Massage'}</div>
+        <div class="sl-card-name">${day.wellness.name}</div>
+        <div class="sl-card-desc">${day.wellness.detail||''}</div>
+        ${day.wellness.note ? `<div class="sl-card-note">${day.wellness.note}</div>` : ''}
+      </div>`);
+    }
+    if (day.hiddenGem?.name) {
+      cards.push(`<div class="sl-card hike">
+        <div class="sl-card-label">✦ Pépite cachée</div>
+        <div class="sl-card-name">${day.hiddenGem.name}</div>
+        <div class="sl-card-desc">${day.hiddenGem.detail||''}</div>
+        ${day.hiddenGem.tip ? `<div class="sl-card-note">— ${day.hiddenGem.tip}</div>` : ''}
+      </div>`);
+    }
+
+    const cardsHtml = cards.length ? `
+      <div class="sl-cards sl-grid-${Math.min(cards.length, 3)}" style="padding:0;margin-top:1.2rem">
+        ${cards.join('')}
+      </div>` : '';
+
+    return `
+      <div class="sl-section" style="padding-top:3rem">
+        <div class="sl-section-head" style="padding-left:0;padding-right:0">
+          <div class="sl-sec-num">${String(day.number).padStart(2,'0')}</div>
+          <div>
+            <div class="sl-sec-tag">${day.date} · ${day.location}</div>
+            <div class="sl-sec-name">${day.title}</div>
+            <div class="sl-sec-hook">${day.description}</div>
+          </div>
+        </div>
+      </div>
+      <div class="sl-days" style="padding-bottom:0">
+        <div class="sl-day">
+          <div class="sl-day-n"><b>${String(day.number).padStart(2,'0')}</b><span>Jour</span></div>
+          <div class="sl-day-body">
+            <div class="sl-day-top">
+              <div class="sl-day-title">${day.title}</div>
+              <div class="sl-day-date">${day.date}</div>
+            </div>
+            <div class="sl-day-text">${day.description}</div>
+            ${(day.activities||[]).map(a => `
+              <div style="margin-bottom:0.6rem">
+                <span style="font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--sl-food);opacity:0.75">${a.time||''}</span>
+                <span style="font-family:'Fraunces',serif;font-size:0.9rem;color:var(--sl-cream);margin-left:0.5rem">${a.name}</span>
+                ${a.detail ? `<div style="font-size:0.78rem;color:var(--sl-mist);margin-top:0.2rem;line-height:1.6">${a.detail}</div>` : ''}
+                ${a.tip ? `<div style="font-size:0.72rem;font-style:italic;color:var(--sl-sand);opacity:0.7;margin-top:0.2rem">— ${a.tip}</div>` : ''}
+              </div>`).join('')}
+            <div class="sl-tags">${tags}</div>
+          </div>
+        </div>
+      </div>
+      ${cardsHtml ? `<div style="background:#0C160E;padding:0 4rem 2rem">${cardsHtml}</div>` : ''}
+      <div class="sl-sep"></div>`;
+  }).join('');
+
+  // Highlights
+  const hl = it.highlights || {};
+  const hlHtml = [
+    hl.massages?.length ? `<div class="sl-hl"><div class="sl-hl-box pink"><strong>🌿 Massages & Bien-être :</strong> ${hl.massages.map(m => `<strong>${m.name}</strong> (${m.location}) — ${m.detail}${m.price?' · '+m.price:''}`).join(' · ')}</div></div>` : '',
+    hl.cascades?.length ? `<div class="sl-hl"><div class="sl-hl-box teal"><strong>💧 Cascades :</strong> ${hl.cascades.map(w => `<strong>${w.name}</strong> — ${w.detail}`).join(' · ')}</div></div>` : '',
+    hl.beaches?.length  ? `<div class="sl-hl"><div class="sl-hl-box blue"><strong>🌊 Plages :</strong> ${hl.beaches.map(b => `<strong>${b.name}</strong> — ${b.detail}`).join(' · ')}</div></div>` : '',
+  ].filter(Boolean).join('');
+
+  // Budget table
+  const budgetHtml = it.budget?.accommodation?.length ? `
+    <div class="sl-budget">
+      <table>
+        <tr><th>Étape</th><th>Nuits</th><th>Type</th><th>Hébergement</th><th>Prix / nuit</th><th>Total</th></tr>
+        ${it.budget.accommodation.map((b,i) => `
+          <tr>
+            <td class="city">${b.location}</td>
+            <td>${b.nights}</td>
+            <td><span class="b-${b.type?.toLowerCase()==='luxe'?'lux':b.type?.toLowerCase()==='airbnb'?'airbnb':'budget'}">${b.type}</span></td>
+            <td class="city">${b.name||''}</td>
+            <td>${b.pricePerNight||''}</td>
+            <td class="price">${b.total||''}</td>
+          </tr>`).join('')}
+        ${it.budget.totalEstimate ? `<tr class="total"><td colspan="5">Total estimé (hors vols)</td><td class="price" style="color:var(--sl-hike);font-size:1rem">${it.budget.totalEstimate}</td></tr>` : ''}
+      </table>
+      ${it.budget.dailyCosts ? `<p style="margin-top:0.8rem;font-size:0.72rem;font-style:italic;color:var(--sl-mist)">${it.budget.dailyCosts}</p>` : ''}
+    </div>` : '';
+
+  const html = `
+    <div class="it-paid">
+
+      <!-- HERO -->
+      <section class="sl-hero">
+        <div class="sl-hero-bg"></div>
+        <p class="sl-eyebrow">Itinéraire complet · ${it.duration} · ${it.season}</p>
+        <h1>${it.destination||dest}<br><i>${it.tagline||''}</i></h1>
+        <div class="sl-hero-row">
+          <div class="sl-pills">${pills}</div>
+          <div class="sl-hero-dates">
+            <span class="big">${it.dateFrom||''} → ${it.dateTo||''}</span>
+            <span class="small">${it.duration} · ${(it.circuit||[]).length} étapes</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- TIMELINE -->
+      ${tlHtml ? `<div class="sl-timeline-wrap">
+        <div class="sl-tl-label">Circuit complet</div>
+        <div class="sl-timeline">${tlHtml}</div>
+      </div>` : ''}
+
+      <!-- LEGEND -->
+      <div class="sl-legend">${legendHtml}</div>
+
+      <!-- DAYS -->
+      ${daysHtml}
+
+      <!-- HIGHLIGHTS -->
+      ${hlHtml}
+
+      <!-- BUDGET -->
+      ${budgetHtml ? `<div class="sl-section" style="padding-bottom:0"><div class="sl-section-head" style="padding-left:0;padding-right:0">
+        <div class="sl-sec-num" style="color:rgba(201,150,90,0.15)">€</div>
+        <div><div class="sl-sec-tag">Estimation</div><div class="sl-sec-name">Budget hébergement</div><div class="sl-sec-hook">Luxe aux moments clés · Authenticité partout ailleurs</div></div>
+      </div></div>${budgetHtml}` : ''}
+
+      <!-- FOOTER -->
+      <footer class="sl-footer">
+        <h3>Beau voyage ✦</h3>
+        <div class="sl-footer-line"></div>
+        <p>${it.destination||dest} · ${it.dateFrom||''} – ${it.dateTo||''}</p>
+        <div style="margin-top:2rem">
+          <button class="btn-reset" onclick="showForm()" style="background:rgba(123,174,110,0.1);border-color:rgba(123,174,110,0.3);color:var(--sl-hike)">← Nouveau voyage</button>
+        </div>
+      </footer>
+
+    </div>`;
+
+  const el = document.getElementById('genResult');
+  el.innerHTML = html;
+  el.style.display = 'block';
+  document.getElementById('genForm').style.display = 'none';
+  const tabs = document.querySelector('.gen-tabs');
+  if (tabs) tabs.style.display = 'none';
+  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function renderItinerary(it, dest, origin, dateFrom, dateTo, isSurprise = false) {
+  document.getElementById('genLoading').style.display = 'none';
+
+  // ── CIRCUIT TIMELINE ──────────────────
+  const circuitHtml = (it.circuit && it.circuit.length) ? `
+    <div class="it-circuit">
+      <p class="it-circuit-label">Circuit</p>
+      <div class="it-circuit-stops">
+        ${it.circuit.map((s,i) => `
+          <div class="it-circuit-stop ${i===0?'first':''} ${i===it.circuit.length-1?'last':''}">
+            <div class="it-circuit-dot"></div>
+            <div class="it-circuit-name">${s.name}</div>
+            <div class="it-circuit-dates">${s.dates}</div>
+            <div class="it-circuit-nights">${s.nights} nuit${s.nights>1?'s':''}</div>
+          </div>`).join('')}
+      </div>
+    </div>` : '';
+
+  // ── DAYS ──────────────────────────────
+  const typeColors = {
+    hike:'var(--sage)', beach:'#5B9FBE', food:'var(--gold)', cafe:'#9B7FBE',
+    spa:'#BE7F9B', waterfall:'#5BC4C4', safari:'var(--gold-lt)', culture:'var(--muted)',
+    transfer:'var(--muted)'
+  };
+
+  const days = (it.days||[]).map(day => {
+    const activities = (day.activities||[]).map(a => `
+      <div class="it-activity">
+        <div class="it-activity-time">${a.time||''}</div>
+        <div class="it-activity-body">
+          <div class="it-activity-name">${a.name||''}</div>
+          <div class="it-activity-detail">${a.detail||''}</div>
+          ${a.tip ? `<div class="it-activity-tip">— ${a.tip}</div>` : ''}
+        </div>
+      </div>`).join('');
+
+    const restaurants = (day.restaurants||[]).map(r => `
+      <div class="it-card it-card-food">
+        <div class="it-card-label">🍽 ${r.meal||'Repas'}</div>
+        <div class="it-card-name">${r.name||''}</div>
+        <div class="it-card-desc">${r.detail||''}</div>
+        ${r.note ? `<div class="it-card-note">${r.note}</div>` : ''}
+        ${r.price ? `<span class="it-card-price food">${r.price}</span>` : ''}
+        <a class="book-link activity" href="${`https://www.viator.com/fr-FR/search?text=${encodeURIComponent((r.name||'')+' '+(day.location||dest))}`}" target="_blank" style="margin-top:8px">Voir sur la carte →</a>
+      </div>`).join('');
+
+    const wellness = (day.wellness && day.wellness.name) ? `
+      <div class="it-card it-card-spa">
+        <div class="it-card-label">🌿 ${day.wellness.type||'Massage & Bien-être'}</div>
+        <div class="it-card-name">${day.wellness.name}</div>
+        <div class="it-card-desc">${day.wellness.detail||''}</div>
+        ${day.wellness.note ? `<div class="it-card-note">${day.wellness.note}</div>` : ''}
+        <a class="book-link" href="${gygUrl((day.wellness.name||'')+' '+(day.location||dest))}" target="_blank" style="margin-top:8px">Réserver →</a>
+      </div>` : '';
+
+    const gem = (day.hiddenGem && day.hiddenGem.name) ? `
+      <div class="it-card it-card-gem">
+        <div class="it-card-label">✦ Pépite</div>
+        <div class="it-card-name">${day.hiddenGem.name}</div>
+        <div class="it-card-desc">${day.hiddenGem.detail||''}</div>
+        ${day.hiddenGem.tip ? `<div class="it-card-note">— ${day.hiddenGem.tip}</div>` : ''}
+      </div>` : '';
+
+    const hasCards = restaurants || wellness || gem;
+
+    return `
+      <div class="it-day">
+        <div class="it-day-num">
+          <span class="it-day-n">${String(day.number).padStart(2,'0')}</span>
+          <span class="it-day-label">Jour</span>
+          <div class="it-day-dot"></div>
+        </div>
+        <div class="it-day-body">
+          <div class="it-day-header">
+            <div>
+              <div class="it-day-title">${day.title||''}</div>
+              <div class="it-day-location">${day.date?day.date+' · ':''}${day.location||''}</div>
+            </div>
+          </div>
+          <p class="it-day-desc">${day.description||''}</p>
+          <div class="it-activities">${activities}</div>
+          ${hasCards ? `<div class="it-day-cards">${restaurants}${wellness}${gem}</div>` : ''}
+        </div>
+      </div>`;
+  }).join('');
+
+  // ── HIGHLIGHTS ────────────────────────
+  const hl = it.highlights;
+  const highlightsHtml = hl ? `
+    <div class="it-highlights">
+      ${(hl.massages && hl.massages.length) ? `
+        <div class="it-hl-section">
+          <h4 class="it-hl-title">🌿 Massages & Bien-être</h4>
+          <div class="it-hl-grid">
+            ${hl.massages.map(m=>`
+              <div class="it-hl-card spa">
+                <div class="it-hl-loc">${m.location}</div>
+                <div class="it-hl-name">${m.name}</div>
+                <div class="it-hl-desc">${m.detail}</div>
+                ${m.price?`<span class="it-hl-price">${m.price}</span>`:''}
+              </div>`).join('')}
+          </div>
+        </div>` : ''}
+      ${(hl.cascades && hl.cascades.length) ? `
+        <div class="it-hl-section">
+          <h4 class="it-hl-title">💧 Cascades</h4>
+          <div class="it-hl-grid">
+            ${hl.cascades.map(w=>`
+              <div class="it-hl-card waterfall">
+                <div class="it-hl-loc">${w.location}</div>
+                <div class="it-hl-name">${w.name}</div>
+                <div class="it-hl-desc">${w.detail}</div>
+              </div>`).join('')}
+          </div>
+        </div>` : ''}
+      ${(hl.beaches && hl.beaches.length) ? `
+        <div class="it-hl-section">
+          <h4 class="it-hl-title">🌊 Plages</h4>
+          <div class="it-hl-grid">
+            ${hl.beaches.map(b=>`
+              <div class="it-hl-card beach">
+                <div class="it-hl-loc">${b.location}</div>
+                <div class="it-hl-name">${b.name}</div>
+                <div class="it-hl-desc">${b.detail}</div>
+              </div>`).join('')}
+          </div>
+        </div>` : ''}
+    </div>` : '';
+
+  // ── BUDGET ────────────────────────────
+  const budgetHtml = (it.budget && it.budget.accommodation && it.budget.accommodation.length) ? `
+    <div class="it-budget">
+      <h4 class="it-budget-title">Hébergements recommandés</h4>
+      <div class="it-budget-table">
+        ${it.budget.accommodation.map(b=>`
+          <div class="it-budget-row">
+            <div class="it-budget-city">${b.location}</div>
+            <div class="it-budget-nights">${b.nights} nuit${b.nights>1?'s':''}</div>
+            <div class="it-budget-name">${b.name||''}<span class="it-budget-type">${b.type}</span></div>
+            <div class="it-budget-price">${b.total||b.pricePerNight||''}</div>
+          </div>`).join('')}
+        ${it.budget.totalEstimate ? `
+          <div class="it-budget-total">
+            <span>Total estimé (hors vols)</span>
+            <span>${it.budget.totalEstimate}</span>
+          </div>` : ''}
+      </div>
+      ${it.budget.dailyCosts ? `<p class="it-budget-note">${it.budget.dailyCosts}</p>` : ''}
+    </div>` : '';
+
+  // ── ESSENTIALS ────────────────────────
+  const essHtml = it.essentials ? `
+    <div class="essentials">
+      <div class="essential-block">
+        <h4>Transport</h4>
+        <ul>${(it.essentials.transport||[]).map(t=>`<li>${t}</li>`).join('')}</ul>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
+          <a class="book-link" href="${flightUrl(origin,dest,dateFrom,dateTo)}" target="_blank">Vols →</a>
+        </div>
+      </div>
+      <div class="essential-block">
+        <h4>Hébergement</h4>
+        <ul>${(it.essentials.accommodation||(it.budget && it.budget.accommodation ? it.budget.accommodation.map(function(b){return b.name}) : [])||[]).slice(0,3).map(a=>`<li>${typeof a==='string'?a:a}</li>`).join('')}</ul>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
+          <a class="book-link hotel" href="${hotelUrl(dest,dateFrom,dateTo)}" target="_blank">Hôtels →</a>
+          <a class="book-link" href="${airbnbUrl(dest,dateFrom,dateTo)}" target="_blank">Airbnb →</a>
+        </div>
+      </div>
+      <div class="essential-block">
+        <h4>À savoir</h4>
+        ${it.essentials.visa ? `<p style="font-size:12px;color:var(--muted);margin-bottom:8px;font-style:italic">${it.essentials.visa}</p>` : ''}
+        <ul>${(it.essentials.toKnow||[]).map(k=>`<li>${k}</li>`).join('')}</ul>
+      </div>
+    </div>` : '';
+
+  const html = `
+    <div class="itinerary">
+      <div class="it-header">
+        <div class="it-header-top">
+          <p class="it-badge">${isSurprise ? '✦ Destination révélée' : '✦ Itinéraire sur mesure'}</p>
+        </div>
+        <div class="it-header-body">
+          <h2 class="it-title">${it.destination||dest}</h2>
+          <p class="it-subtitle">${it.tagline||''}</p>
+        </div>
+        <div class="it-meta-row">
+          <div class="it-meta-block">
+            <span class="it-meta-label">Départ</span>
+            <span class="it-meta-value">${it.dateFrom||''}</span>
+          </div>
+          <div class="it-meta-sep">→</div>
+          <div class="it-meta-block">
+            <span class="it-meta-label">Retour</span>
+            <span class="it-meta-value">${it.dateTo||''}</span>
+          </div>
+          <div class="it-meta-divider"></div>
+          <div class="it-meta-block">
+            <span class="it-meta-label">Durée</span>
+            <span class="it-meta-value">${it.duration||''}</span>
+          </div>
+          <div class="it-meta-block">
+            <span class="it-meta-label">Saison</span>
+            <span class="it-meta-value" style="text-transform:capitalize">${it.season||''}</span>
+          </div>
+          <div class="it-meta-block">
+            <span class="it-meta-label">Monnaie</span>
+            <span class="it-meta-value">${it.currency||''}</span>
+          </div>
+        </div>
+        ${it.weatherAlert ? `
+        <div class="it-weather-alert">
+          <span class="it-weather-icon">⚠</span>
+          <div>
+            <p class="it-weather-label">Conditions saisonnières</p>
+            <p class="it-weather-text">${it.weatherAlert}</p>
+          </div>
+        </div>` : ''}
+        ${it._why ? `
+        <div class="it-why">
+          <p class="it-why-label">Pourquoi cette destination</p>
+          <p class="it-why-text">${it._why}</p>
+        </div>` : ''}
+      </div>
+
+      ${circuitHtml}
+
+      <div class="booking-panel">
+        <p class="booking-panel-title">Réserver votre voyage</p>
+        <div class="booking-grid">
+          <a class="booking-btn" href="${flightUrl(origin,dest,dateFrom,dateTo)}" target="_blank">
+            <span class="booking-btn-icon">✈️</span>
+            <span class="booking-btn-text"><span class="booking-btn-label">Vols</span><span class="booking-btn-name">Skyscanner</span></span>
+            <span class="booking-btn-arrow">→</span>
+          </a>
+          <a class="booking-btn" href="${hotelUrl(dest,dateFrom,dateTo)}" target="_blank">
+            <span class="booking-btn-icon">🏨</span>
+            <span class="booking-btn-text"><span class="booking-btn-label">Hôtels</span><span class="booking-btn-name">Booking.com</span></span>
+            <span class="booking-btn-arrow">→</span>
+          </a>
+          <a class="booking-btn" href="${airbnbUrl(dest,dateFrom,dateTo)}" target="_blank">
+            <span class="booking-btn-icon">🏠</span>
+            <span class="booking-btn-text"><span class="booking-btn-label">Appartements</span><span class="booking-btn-name">Airbnb</span></span>
+            <span class="booking-btn-arrow">→</span>
+          </a>
+          <a class="booking-btn" href="${gygUrl(dest)}" target="_blank">
+            <span class="booking-btn-icon">🎟️</span>
+            <span class="booking-btn-text"><span class="booking-btn-label">Activités</span><span class="booking-btn-name">GetYourGuide</span></span>
+            <span class="booking-btn-arrow">→</span>
+          </a>
+        </div>
+        <p class="booking-note">Liens affiliés · Aucun surcoût pour vous</p>
+      </div>
+
+      <div class="it-days">${days}</div>
+
+      ${highlightsHtml}
+      ${budgetHtml}
+      ${essHtml}
+
+      ${!isSurprise && (!it._plan || it._plan === 'free') ? renderUpsellBanner({
+        dest, origin, dateFrom, dateTo,
+        dateFromFR: it.dateFrom || dateFrom,
+        dateToFR: it.dateTo || dateTo,
+        flightArrival: (typeof flightArrival !== 'undefined' ? flightArrival : ''),
+        flightDeparture: (typeof flightDeparture !== 'undefined' ? flightDeparture : ''),
+        duration: parseInt(it.duration) || calcDuration(),
+        season: it.season || getSeason(dateFrom, dest),
+        budget: (typeof budget !== 'undefined' ? budget : ''),
+        styles: selectedStyles.join(', '),
+        interests: selectedInterests.join(', '),
+        occasion: selectedOccasion ? (OCCASIONS.find(o => o.id === selectedOccasion)?.label || '') : '',
+        notes: (document.getElementById('notes') ? document.getElementById('notes').value : '')
+      }) : ''}
+
+      <div class="it-footer">
+        <button class="btn-reset" onclick="showForm()">← Nouveau voyage</button>
+      </div>
+    </div>`;
+
+  const el = document.getElementById('genResult');
+  el.innerHTML = html;
+  el.style.display = 'block';
+
+  // Hide form tabs and form when itinerary is shown
+  document.getElementById('genForm').style.display = 'none';
+  const tabs = document.querySelector('.gen-tabs');
+  if (tabs) tabs.style.display = 'none';
+
+  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+
+function renderExtras(extras, loc) {
+  if (!extras) return '';
+  const sections = [
+    { label:'🍽️ Tables & saveurs', items: extras.restaurants, type:'resto' },
+    { label:'🌿 Bien-être & soins', items: extras.wellness, type:'spa' },
+    { label:'✦ Pépites & expériences', items: extras.hiddenGems, type:'gem' },
+  ].filter(s => (s.items && s.items.length));
+  if (!sections.length) return '';
+  return `<div class="extras">${sections.map(s => `
+    <div class="extras-section">
+      <div class="extras-header">
+        <span class="extras-label">${s.label}</span>
+        <span class="extras-chevron">▼</span>
+      </div>
+      <div class="extras-body" style="display:none">
+        ${s.items.map(item => `
+          <div class="extra-item">
+            <div class="extra-name">${item.name||''}</div>
+            <div class="extra-detail">${item.detail||''}</div>
+            ${item.priceRange ? `<span class="extra-price ${s.type}">${item.priceRange}</span>` : ''}
+            ${s.type !== 'gem' ? `<a class="book-link activity" style="margin-left:8px" href="${gygUrl((item.name||'')+' '+loc)}" target="_blank">Réserver →</a>` : `<a class="book-link activity" href="${gygUrl((item.name||'')+' '+loc)}" target="_blank" style="margin-top:5px;display:inline-flex">Voir →</a>`}
+          </div>`).join('')}
+      </div>
+    </div>`).join('')}</div>`;
+}
+
+// ── CONTACT ───────────────────────────────
+function sendContact() {
+  const name = document.getElementById('contactName').value.trim();
+  const email = document.getElementById('contactEmail').value.trim();
+  const msg = document.getElementById('contactMessage').value.trim();
+  if (!name || !email || !msg) return;
+  document.getElementById('contactForm').style.display = 'none';
+  document.getElementById('contactSuccess').style.display = 'block';
+}
+
+// ── TABS ──────────────────────────────────
+function switchTab(tab) {
+  const isKnown = tab === 'known';
+  document.getElementById('tabKnown').classList.toggle('active', isKnown);
+  document.getElementById('tabSurprise').classList.toggle('active', !isKnown);
+  document.getElementById('genForm').style.display = isKnown ? 'block' : 'none';
+  document.getElementById('genFormSurprise').style.display = isKnown ? 'none' : 'block';
+  document.getElementById('genLoading').style.display = 'none';
+  document.getElementById('genError').style.display = 'none';
+  document.getElementById('genResult').style.display = 'none';
+}
+
+// Init surprise tags on load
+
+
+// ── GENERATE SURPRISE ─────────────────────
+async function generateSurprise() {
+  const dateFrom = document.getElementById('sDateFrom').value;
+  const dateTo = document.getElementById('sDateTo').value;
+  const budget = document.getElementById('sBudget').value;
+  const origin = document.getElementById('sOrigin').value.trim();
+  const exclude = document.getElementById('sExclude').value.trim();
+
+  if (!dateFrom || !dateTo) return;
+  const duration = Math.round((new Date(dateTo) - new Date(dateFrom)) / 86400000);
+  if (duration <= 0) return;
+
+  const season = getSeason(dateFrom, '');
+  const dateFromFR = formatDateFR(dateFrom);
+  const dateToFR = formatDateFR(dateTo);
+
+  document.getElementById('genFormSurprise').style.display = 'none';
+  document.getElementById('genLoading').style.display = 'block';
+  document.getElementById('genError').style.display = 'none';
+  document.getElementById('genResult').style.display = 'none';
+
+  const prompt = `Tu es un expert en voyages de luxe et un conseiller de voyage créatif.
+L'utilisateur ne sait pas où il veut aller — c'est toi qui choisis la destination idéale pour lui.
+
+Dates: du ${dateFromFR} au ${dateToFR} (${duration} jours)
+Saison au moment du départ: ${season}
+Budget par personne: ${budget}
+Ville de départ: ${origin || 'Europe'}
+Ambiances souhaitées: ${sSelectedStyles.join(', ') || 'ouvert à tout'}
+Centres d'intérêt: ${sSelectedInterests.join(', ') || 'général'}
+À éviter: ${exclude || 'rien de particulier'}
+
+Choisis UNE destination surprenante et parfaitement adaptée à ces critères — pas forcément la plus évidente.
+Justifie ton choix avec enthousiasme dans la tagline et la description du premier jour.
+
+Réponds UNIQUEMENT en JSON valide:
+{
+  "destination": "Ville / Pays choisi",
+  "tagline": "Phrase révélant pourquoi cette destination est parfaite pour eux en ce moment",
+  "dateFrom": "${dateFromFR}",
+  "dateTo": "${dateToFR}",
+  "duration": "${duration} jours",
+  "budget": "${budget}",
+  "season": "${season}",
+  "weatherAlert": "Alerte météo si pertinente, sinon vide",
+  "currency": "Monnaie locale",
+  "why": "2-3 phrases expliquant pourquoi cette destination a été choisie pour eux",
+  "days": [
+    {
+      "number": 1,
+      "date": "date courte ex: Sam. 26 avr.",
+      "title": "Titre évocateur",
+      "location": "Quartier / Zone",
+      "description": "Description poétique 2-3 phrases",
+      "activities": [
+        {"icon":"🌅","title":"Activité","detail":"Description avec conseil"},
+        {"icon":"🍜","title":"Déjeuner","detail":"Suggestion locale"},
+        {"icon":"🏛️","title":"Activité","detail":"Description"},
+        {"icon":"🌙","title":"Soirée","detail":"Suggestion"}
+      ],
+      "tip": "Conseil insider",
+      "extras": {
+        "restaurants": [{"name":"Nom","detail":"Description","priceRange":"€€"}],
+        "wellness": [{"name":"Nom","detail":"Description","priceRange":"€€"}],
+        "hiddenGems": [{"name":"Pépite","detail":"Description"}]
+      }
+    }
+  ],
+  "essentials": {
+    "transport": ["conseil 1","conseil 2","conseil 3"],
+    "accommodation": ["type 1","type 2","quartier"],
+    "toKnow": ["info 1","info 2","info 3"]
+  }
+}
+Génère exactement ${duration} jours. Sois précis, inspirant et audacieux dans ton choix.`;
+
+  try {
+    const res = await fetch(PROXY_URL, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ prompt, duration })
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    if (data.error) throw new Error(data.error);
+    console.log('RAW RESULT:', data.result?.slice(0, 200));
+    const itin = parseJSON(data.result || '');
+    console.log('PARSED:', itin ? 'OK — dest:' + itin.destination : 'FAILED');
+    if (!itin) throw new Error('Format invalide');
+
+    // Add "why this destination" banner before rendering
+    itin._why = itin.why;
+    renderItinerary(itin, itin.destination, origin, dateFrom, dateTo, true);
+  } catch(e) {
+    document.getElementById('genLoading').style.display = 'none';
+    document.getElementById('genError').style.display = 'block';
+    document.getElementById('errorMsg').textContent = '⚠ ' + (e.message || 'Erreur inattendue');
+  }
+}
+
+// ── PAGE NAVIGATION ───────────────────────
+// Init: hide companions if not on accueil  
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.landing-companion').forEach(el => el.style.display = 'block');
+});
+
+function showPage(id) {
+  // Hide all pages
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  // Show target
+  const target = document.getElementById(id);
+  if (target) {
+    target.classList.add('active');
+  }
+  // Update nav active state
+  document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(a => {
+    a.classList.remove('nav-active');
+  });
+  // Close mobile menu
+  document.getElementById('mobileMenu')?.classList.remove('open');
+  // Scroll to top
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  // Special: accueil shows its companion sections too
+  if (id === 'accueil') {
+    document.querySelectorAll('.landing-companion').forEach(el => el.style.display = 'block');
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  } else {
+    document.querySelectorAll('.landing-companion').forEach(el => el.style.display = 'none');
+    // Scroll to the target section with offset for the fixed nav (64px)
+    if (target) {
+      const top = target.getBoundingClientRect().top + window.scrollY - 64;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  }
+
+}
+
+
+
+// ── UPSELL & AUTH ────────────────────────
+// 🔧 Replace with your real Supabase credentials when deploying
+const SUPABASE_URL  = "https://lucbxwxcismnvcdnctau.supabase.co";
+const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx1Y2J4d3hjaXNtbnZjZG5jdGF1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkwMTc3NzAsImV4cCI6MjA5NDU5Mzc3MH0.G17LlW8K-5UDg_QbkJprkZX-oqlTL_RWUTrwIh408yQ";
+
+let currentPlan = 'expedition';
+let currentUser = null;
+let pendingItineraryParams = null;
+
+// Plans config
+const PLANS = {
+  expedition: {
+    name: "L'Expédition",
+    price: "9,90€",
+    priceNum: 990,
+    label: "Jusqu'à 14 jours · Extras locaux · PDF",
+    features: [
+      "Itinéraire complet jusqu'à 14 jours",
+      "Restaurants & adresses locales",
+      "Massages & bien-être",
+      "Pépites & expériences cachées",
+      "Conseils saisonniers détaillés",
+      "Liens de réservation pré-remplis",
+      "Export PDF premium"
+    ]
+  },
+  grand_voyage: {
+    name: "Le Grand Voyage",
+    price: "24,90€",
+    priceNum: 2490,
+    label: "Durée illimitée · 2 versions · Conciergerie",
+    features: [
+      "Itinéraire illimité en durée",
+      "Tout l'Expédition inclus",
+      "2 itinéraires alternatifs générés",
+      "Circuit multi-destinations",
+      "Liens de réservation pré-remplis",
+      "Export PDF premium"
+    ]
+  }
+};
+
+// ── RENDER UPSELL BANNER ──────────────────
+function renderUpsellBanner(params) {
+  pendingItineraryParams = params;
+  return `
+    <div class="upsell-banner">
+      <p class="upsell-tag">✦ Itinéraire gratuit · 5 jours</p>
+      <h3 class="upsell-title">Votre voyage <em>complet</em><br>vous attend</h3>
+      <p class="upsell-sub">Débloquez l'itinéraire intégral avec les vraies adresses locales,<br>les pépites cachées et les conseils d'initiés.</p>
+      <div class="upsell-features">
+        <div class="upsell-feature">Itinéraire jour par jour complet</div>
+        <div class="upsell-feature">Restaurants & adresses locales</div>
+        <div class="upsell-feature">Massages & expériences bien-être</div>
+        <div class="upsell-feature">Pépites & cascades cachées</div>
+        <div class="upsell-feature">Conseils saisonniers détaillés</div>
+        <div class="upsell-feature">Export PDF de l'itinéraire</div>
+      </div>
+      <div class="upsell-btns">
+        <button class="upsell-btn-primary" onclick="openAuth('expedition')">
+          Débloquer l'expédition
+          <span class="upsell-btn-price">9,90€</span>
+        </button>
+        <button class="upsell-btn-secondary" onclick="openAuth('grand_voyage')">
+          Grand Voyage — 24,90€
+        </button>
+      </div>
+      <p class="upsell-note">Paiement sécurisé · Sans abonnement · Sans engagement</p>
+    </div>`;
+}
+
+// ── AUTH MODAL ────────────────────────────
+function openAuth(plan) {
+  currentPlan = plan || 'expedition';
+  const p = PLANS[currentPlan];
+  document.getElementById('modalPlanName').textContent = p.name;
+  document.getElementById('modalPlanPrice').textContent = p.price;
+  document.getElementById('authModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  // Clear errors
+  document.getElementById('authError').classList.remove('show');
+}
+
+function closeAuth() {
+  document.getElementById('authModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function switchAuthTab(tab) {
+  const isSignup = tab === 'signup';
+  document.getElementById('tabSignup').classList.toggle('active', isSignup);
+  document.getElementById('tabLogin').classList.toggle('active', !isSignup);
+  document.getElementById('signupForm').style.display = isSignup ? 'flex' : 'none';
+  document.getElementById('loginForm').style.display = isSignup ? 'none' : 'flex';
+  document.getElementById('authError').classList.remove('show');
+}
+
+function showAuthError(msg) {
+  const el = document.getElementById('authError');
+  el.textContent = msg;
+  el.classList.add('show');
+}
+
+// ── SUPABASE AUTH ─────────────────────────
+// 🔧 These functions call Supabase Auth REST API directly
+// Replace SUPABASE_URL and SUPABASE_ANON with real values
+
+async function signInWithGoogle() {
+  // 🔧 When Supabase is connected:
+  // const { data } = await supabase.auth.signInWithOAuth({ provider: 'google' });
+  // For now: show message
+  showAuthError('Google Sign-In disponible après déploiement Supabase.');
+}
+
+async function handleSignup() {
+  const email = document.getElementById('signupEmail').value.trim();
+  const password = document.getElementById('signupPassword').value;
+  if (!email || !password) { showAuthError('Veuillez remplir tous les champs.'); return; }
+  if (password.length < 8) { showAuthError('Le mot de passe doit faire au moins 8 caractères.'); return; }
+
+  const btn = document.getElementById('signupBtn');
+  btn.disabled = true; btn.textContent = '...';
+
+  try {
+    // 🔧 Real Supabase call:
+    const res = await fetch(`${SUPABASE_URL}/auth/v1/signup`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', 'apikey': SUPABASE_ANON },
+      body: JSON.stringify({ email, password })
+    });
+    const data = await res.json();
+    if (data.error || data.msg) throw new Error((data.error && data.error.message ? data.error.message : data.msg || 'Erreur'));
+    
+    currentUser = data.user;
+    localStorage.setItem('hicsunt_token', data.access_token);
+    closeAuth();
+    proceedToPayment();
+  } catch(e) {
+    showAuthError(e.message || 'Erreur lors de la création du compte.');
+    btn.disabled = false; btn.textContent = 'Créer mon compte';
+  }
+}
+
+async function handleLogin() {
+  const email = document.getElementById('loginEmail').value.trim();
+  const password = document.getElementById('loginPassword').value;
+  if (!email || !password) { showAuthError('Veuillez remplir tous les champs.'); return; }
+
+  const btn = document.getElementById('loginBtn');
+  btn.disabled = true; btn.textContent = '...';
+
+  try {
+    // 🔧 Real Supabase call:
+    const res = await fetch(`${SUPABASE_URL}/auth/v1/token?grant_type=password`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', 'apikey': SUPABASE_ANON },
+      body: JSON.stringify({ email, password })
+    });
+    const data = await res.json();
+    if (data.error || data.error_description) throw new Error(data.error_description || data.error);
+
+    currentUser = data.user;
+    localStorage.setItem('hicsunt_token', data.access_token);
+    closeAuth();
+    proceedToPayment();
+  } catch(e) {
+    showAuthError(e.message || 'Email ou mot de passe incorrect.');
+    btn.disabled = false; btn.textContent = 'Se connecter';
+  }
+}
+
+// ── PAYMENT ───────────────────────────────
+async function proceedToPayment() {
+  const token = localStorage.getItem('hicsunt_token');
+  if (!token) { openAuth(currentPlan); return; }
+
+  const plan = currentPlan;
+  const params = pendingItineraryParams;
+  const successUrl = window.location.href.split('?')[0] + '?session_id={CHECKOUT_SESSION_ID}';
+  const cancelUrl = window.location.href.split('?')[0];
+
+  try {
+    // 🔧 Call create-payment Edge Function
+    const res = await fetch(`${SUPABASE_URL}/functions/v1/create-payment`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({ plan, successUrl, cancelUrl, itineraryParams: params })
+    });
+    const data = await res.json();
+    if (data.error) throw new Error(data.error);
+    
+    // Redirect to Stripe Checkout
+    if (data.url) window.location.href = data.url;
+  } catch(e) {
+    // 🔧 Remove this alert in production — replace with error UI
+    console.warn('Paiement disponible après déploiement Supabase + Stripe:', e.message);
+  }
+}
+
+// ── CHECK SESSION ON LOAD ─────────────────
+// If returning from Stripe with session_id, fetch the generated itinerary
+window.addEventListener('DOMContentLoaded', async () => {
+  const params = new URLSearchParams(window.location.search);
+  const sessionId = params.get('session_id');
+  if (!sessionId) return;
+
+  const token = localStorage.getItem('hicsunt_token');
+  if (!token) return;
+
+  // Show generator page
+  showPage('generateur');
+  document.getElementById('genForm').style.display = 'none';
+  document.getElementById('genLoading').style.display = 'block';
+
+  try {
+    const res = await fetch(`${SUPABASE_URL}/functions/v1/generate-itinerary`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({ sessionId })
+    });
+    const data = await res.json();
+    const itin = parseJSON(data.result || '');
+    if (!itin) throw new Error('Format invalide');
+
+    document.getElementById('genLoading').style.display = 'none';
+    renderItinerary(itin, itin.destination, '', '', '', false);
+
+    // Clean URL
+    window.history.replaceState({}, '', window.location.pathname);
+  } catch(e) {
+    document.getElementById('genLoading').style.display = 'none';
+    document.getElementById('genError').style.display = 'block';
+    document.getElementById('errorMsg').textContent = '⚠ Erreur de chargement — ' + e.message;
+  }
+});
+
+// Close modal on overlay click
+document.addEventListener('DOMContentLoaded', () => {
+  var amEl = document.getElementById('authModal'); if (amEl) amEl.addEventListener('click', function(e) { if (e.target === document.getElementById('authModal')) closeAuth(); });
+});
+
+
+// ── CURRENCY ──────────────────────────────
+// Approximate rates vs EUR — 🔧 update with live rates via API in production
+const RATES = { EUR: 1, USD: 1.08, GBP: 0.85, CHF: 0.96, CAD: 1.47, AUD: 1.65 };
+let currentCurrency = { code: 'EUR', symbol: '€', flag: '🇪🇺', name: 'Euro' };
+
+// Base prices in EUR cents
+const BASE_PRICES = { expedition: 9.90, grand_voyage: 24.90 };
+
+function toggleCurrencyDropdown() {
+  document.getElementById('currencyDropdown').classList.toggle('open');
+}
+
+function setCurrency(code, symbol, flag, name, el) {
+  currentCurrency = { code, symbol, flag, name };
+  document.getElementById('currencyCode').textContent = code;
+  document.getElementById('currencyFlag').textContent = flag;
+  document.getElementById('currencyDropdown').classList.remove('open');
+
+  // Update active state
+  document.querySelectorAll('.currency-option').forEach(o => o.classList.remove('active'));
+  if (el) el.classList.add('active');
+
+  // Update all prices on page
+  updateAllPrices();
+}
+
+function convertPrice(eurPrice) {
+  const rate = RATES[currentCurrency.code] || 1;
+  const converted = eurPrice * rate;
+  // Round nicely
+  if (currentCurrency.code === 'EUR') return `${eurPrice.toFixed(2).replace('.', ',')}${currentCurrency.symbol}`;
+  return `${currentCurrency.symbol}${converted.toFixed(2)}`;
+}
+
+function updateAllPrices() {
+  // Update pricing cards
+  const expPrice = convertPrice(BASE_PRICES.expedition);
+  const gvPrice = convertPrice(BASE_PRICES.grand_voyage);
+
+  document.querySelectorAll('[data-price="expedition"]').forEach(el => el.textContent = expPrice);
+  document.querySelectorAll('[data-price="grand_voyage"]').forEach(el => el.textContent = gvPrice);
+
+  // Update upsell buttons if visible
+  const upsellPrimary = document.querySelector('.upsell-btn-price');
+  if (upsellPrimary) upsellPrimary.textContent = expPrice;
+
+  // Update modal plan price
+  const modalPrice = document.getElementById('modalPlanPrice');
+  if (modalPrice) {
+    const plan = currentPlan || 'expedition';
+    modalPrice.textContent = convertPrice(BASE_PRICES[plan]);
+  }
+
+  // Update pay button
+  const payBtnPrice = document.getElementById('payBtnPrice');
+  if (payBtnPrice) {
+    const plan = currentPlan || 'expedition';
+    payBtnPrice.textContent = convertPrice(BASE_PRICES[plan]);
+  }
+}
+
+// Close dropdown on outside click
+document.addEventListener('click', e => {
+  var csEl = document.getElementById('currencySelector'); if (!csEl || !csEl.contains(e.target)) {
+    var cdEl = document.getElementById('currencyDropdown'); if (cdEl) cdEl.classList.remove('open');
+  }
+});
+
+// Hero CTA - direct click handler
+document.addEventListener('DOMContentLoaded', function() {
+  var btn = document.getElementById('heroGenBtn');
+  if (btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      showPage('generateur');
+    });
+  }
+});
+</script>
+
+
+
+
+<!-- ── AUTH + PAYMENT MODAL ──────────────── -->
+<div class="modal-overlay" id="authModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeAuth()">✕</button>
+
+    <!-- Step indicators -->
+    <div class="modal-steps">
+      <div class="modal-step active" id="step1"><span class="step-num">1</span><span class="step-label">Compte</span></div>
+      <div class="modal-step-line"></div>
+      <div class="modal-step" id="step2"><span class="step-num">2</span><span class="step-label">Paiement</span></div>
+      <div class="modal-step-line"></div>
+      <div class="modal-step" id="step3"><span class="step-num">3</span><span class="step-label">Itinéraire</span></div>
+    </div>
+
+    <div class="modal-header">
+      <div class="modal-logo">Hic Sunt</div>
+      <h3 class="modal-title" id="modalTitle">Débloquer l'itinéraire</h3>
+      <p class="modal-sub" id="modalSub">Créez un compte pour continuer</p>
+    </div>
+
+    <div class="modal-plan" id="modalPlan">
+      <div>
+        <span class="modal-plan-name" id="modalPlanName">L'Expédition</span>
+        <span class="modal-plan-desc" id="modalPlanDesc">Jusqu'à 14 jours · Extras locaux · PDF</span>
+      </div>
+      <span class="modal-plan-price" id="modalPlanPrice">9,90€</span>
+    </div>
+
+    <!-- STEP 1 : Auth -->
+    <div class="modal-body" id="authStep">
+      <button class="auth-google" onclick="signInWithGoogle()">
+        <svg width="16" height="16" viewBox="0 0 18 18"><path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z"/><path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z"/><path fill="#FBBC05" d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z"/><path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z"/></svg>
+        Continuer avec Google
+      </button>
+      <div class="auth-divider"><span>ou</span></div>
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="tabSignup" onclick="switchAuthTab('signup')">Créer un compte</button>
+        <button class="auth-tab" id="tabLogin" onclick="switchAuthTab('login')">Se connecter</button>
+      </div>
+      <div class="auth-error" id="authError"></div>
+      <div class="auth-form" id="signupForm">
+        <div class="auth-field">
+          <label class="auth-label">Email</label>
+          <input class="auth-input" type="email" id="signupEmail" placeholder="votre@email.com"/>
+        </div>
+        <div class="auth-field">
+          <label class="auth-label">Mot de passe</label>
+          <input class="auth-input" type="password" id="signupPassword" placeholder="8 caractères minimum"/>
+        </div>
+        <button class="auth-btn" id="signupBtn" onclick="handleSignup()">Continuer →</button>
+      </div>
+      <div class="auth-form" id="loginForm" style="display:none">
+        <div class="auth-field">
+          <label class="auth-label">Email</label>
+          <input class="auth-input" type="email" id="loginEmail" placeholder="votre@email.com"/>
+        </div>
+        <div class="auth-field">
+          <label class="auth-label">Mot de passe</label>
+          <input class="auth-input" type="password" id="loginPassword" placeholder="Votre mot de passe"/>
+        </div>
+        <button class="auth-btn" id="loginBtn" onclick="handleLogin()">Continuer →</button>
+      </div>
+    </div>
+
+    <!-- STEP 2 : Payment -->
+    <div class="modal-body" id="paymentStep" style="display:none">
+      <div class="auth-error" id="paymentError"></div>
+      <div class="payment-form">
+        <div class="auth-field">
+          <label class="auth-label">Titulaire de la carte</label>
+          <input class="auth-input" type="text" id="cardName" placeholder="Nom Prénom"/>
+        </div>
+        <div class="auth-field">
+          <label class="auth-label">Carte bancaire</label>
+          <div id="stripeCardElement" class="stripe-element"></div>
+        </div>
+      </div>
+      <button class="auth-btn" id="payBtn" onclick="handlePayment()" style="margin-top:20px">
+        Payer <span id="payBtnPrice">9,90€</span>
+      </button>
+      <p class="payment-secure">🔒 Paiement sécurisé par Stripe · Vos données ne transitent pas par nos serveurs</p>
+    </div>
+
+    <!-- STEP 3 : Generating -->
+    <div class="modal-body" id="generatingStep" style="display:none;text-align:center;padding:48px 36px">
+      <div class="loading-ring" style="margin:0 auto 20px"></div>
+      <p class="modal-title" style="font-size:18px;margin-bottom:8px">Génération en cours</p>
+      <p class="modal-sub">Votre itinéraire complet est en cours de composition…</p>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ── PWA SERVICE WORKER + INSTALL BANNER ── -->
+<script>
+// PWA Install Banner
+let deferredPrompt = null;
+
+window.addEventListener('beforeinstallprompt', function(e) {
+  e.preventDefault();
+  deferredPrompt = e;
+  setTimeout(showInstallBanner, 3000);
+});
+
+function showInstallBanner() {
+  if (!deferredPrompt) return;
+  if (sessionStorage.getItem('pwa-dismissed')) return;
+  var banner = document.createElement('div');
+  banner.id = 'pwa-banner';
+  var inner = document.createElement('div');
+  inner.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a1714;color:#faf8f4;padding:16px 20px;display:flex;align-items:center;gap:16px;box-shadow:0 8px 40px rgba(0,0,0,0.3);z-index:9999;font-family:Jost,sans-serif;font-size:12px;font-weight:300;letter-spacing:1px;border-top:1px solid rgba(158,124,63,0.4);max-width:calc(100vw - 48px)';
+  inner.innerHTML = '<span style="flex:1">Installer <strong style="font-weight:500">Hic Sunt</strong> sur votre écran d\'accueil</span>';
+  var btn = document.createElement('button');
+  btn.textContent = 'Installer';
+  btn.style.cssText = 'background:#9e7c3f;color:#faf8f4;border:none;padding:8px 16px;font-family:Jost,sans-serif;font-size:10px;font-weight:400;letter-spacing:2px;text-transform:uppercase;cursor:pointer';
+  btn.onclick = installPWA;
+  var close = document.createElement('button');
+  close.textContent = '✕';
+  close.style.cssText = 'background:transparent;color:rgba(250,248,244,0.4);border:none;font-size:16px;cursor:pointer;padding:0 4px';
+  close.onclick = dismissInstallBanner;
+  inner.appendChild(btn);
+  inner.appendChild(close);
+  banner.appendChild(inner);
+  document.body.appendChild(banner);
+}
+
+function installPWA() {
+  if (!deferredPrompt) return;
+  deferredPrompt.prompt();
+  deferredPrompt.userChoice.then(function() {
+    deferredPrompt = null;
+    dismissInstallBanner();
+  });
+}
+
+function dismissInstallBanner() {
+  sessionStorage.setItem('pwa-dismissed', '1');
+  var b = document.getElementById('pwa-banner');
+  if (b) b.remove();
+}
+
+// iOS install tip
+window.addEventListener('DOMContentLoaded', function() {
+  var isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  var isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+  if (isIOS && !isStandalone && !sessionStorage.getItem('pwa-dismissed')) {
+    setTimeout(function() {
+      var banner = document.createElement('div');
+      banner.id = 'pwa-banner';
+      var inner = document.createElement('div');
+      inner.style.cssText = 'position:fixed;bottom:0;left:0;right:0;background:#1a1714;color:#faf8f4;padding:20px 20px 36px;text-align:center;box-shadow:0 -4px 40px rgba(0,0,0,0.4);z-index:9999;font-family:Jost,sans-serif;border-top:1px solid rgba(158,124,63,0.4)';
+      var closeBtn = document.createElement('button');
+      closeBtn.textContent = '✕';
+      closeBtn.style.cssText = 'position:absolute;top:12px;right:16px;background:transparent;color:rgba(250,248,244,0.4);border:none;font-size:16px;cursor:pointer';
+      closeBtn.onclick = dismissInstallBanner;
+      var label = document.createElement('p');
+      label.textContent = "Installer l'application";
+      label.style.cssText = 'font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#9e7c3f;margin-bottom:8px';
+      var text = document.createElement('p');
+      text.innerHTML = "Appuyez sur <strong style='color:#faf8f4'>Partager</strong> puis <strong style='color:#faf8f4'>Sur l'écran d'accueil</strong>";
+      text.style.cssText = 'font-size:13px;font-weight:300;line-height:1.6;color:rgba(250,248,244,0.8)';
+      inner.appendChild(closeBtn);
+      inner.appendChild(label);
+      inner.appendChild(text);
+      banner.appendChild(inner);
+      document.body.appendChild(banner);
+    }, 4000);
+  }
+});
+</script>
+
+</body>
+</html>
