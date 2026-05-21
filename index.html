@@ -536,21 +536,7 @@ textarea { resize: none; height: 56px; }
 }
 .tag:hover { border-color: var(--gold-lt); color: var(--gold); }
 .tag.selected { background: var(--ink); color: var(--ivory); border-color: var(--ink); }
-.btn-generate {
-  width: 100%;
-  padding: 18px;
-  background: var(--ink);
-  color: var(--ivory);
-  border: none;
-  font-family: 'Jost', sans-serif;
-  font-weight: 400;
-  font-size: 10px;
-  letter-spacing: 6px;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: background 0.25s;
-  margin-top: 36px;
-}
+
 .btn-generate:hover { background: var(--gold); }
 .btn-generate:disabled { background: var(--border); color: var(--muted); cursor: not-allowed; }
 
@@ -2744,10 +2730,10 @@ footer {
 .dream-input { width: 100%; padding: 16px 0; border: none; border-bottom: 1px solid #e0d8cc; background: transparent; font-family: 'Bodoni Moda', serif; font-size: 17px; font-style: italic; color: #1a1714; outline: none; resize: none; transition: border-color .3s; min-height: 80px; line-height: 1.6; }
 .dream-input:focus { border-bottom-color: #9e7c3f; }
 .dream-input::placeholder { color: #d4c9a8; font-style: italic; }
-.btn-generate { display: block; margin: 56px auto 0; padding: 16px 56px; background: #1a1714; color: #faf8f4; border: none; font-family: 'Jost', sans-serif; font-size: 9px; letter-spacing: 6px; text-transform: uppercase; cursor: pointer; position: relative; overflow: hidden; transition: color .3s; }
-.btn-generate::before { content: ''; position: absolute; inset: 0; background: #9e7c3f; transform: translateX(-100%); transition: transform .4s ease; z-index: 0; }
-.btn-generate:hover::before { transform: translateX(0); }
-.btn-generate span { position: relative; z-index: 1; }
+
+
+
+
 @media (max-width: 600px) {
   .gen-inner { padding: 48px 20px; }
   .form-grid { grid-template-columns: 1fr; }
@@ -2865,10 +2851,10 @@ footer {
 .dream-input { width: 100%; padding: 16px 0; border: none !important; border-bottom: 1px solid #e0d8cc !important; background: transparent; font-family: 'Bodoni Moda',serif; font-size: 17px; font-style: italic; color: #1a1714; outline: none; resize: none; min-height: 80px; line-height: 1.6; }
 .dream-input:focus { border-bottom-color: #9e7c3f !important; }
 .dream-input::placeholder { color: #d4c9a8; font-style: italic; }
-.btn-generate { display: block !important; margin: 56px auto 0 !important; padding: 16px 56px !important; background: #1a1714; color: #faf8f4; border: none; font-family: 'Jost',sans-serif; font-size: 9px; letter-spacing: 6px; text-transform: uppercase; cursor: pointer; position: relative; overflow: hidden; width: auto !important; }
-.btn-generate::before { content: ''; position: absolute; inset: 0; background: #9e7c3f; transform: translateX(-100%); transition: transform .4s ease; z-index: 0; }
-.btn-generate:hover::before { transform: translateX(0); }
-.btn-generate span { position: relative; z-index: 1; }
+
+
+
+
 @media (max-width: 600px) {
   .gen-inner { padding: 48px 20px; }
   .form-grid { grid-template-columns: 1fr; }
@@ -2876,6 +2862,40 @@ footer {
   .occasions-grid { grid-template-columns: 1fr 1fr; }
 }
 /* ════════════════════════════════════════════ */
+
+
+/* ── GENERATE BUTTON ─────────────────────── */
+.btn-generate {
+  display: inline-block;
+  margin: 48px auto 0;
+  padding: 16px 56px;
+  background: #1a1714;
+  color: #faf8f4;
+  border: none;
+  font-family: 'Jost', sans-serif;
+  font-size: 9px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  width: auto;
+}
+.btn-generate::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #9e7c3f;
+  transform: translateX(-100%);
+  transition: transform .4s ease;
+  z-index: 0;
+}
+.btn-generate:hover::before { transform: translateX(0); }
+.btn-generate span { position: relative; z-index: 1; }
+.gen-btn-wrap {
+  text-align: center;
+  margin-top: 48px;
+}
 
 </style>
 </head>
@@ -2920,7 +2940,7 @@ footer {
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#" onclick="showPage('generateur');return false" onclick="toggleMenu()">Générateur</a>
+  <a href="#" onclick="showPage('generateur');toggleMenu();return false">Générateur</a>
   <a href="#" onclick="showPage('tarifs');return false" onclick="toggleMenu()">Tarifs</a>
   <a href="#" onclick="showPage('apropos');return false" onclick="toggleMenu()">À propos</a>
   <a href="#" onclick="showPage('contact');return false" onclick="toggleMenu()">Contact</a>
@@ -3063,7 +3083,7 @@ footer {
             <textarea id="notes" class="dream-input" rows="3" placeholder="Une semaine à surfer au lever du soleil, dîners en bord de mer, une nuit dans un hôtel perché dans la jungle…"></textarea>
           </div>
         </div>
-        <button class="btn-generate" id="genBtn" onclick="generate()"><span>Composer mon itinéraire &nbsp;✦</span></button>
+        <div class="gen-btn-wrap"><button class="btn-generate" id="genBtn" onclick="generate()"><span>Composer mon itinéraire &nbsp;✦</span></button></div>
       </div>
     </div>
 
@@ -3111,7 +3131,7 @@ footer {
             <textarea id="sExclude" placeholder="Pas de plages, éviter la chaleur extrême, pas de grandes villes…"></textarea>
           </div>
         </div>
-        <button class="btn-generate" id="generateSurpriseBtn" onclick="generateSurprise()">Révéler ma destination</button>
+        <div class="gen-btn-wrap"><button class="btn-generate" id="generateSurpriseBtn" onclick="generateSurprise()"><span>Révéler ma destination &nbsp;✦</span></button></div>
       </div>
     </div>
 
@@ -3500,8 +3520,8 @@ function updateDateLabels() {
 }
 
 function toggleMenu() {
-  document.getElementById('mobileMenu').classList.toggle('open');
-  document.querySelector('.nav-hamburger').classList.toggle('open');
+  document.getElementById('mobileMenu')?.classList.toggle('open');
+  document.querySelector('.nav-hamburger')?.classList.toggle('open');
 }
 
 function showForm() {
@@ -4929,11 +4949,16 @@ function showAuthError(msg) {
 // 🔧 These functions call Supabase Auth REST API directly
 // Replace SUPABASE_URL and SUPABASE_ANON with real values
 
-async function signInWithGoogle() {
-  // 🔧 When Supabase is connected:
-  // const { data } = await supabase.auth.signInWithOAuth({ provider: 'google' });
-  // For now: show message
-  showAuthError('Google Sign-In disponible après déploiement Supabase.');
+async function async signInWithGoogle() {
+  try {
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: { redirectTo: window.location.origin }
+    });
+    if (error) throw error;
+  } catch(e) {
+    showAuthError('Erreur Google : ' + (e.message || 'Veuillez réessayer'));
+  }
 }
 
 async function handleSignup() {
@@ -5188,41 +5213,13 @@ document.addEventListener('click', e => {
 
 // Close modal on backdrop click or ESC
 (function() {
-  function setupModal() {
-    var overlay = document.getElementById('authModal');
-    if (overlay) {
-      overlay.addEventListener('click', function(e) {
-        if (e.target === overlay) closeAuth();
-      });
-    }
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closeAuth();
-    });
-  }
-  if (document.readyState === 'loading') {
+    if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', setupModal);
   } else {
     setupModal();
   }
 })();
 // ── FOOTER LANG/CURRENCY ──────────────────
-function setLang(code, flag, label) {
-  document.getElementById('footerLangFlag').textContent = flag;
-  document.getElementById('footerLangCode').textContent = label;
-  document.getElementById('footerMenu').classList.remove('open');
-  document.querySelectorAll('#footerMenu .footer-sel-opt').forEach(function(el) {
-    if (el.onclick && el.onclick.toString().includes("setLang")) {
-      el.classList.toggle('active', el.onclick.toString().includes("'" + code + "'"));
-    }
-  });
-  window._currentLangCode = code;
-  if (typeof setLanguage === 'function') setLanguage(code);
-}
-function setFooterCurr(code, symbol, flag) {
-  document.getElementById('footerCurrCode').textContent = code;
-  document.getElementById('footerMenu').classList.remove('open');
-  if (typeof setCurrency === 'function') setCurrency(code, symbol, flag, code);
-}
 // Close footer menu on outside click
 document.addEventListener('click', function(e) {
   var sel = document.getElementById('footerSelector');
