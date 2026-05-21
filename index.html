@@ -2668,6 +2668,215 @@ footer {
 .combined-option-sub { font-size:9px;color:var(--muted);letter-spacing:1px; }
 .combined-divider { height:1px;background:var(--border);margin:4px 0; }
 
+
+/* ══ LUXURY FORM — VALIDATED DESIGN ══════════════ */
+.gen-inner { max-width: 900px; margin: 0 auto; padding: 60px 48px; }
+.gen-header { margin-bottom: 56px; }
+.gen-header-eyebrow {
+  font-size: 9px; letter-spacing: 7px; text-transform: uppercase;
+  color: #9e7c3f; margin-bottom: 20px;
+  display: flex; align-items: center; gap: 14px;
+}
+.gen-header-eyebrow::before { content: ''; width: 36px; height: 1px; background: rgba(158,124,63,0.4); }
+.gen-header h2 {
+  font-family: 'Bodoni Moda', serif; font-size: clamp(36px,5vw,52px);
+  font-weight: 900; line-height: .9; letter-spacing: -2px; color: #1a1714; margin-bottom: 10px;
+}
+.gen-header h2 em { font-style: italic; font-weight: 400; color: #9e7c3f; }
+.gen-header-sub { font-family: 'Bodoni Moda', serif; font-size: 16px; font-style: italic; color: #8c8278; }
+.gen-tabs { display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 56px; }
+.gen-tab {
+  padding: 18px; text-align: center; font-size: 9px; letter-spacing: 5px;
+  text-transform: uppercase; cursor: pointer; border: 1px solid #e0d8cc;
+  color: #8c8278; transition: all .2s; background: transparent; font-family: 'Jost', sans-serif;
+}
+.gen-tab:first-child { border-right: none; }
+.gen-tab.active { background: #1a1714; color: #faf8f4; border-color: #1a1714; }
+.gen-tab:hover:not(.active) { color: #9e7c3f; border-color: rgba(158,124,63,.3); }
+.form-card { background: transparent; border: none; padding: 0; box-shadow: none; }
+.form-card::before { display: none; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 56px; }
+.form-group { margin-bottom: 44px; }
+.form-group.full { grid-column: 1 / -1; }
+.form-group label {
+  display: block; font-size: 8px; letter-spacing: 5px; text-transform: uppercase;
+  color: #9e7c3f; margin-bottom: 10px;
+}
+.form-group input[type="text"],
+.form-group input[type="date"] {
+  width: 100%; padding: 0 0 12px; border: none; border-bottom: 1px solid #e0d8cc;
+  background: transparent; font-family: 'Bodoni Moda', serif; font-size: 22px;
+  font-style: italic; color: #1a1714; outline: none; transition: border-color .3s;
+}
+.form-group input[type="text"]::placeholder { color: #d4c9a8; font-style: italic; }
+.form-group input[type="text"]:focus,
+.form-group input[type="date"]:focus { border-bottom-color: #9e7c3f; }
+.form-group input[type="date"] { font-style: normal; font-size: 18px; color-scheme: light; }
+.form-group select { display: none; }
+.budget-opts { display: flex; border: 1px solid #e0d8cc; }
+.budget-opt {
+  flex: 1; padding: 14px 8px; text-align: center; font-size: 9px; letter-spacing: 2px;
+  text-transform: uppercase; color: #8c8278; cursor: pointer;
+  border-right: 1px solid #e0d8cc; transition: all .2s; user-select: none;
+  font-family: 'Jost', sans-serif;
+}
+.budget-opt:last-child { border-right: none; }
+.budget-opt:hover { color: #9e7c3f; background: rgba(158,124,63,.04); }
+.budget-opt.active { background: #1a1714; color: #faf8f4; border-color: #1a1714; }
+.form-section-label { font-size: 8px; letter-spacing: 5px; text-transform: uppercase; color: #9e7c3f; margin-bottom: 14px; display: block; }
+.form-sep { height: 1px; background: linear-gradient(to right, transparent, rgba(158,124,63,.2), transparent); margin: 44px 0; grid-column: 1 / -1; }
+.tags-row { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 40px; }
+.tag { padding: 9px 16px; border: 1px solid #e0d8cc; font-family: 'Jost', sans-serif; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: #8c8278; cursor: pointer; transition: all .2s; user-select: none; background: transparent; }
+.tag:hover { border-color: rgba(158,124,63,.4); color: #9e7c3f; }
+.tag.active { background: #1a1714; border-color: #1a1714; color: #faf8f4; }
+.occasions-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
+.occasion-card { padding: 16px 18px; border: 1px solid #e0d8cc; cursor: pointer; transition: all .2s; position: relative; background: transparent; text-align: left; }
+.occasion-card:hover { border-color: rgba(158,124,63,.4); background: rgba(158,124,63,.03); }
+.occasion-card.selected { border-color: #9e7c3f; background: rgba(158,124,63,.04); }
+.occasion-card.selected::after { content: '✦'; position: absolute; top: 10px; right: 12px; font-size: 10px; color: #9e7c3f; }
+.occasion-emoji { font-size: 18px; display: block; margin-bottom: 6px; }
+.occasion-label { font-family: 'Bodoni Moda', serif; font-size: 13px; font-weight: 700; color: #1a1714; display: block; margin-bottom: 3px; }
+.occasion-desc { font-size: 10px; color: #8c8278; line-height: 1.4; }
+.dream-field { margin-top: 0; }
+.dream-label { font-family: 'Bodoni Moda', serif; font-size: 22px; font-weight: 700; color: #1a1714; margin-bottom: 4px; display: block; }
+.dream-label em { font-weight: 400; font-style: italic; color: #9e7c3f; }
+.dream-sub { font-size: 9px; color: #8c8278; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px; display: block; }
+.dream-input { width: 100%; padding: 16px 0; border: none; border-bottom: 1px solid #e0d8cc; background: transparent; font-family: 'Bodoni Moda', serif; font-size: 17px; font-style: italic; color: #1a1714; outline: none; resize: none; transition: border-color .3s; min-height: 80px; line-height: 1.6; }
+.dream-input:focus { border-bottom-color: #9e7c3f; }
+.dream-input::placeholder { color: #d4c9a8; font-style: italic; }
+.btn-generate { display: block; margin: 56px auto 0; padding: 16px 56px; background: #1a1714; color: #faf8f4; border: none; font-family: 'Jost', sans-serif; font-size: 9px; letter-spacing: 6px; text-transform: uppercase; cursor: pointer; position: relative; overflow: hidden; transition: color .3s; }
+.btn-generate::before { content: ''; position: absolute; inset: 0; background: #9e7c3f; transform: translateX(-100%); transition: transform .4s ease; z-index: 0; }
+.btn-generate:hover::before { transform: translateX(0); }
+.btn-generate span { position: relative; z-index: 1; }
+@media (max-width: 600px) {
+  .gen-inner { padding: 48px 20px; }
+  .form-grid { grid-template-columns: 1fr; }
+  .budget-opts { flex-wrap: wrap; }
+  .occasions-grid { grid-template-columns: 1fr 1fr; }
+}
+/* ════════════════════════════════════════════════ */
+
+
+/* ── FOOTER LANG/CURRENCY ─────────────────── */
+.footer-selector { position: relative; display: inline-flex; }
+.footer-selector-btn {
+  display: flex; align-items: center; gap: 6px;
+  padding: 5px 10px; background: transparent;
+  border: 1px solid rgba(255,255,255,0.12);
+  font-family: 'Jost',sans-serif; font-size: 9px;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(250,248,244,0.35); cursor: pointer;
+  transition: all .2s;
+}
+.footer-selector-btn:hover { border-color: rgba(158,124,63,.4); color: rgba(158,124,63,.8); }
+.footer-selector-menu {
+  display: none; position: absolute; bottom: calc(100% + 8px); left: 0;
+  background: #1a1714; border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 -8px 32px rgba(0,0,0,.3); z-index: 200; min-width: 180px;
+}
+.footer-selector-menu.open { display: block; }
+.footer-sel-section {
+  font-size: 8px; letter-spacing: 4px; text-transform: uppercase;
+  color: rgba(158,124,63,.7); padding: 10px 14px 5px; display: block;
+}
+.footer-sel-opt {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 14px; cursor: pointer; border: none;
+  background: transparent; width: 100%; text-align: left;
+  font-family: 'Jost',sans-serif; transition: background .15s;
+}
+.footer-sel-opt:hover { background: rgba(158,124,63,.08); }
+.footer-sel-opt.active { background: rgba(158,124,63,.1); }
+.footer-sel-opt span:first-child { font-size: 14px; }
+.footer-sel-opt .opt-name { font-size: 11px; color: rgba(250,248,244,.7); flex: 1; }
+.footer-sel-opt .opt-code { font-size: 9px; color: rgba(250,248,244,.3); letter-spacing: 1px; }
+.footer-sel-divider { height: 1px; background: rgba(255,255,255,.06); margin: 4px 0; }
+
+
+/* ══ LUXURY FORM OVERRIDES ══════════════════ */
+.gen-inner { max-width: 900px; margin: 0 auto; padding: 60px 48px; }
+.gen-header { margin-bottom: 56px; border-bottom: none; padding-bottom: 0; }
+.gen-header-eyebrow {
+  font-size: 9px; letter-spacing: 7px; text-transform: uppercase;
+  color: #9e7c3f; margin-bottom: 20px;
+  display: flex; align-items: center; gap: 14px;
+}
+.gen-header-eyebrow::before { content: ''; width: 36px; height: 1px; background: rgba(158,124,63,0.4); }
+.gen-header h2 {
+  font-family: 'Bodoni Moda', serif; font-size: clamp(36px,5vw,52px);
+  font-weight: 900; line-height: .9; letter-spacing: -2px; color: #1a1714; margin-bottom: 10px;
+}
+.gen-header h2 em { font-style: italic; font-weight: 400; color: #9e7c3f; }
+.gen-header-sub { font-family: 'Bodoni Moda', serif; font-size: 16px; font-style: italic; color: #8c8278; }
+.gen-tabs { display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 56px; border-radius: 0; }
+.gen-tab {
+  padding: 18px; text-align: center; font-size: 9px; letter-spacing: 5px;
+  text-transform: uppercase; cursor: pointer; border: 1px solid #e0d8cc;
+  color: #8c8278; transition: all .2s; background: transparent; font-family: 'Jost', sans-serif;
+  border-radius: 0;
+}
+.gen-tab:first-child { border-right: none; }
+.gen-tab.active { background: #1a1714 !important; color: #faf8f4 !important; border-color: #1a1714; }
+.gen-tab:hover:not(.active) { color: #9e7c3f; border-color: rgba(158,124,63,.3); }
+.form-card { background: transparent !important; border: none !important; padding: 0 !important; box-shadow: none !important; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 56px; }
+.form-group { margin-bottom: 44px; }
+.form-group.full { grid-column: 1 / -1; }
+.form-group label {
+  display: block; font-size: 8px; letter-spacing: 5px; text-transform: uppercase;
+  color: #9e7c3f !important; margin-bottom: 10px;
+}
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group select,
+.form-group textarea {
+  width: 100%; padding: 0 0 12px; border: none !important; border-bottom: 1px solid #e0d8cc !important;
+  background: transparent !important; font-family: 'Bodoni Moda', serif; font-size: 22px;
+  font-style: italic; color: #1a1714; outline: none; transition: border-color .3s;
+  box-shadow: none !important; border-radius: 0;
+}
+.form-group input[type="text"]::placeholder,
+.form-group textarea::placeholder { color: #d4c9a8; font-style: italic; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-bottom-color: #9e7c3f !important; }
+.form-group input[type="date"] { font-style: normal; font-size: 18px; color-scheme: light; }
+.form-group select { display: none; }
+.form-sep { height: 1px; background: linear-gradient(to right, transparent, rgba(158,124,63,.2), transparent); margin: 44px 0; grid-column: 1 / -1; }
+.form-section-label { font-size: 8px; letter-spacing: 5px; text-transform: uppercase; color: #9e7c3f; margin-bottom: 14px; display: block; }
+.tags-row { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 40px; }
+.tag { padding: 9px 16px; border: 1px solid #e0d8cc; font-family: 'Jost',sans-serif; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: #8c8278; cursor: pointer; transition: all .2s; user-select: none; background: transparent; border-radius: 0; }
+.tag:hover { border-color: rgba(158,124,63,.4); color: #9e7c3f; }
+.tag.active { background: #1a1714; border-color: #1a1714; color: #faf8f4; }
+.budget-opts { display: flex; border: 1px solid #e0d8cc; margin-bottom: 44px; }
+.budget-opt { flex: 1; padding: 14px 8px; text-align: center; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: #8c8278; cursor: pointer; border-right: 1px solid #e0d8cc; transition: all .2s; user-select: none; font-family: 'Jost',sans-serif; }
+.budget-opt:last-child { border-right: none; }
+.budget-opt:hover { color: #9e7c3f; background: rgba(158,124,63,.04); }
+.budget-opt.active { background: #1a1714; color: #faf8f4; border-color: #1a1714; }
+.occasions-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
+.occasion-card { padding: 16px 18px; border: 1px solid #e0d8cc; cursor: pointer; transition: all .2s; position: relative; background: transparent; text-align: left; border-radius: 0; }
+.occasion-card:hover { border-color: rgba(158,124,63,.4); background: rgba(158,124,63,.03); }
+.occasion-card.selected { border-color: #9e7c3f; background: rgba(158,124,63,.04); }
+.occasion-card.selected::after { content: '✦'; position: absolute; top: 10px; right: 12px; font-size: 10px; color: #9e7c3f; }
+.occasion-emoji { font-size: 18px; display: block; margin-bottom: 6px; }
+.occasion-label { font-family: 'Bodoni Moda',serif; font-size: 13px; font-weight: 700; color: #1a1714; display: block; margin-bottom: 3px; }
+.occasion-desc { font-size: 10px; color: #8c8278; line-height: 1.4; }
+.dream-label { font-family: 'Bodoni Moda',serif; font-size: 22px; font-weight: 700; color: #1a1714; margin-bottom: 4px; display: block; }
+.dream-label em { font-weight: 400; font-style: italic; color: #9e7c3f; }
+.dream-sub { font-size: 9px; color: #8c8278; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px; display: block; }
+.dream-input { width: 100%; padding: 16px 0; border: none !important; border-bottom: 1px solid #e0d8cc !important; background: transparent; font-family: 'Bodoni Moda',serif; font-size: 17px; font-style: italic; color: #1a1714; outline: none; resize: none; min-height: 80px; line-height: 1.6; }
+.dream-input:focus { border-bottom-color: #9e7c3f !important; }
+.dream-input::placeholder { color: #d4c9a8; font-style: italic; }
+.btn-generate { display: block !important; margin: 56px auto 0 !important; padding: 16px 56px !important; background: #1a1714; color: #faf8f4; border: none; font-family: 'Jost',sans-serif; font-size: 9px; letter-spacing: 6px; text-transform: uppercase; cursor: pointer; position: relative; overflow: hidden; width: auto !important; }
+.btn-generate::before { content: ''; position: absolute; inset: 0; background: #9e7c3f; transform: translateX(-100%); transition: transform .4s ease; z-index: 0; }
+.btn-generate:hover::before { transform: translateX(0); }
+.btn-generate span { position: relative; z-index: 1; }
+@media (max-width: 600px) {
+  .gen-inner { padding: 48px 20px; }
+  .form-grid { grid-template-columns: 1fr; }
+  .budget-opts { flex-wrap: wrap; }
+  .occasions-grid { grid-template-columns: 1fr 1fr; }
+}
+/* ════════════════════════════════════════════ */
+
 </style>
 </head>
 <body>
@@ -2723,7 +2932,7 @@ footer {
   <h1 class="hero-title">Beyond<em>the Known</em></h1>
   <p class="hero-sub">Des itinéraires sur mesure, aussi uniques que vos envies — là où la carte s'arrête, votre voyage commence.</p>
   <div class="hero-btns">
-    <button onclick="showPage('generateur')" class="btn-primary">Créer mon itinéraire</button>
+    <a href="javascript:void(0)" class="btn-primary" id="heroGenBtn" style="display:inline-block;cursor:pointer;" onclick="event.preventDefault();document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active')});document.getElementById('generateur').classList.add('active');window.scrollTo(0,0);">Créer mon itinéraire</a>
     
   </div>
   <div class="hero-scroll">
@@ -2789,11 +2998,11 @@ footer {
 <!-- GENERATOR -->
 <section id="generateur" class="page">
   <div class="gen-inner">
-    <div class="gen-header">
-      <p class="section-eyebrow">Générateur d'itinéraires</p>
-      <h2 class="section-title">Composez votre<br /><em>expédition</em></h2>
+        <div class="gen-header">
+      <p class="gen-header-eyebrow">Générateur d'itinéraires</p>
+      <h2>Composez votre<br><em>expédition</em></h2>
+      <p class="gen-header-sub">Destination, dates, envies — votre voyage sur mesure.</p>
     </div>
-
     <!-- TABS -->
     <div class="gen-tabs">
       <button class="gen-tab active" id="tabKnown" onclick="switchTab('known')">Je sais où je vais</button>
@@ -2821,14 +3030,14 @@ footer {
             <input type="date" id="dateTo"/>
           </div>
           <div class="form-group">
-            <label>Budget</label>
-            <select id="budget">
-              <option value="petit">Petit budget</option>
-              <option value="moyen" selected>Budget moyen</option>
-              <option value="confortable">Confortable</option>
-              <option value="luxe">Luxe</option>
-            </select>
-          </div>
+            <label id="labelBudget">Budget</label>
+            <div class="budget-opts" id="budgetOptions">
+              <div class="budget-opt" onclick="selectBudget(this,'économique')">Économique</div>
+              <div class="budget-opt active" onclick="selectBudget(this,'confortable')">Confortable</div>
+              <div class="budget-opt" onclick="selectBudget(this,'luxe')">Luxe</div>
+              <div class="budget-opt" onclick="selectBudget(this,'ultra-luxe')">Ultra luxe</div>
+            </div>
+            <input type="hidden" id="budget" value="confortable">
           <div class="form-group full">
             <label>Style de voyage</label>
             <div class="tags-row" id="stylesTags"></div>
@@ -2854,7 +3063,7 @@ footer {
             <textarea id="notes" class="dream-input" rows="3" placeholder="Une semaine à surfer au lever du soleil, dîners en bord de mer, une nuit dans un hôtel perché dans la jungle…"></textarea>
           </div>
         </div>
-        <button class="btn-generate" id="generateBtn" onclick="generate()">Composer mon itinéraire</button>
+        <button class="btn-generate" id="genBtn" onclick="generate()"><span>Composer mon itinéraire &nbsp;✦</span></button>
       </div>
     </div>
 
@@ -3135,10 +3344,36 @@ footer {
   </div>
   <div class="footer-bottom">
     <p class="footer-copy">© 2025 Hic Sunt · Tous droits réservés</p>
-    <div class="footer-legal">
-      <a href="#">Mentions légales</a>
-      <a href="#">CGU</a>
-      <a href="#">Confidentialité</a>
+    <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+      <div class="footer-selector" id="footerSelector">
+        <button class="footer-selector-btn" onclick="document.getElementById('footerMenu').classList.toggle('open');event.stopPropagation()">
+          <span id="footerLangFlag">🇫🇷</span>
+          <span id="footerLangCode">FR</span>
+          <span style="opacity:.3;margin:0 2px">·</span>
+          <span id="footerCurrCode">EUR</span>
+          <span style="font-size:7px;opacity:.3;margin-left:1px">▼</span>
+        </button>
+        <div class="footer-selector-menu" id="footerMenu">
+          <span class="footer-sel-section">Langue</span>
+          <button class="footer-sel-opt active" onclick="setLang('fr','🇫🇷','FR')"><span>🇫🇷</span><span class="opt-name">Français</span></button>
+          <button class="footer-sel-opt" onclick="setLang('en','🇬🇧','EN')"><span>🇬🇧</span><span class="opt-name">English</span></button>
+          <button class="footer-sel-opt" onclick="setLang('es','🇪🇸','ES')"><span>🇪🇸</span><span class="opt-name">Español</span></button>
+          <button class="footer-sel-opt" onclick="setLang('de','🇩🇪','DE')"><span>🇩🇪</span><span class="opt-name">Deutsch</span></button>
+          <div class="footer-sel-divider"></div>
+          <span class="footer-sel-section">Devise</span>
+          <button class="footer-sel-opt active" onclick="setFooterCurr('EUR','€','🇪🇺')"><span>🇪🇺</span><span class="opt-name">Euro</span><span class="opt-code">EUR</span></button>
+          <button class="footer-sel-opt" onclick="setFooterCurr('USD','$','🇺🇸')"><span>🇺🇸</span><span class="opt-name">US Dollar</span><span class="opt-code">USD</span></button>
+          <button class="footer-sel-opt" onclick="setFooterCurr('GBP','£','🇬🇧')"><span>🇬🇧</span><span class="opt-name">Pound</span><span class="opt-code">GBP</span></button>
+          <button class="footer-sel-opt" onclick="setFooterCurr('CHF','CHF','🇨🇭')"><span>🇨🇭</span><span class="opt-name">Swiss Franc</span><span class="opt-code">CHF</span></button>
+          <button class="footer-sel-opt" onclick="setFooterCurr('CAD','CA$','🇨🇦')"><span>🇨🇦</span><span class="opt-name">CA Dollar</span><span class="opt-code">CAD</span></button>
+          <button class="footer-sel-opt" onclick="setFooterCurr('AUD','A$','🇦🇺')"><span>🇦🇺</span><span class="opt-name">AU Dollar</span><span class="opt-code">AUD</span></button>
+        </div>
+      </div>
+      <div class="footer-legal">
+        <a href="#">Mentions légales</a>
+        <a href="#">CGU</a>
+        <a href="#">Confidentialité</a>
+      </div>
     </div>
   </div>
 </footer>
@@ -3337,14 +3572,29 @@ function parseJSON(text) {
 function flightUrl(origin, dest, from, to) {
   return `https://www.skyscanner.fr/transport/vols/${encodeURIComponent(origin||'Paris')}/${encodeURIComponent(dest.split(',')[0])}/${(from||'').replace(/-/g,'')}/${(to||'').replace(/-/g,'')}/?affilid=${AFF.skyscanner}`;
 }
-function hotelUrl(dest, from, to) {
-  return `https://www.booking.com/searchresults.fr.html?ss=${encodeURIComponent(dest)}&checkin=${from||''}&checkout=${to||''}&aid=${AFF.booking}`;
+function hotelUrl(dest, from, to, hotelName) {
+  const search = hotelName ? hotelName + ' ' + dest : dest;
+  return `https://www.booking.com/searchresults.fr.html?ss=${encodeURIComponent(search)}&checkin=${from||''}&checkout=${to||''}&aid=${AFF.booking}`;
 }
 function airbnbUrl(dest, from, to) {
   return `https://www.airbnb.fr/s/${encodeURIComponent(dest)}/homes?checkin=${from||''}&checkout=${to||''}`;
 }
-function gygUrl(q) {
+function gygUrl(dest, activityName) {
+  const q = activityName ? activityName + ' ' + dest : dest;
   return `https://www.getyourguide.fr/s/?q=${encodeURIComponent(q)}&partner_id=${AFF.gyg}`;
+}
+function viatorUrl(dest, activityName) {
+  const q = activityName ? activityName + ' ' + dest : dest;
+  return `https://www.viator.com/fr-FR/search?text=${encodeURIComponent(q)}`;
+}
+function mapsUrl(name, dest) {
+  return `https://www.google.com/maps/search/${encodeURIComponent(name + ' ' + dest)}`;
+}
+
+function selectBudget(el, val) {
+  document.querySelectorAll('.budget-opt').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('budget').value = val;
 }
 
 // ── GENERATE ──────────────────────────────
@@ -4654,7 +4904,8 @@ function openAuth(plan) {
 }
 
 function closeAuth() {
-  document.getElementById('authModal').classList.remove('open');
+  const modal = document.getElementById('authModal');
+  if (modal) modal.classList.remove('open');
   document.body.style.overflow = '';
 }
 
@@ -4934,6 +5185,52 @@ document.addEventListener('click', e => {
   }
 });
 
+// Close modal on backdrop click or ESC
+(function() {
+  function setupModal() {
+    var overlay = document.getElementById('authModal');
+    if (overlay) {
+      overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) closeAuth();
+      });
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeAuth();
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupModal);
+  } else {
+    setupModal();
+  }
+})();
+// ── FOOTER LANG/CURRENCY ──────────────────
+function setLang(code, flag, label) {
+  document.getElementById('footerLangFlag').textContent = flag;
+  document.getElementById('footerLangCode').textContent = label;
+  document.getElementById('footerMenu').classList.remove('open');
+  document.querySelectorAll('#footerMenu .footer-sel-opt').forEach(function(el) {
+    if (el.onclick && el.onclick.toString().includes("setLang")) {
+      el.classList.toggle('active', el.onclick.toString().includes("'" + code + "'"));
+    }
+  });
+  window._currentLangCode = code;
+  if (typeof setLanguage === 'function') setLanguage(code);
+}
+function setFooterCurr(code, symbol, flag) {
+  document.getElementById('footerCurrCode').textContent = code;
+  document.getElementById('footerMenu').classList.remove('open');
+  if (typeof setCurrency === 'function') setCurrency(code, symbol, flag, code);
+}
+// Close footer menu on outside click
+document.addEventListener('click', function(e) {
+  var sel = document.getElementById('footerSelector');
+  if (sel && !sel.contains(e.target)) {
+    var menu = document.getElementById('footerMenu');
+    if (menu) menu.classList.remove('open');
+  }
+});
+
 </script>
 
 
@@ -5109,6 +5406,52 @@ window.addEventListener('DOMContentLoaded', function() {
     }, 4000);
   }
 });
+// Close modal on backdrop click or ESC
+(function() {
+  function setupModal() {
+    var overlay = document.getElementById('authModal');
+    if (overlay) {
+      overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) closeAuth();
+      });
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeAuth();
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupModal);
+  } else {
+    setupModal();
+  }
+})();
+// ── FOOTER LANG/CURRENCY ──────────────────
+function setLang(code, flag, label) {
+  document.getElementById('footerLangFlag').textContent = flag;
+  document.getElementById('footerLangCode').textContent = label;
+  document.getElementById('footerMenu').classList.remove('open');
+  document.querySelectorAll('#footerMenu .footer-sel-opt').forEach(function(el) {
+    if (el.onclick && el.onclick.toString().includes("setLang")) {
+      el.classList.toggle('active', el.onclick.toString().includes("'" + code + "'"));
+    }
+  });
+  window._currentLangCode = code;
+  if (typeof setLanguage === 'function') setLanguage(code);
+}
+function setFooterCurr(code, symbol, flag) {
+  document.getElementById('footerCurrCode').textContent = code;
+  document.getElementById('footerMenu').classList.remove('open');
+  if (typeof setCurrency === 'function') setCurrency(code, symbol, flag, code);
+}
+// Close footer menu on outside click
+document.addEventListener('click', function(e) {
+  var sel = document.getElementById('footerSelector');
+  if (sel && !sel.contains(e.target)) {
+    var menu = document.getElementById('footerMenu');
+    if (menu) menu.classList.remove('open');
+  }
+});
+
 </script>
 
 </body>
